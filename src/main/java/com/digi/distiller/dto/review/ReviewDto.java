@@ -5,13 +5,13 @@ public class ReviewDto {
 	private String reviewId;
 	private String drinkId;
 	private String userId;
-	private String rating;
+	private String ratingId;
 	private String tagId;
 	private String reviewDate;
 	private String reviewContent;
 	private String reviewStatus;
 	
-	
+
 	public String getReviewId() {
 		return reviewId;
 	}
@@ -30,11 +30,12 @@ public class ReviewDto {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	public String getRating() {
-		return rating;
+
+	public String getRatingId() {
+		return ratingId;
 	}
-	public void setRating(String rating) {
-		this.rating = rating;
+	public void setRatingId(String ratingId) {
+		this.ratingId = ratingId;
 	}
 	public String getTagId() {
 		return tagId;
