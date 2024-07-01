@@ -11,7 +11,16 @@ public class ReviewDto {
 	private String reviewContent;
 	private String reviewStatus;
 	
-
+	public ReviewDto() {
+		
+	}
+	
+	public ReviewDto(String userId, String reviewDate, String rating, String reviewContent) {
+		this.userId = userId;
+		this.reviewDate = reviewDate;
+		this.rating = rating;
+		this.reviewContent = reviewContent;	
+	}
 	public String getReviewId() {
 		return reviewId;
 	}
