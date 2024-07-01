@@ -12,6 +12,22 @@ public class UserDto {
 	private String admin;
 	private String userStatus;
 	
+	public UserDto() {
+		
+	}
+	
+	public UserDto(String userId, String password, String name, String email, String birth, 
+			String address, String phone) {
+		this.userId = userId;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+		this.birth = birth;
+		this.address = address;
+		this.phone = phone;
+		
+	}
+	
 	public String getUserId() {
 		return userId;
 	}
@@ -66,4 +82,8 @@ public class UserDto {
 	public void setUserStatus(String userStatus) {
 		this.userStatus = userStatus;
 	}
+	
+	
+	
+
 }
