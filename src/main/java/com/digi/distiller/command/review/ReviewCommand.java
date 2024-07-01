@@ -29,6 +29,8 @@ public class ReviewCommand implements Command {
 		dto.setReviewContent(request.getParameter("REVIEWCONTENT"));
 		dto.setReviewStatus(request.getParameter("REVIEWSTATUS"));
 		
+		model.addAttribute(dto);
+		
 		
 		
 	}
