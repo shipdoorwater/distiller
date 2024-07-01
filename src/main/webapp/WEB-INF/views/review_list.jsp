@@ -16,7 +16,7 @@
 				<div class="user-info">
 					<div class="user-avatar"></div>
 					<div>
-						<div class="username">${review.username}</div>
+						<div class="userId">${review.userId}</div>
 						<div class="review-date">
 							Reviewed
 							<fmt:formatDate value="${review.reviewDate}"
@@ -37,9 +37,9 @@
 						</c:choose>
 					</c:forEach>
 				</div>
-				<c:if test="${not empty review.tags}">
+				<c:if test="${not empty review.tagId}">
 					<div class="tags">
-						<c:forEach items="${review.tags}" var="tag">
+						<c:forEach items="${review.tagId}" var="tag">
 							<span class="tag">${tag}</span>
 						</c:forEach>
 					</div>
@@ -53,8 +53,8 @@
 				<div class="actions">
 					<button class="action-button">COMMENT</button>
 					<button class="action-button">LIKE</button>
-					<span class="show-comments">SHOW COMMENTS
-						(${review.commentCount})</span>
+					<%-- <span class="show-comments">SHOW COMMENTS
+						(${review.commentCount})</span> --%>
 				</div>
 			</div>
 		</c:forEach>
