@@ -1,6 +1,2 @@
 /.metadata/
 pom.properties
-target/
-.classpath
-.project
-.settings/
