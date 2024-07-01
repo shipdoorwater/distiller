@@ -23,6 +23,11 @@ public class UserController {
 		Constant.template = this.template;
 	}
 	
+	@RequestMapping("/")
+	public String index(Model model) {
+		return "main";
+	}
+	
 	@RequestMapping("/register")
 	public String register(Model model) {
 		return "register";
@@ -46,5 +51,10 @@ public class UserController {
 	public String signIn(Model model) {
 		System.out.println("signIn()");
 		return "signIn";
+	}
+	@RequestMapping("/myProfile")
+	public String myProfile(Model model) {
+		System.out.println("myProfile()");
+		return "myProfile";
 	}
 }
