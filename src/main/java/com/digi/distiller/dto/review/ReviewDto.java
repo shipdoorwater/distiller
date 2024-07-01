@@ -11,6 +11,7 @@ public class ReviewDto {
 	private String reviewContent;
 	private String reviewStatus;
 	
+
 	public String getReviewId() {
 		return reviewId;
 	}
