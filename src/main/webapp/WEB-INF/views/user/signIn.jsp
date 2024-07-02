@@ -14,7 +14,7 @@
 								<div class="error"></div>
 								<form class="new_user" id="new_user"
 									data-behavior="internalForm"
-									data-analytics-event="Submit Sign In" action="/users/sign_in"
+									data-analytics-event="Submit Sign In" action="${pageContext.request.contextPath}/signInAction"
 									accept-charset="UTF-8" method="post">
 									<input name="utf8" type="hidden" value="✓"><input
 										type="hidden" name="authenticity_token"
