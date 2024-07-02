@@ -12,6 +12,15 @@ public class ReviewDto {
 	private String reviewStatus;
 	
 
+	public ReviewDto(String userId, String reviewDate, String rating, String reviewContent) {
+		this.userId = userId;
+		this.reviewDate = reviewDate;
+		this.rating = rating;
+		this.reviewContent = reviewContent;
+	}
+	public ReviewDto() {
+		// TODO Auto-generated constructor stub
+	}
 	public String getReviewId() {
 		return reviewId;
 	}
