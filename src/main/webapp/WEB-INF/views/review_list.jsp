@@ -1,8 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%@ include file="Head.jsp"%>
+<%
+	System.out.println("review_list.jsp 진입성공함.");
+%>
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -482,7 +485,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
     }
   });
 </script>
-<script>
+<!-- <script>
   $(document).ready(function(){
     if($.cookie('DISMISS_DOWNLOAD_BANNER')) {
       if(document.getElementsByClassName("display-download-banner").length > 0) {
@@ -497,7 +500,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
       $.cookie(`DISMISS_${bannerName.toUpperCase()}_BANNER`, true, {expires: 365, path: '/'})
     })
   })
-</script>
+</script> -->
 <script>
   !function(e,t,n){function a(){var e=t.getElementsByTagName("script")[0],n=t.createElement("script");n.type="text/javascript",n.async=!0,n.src="https://beacon-v2.helpscout.net/",e.parentNode.insertBefore(n,e)}if(e.Beacon=n=function(t,n,a){e.Beacon.readyQueue.push({method:t,options:n,data:a})},n.readyQueue=[],"complete"===t.readyState)return a();e.attachEvent?e.attachEvent("onload",a):e.addEventListener("load",a,!1)}(window,document,window.Beacon||function(){});
 </script>
@@ -695,113 +698,11 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 		<div class='canvas-wrapper display-privacy-banner'>
 			<div class='content-container'>
 
-				<div aria-labelledby='privacy_banner' aria-modal
-					class='banner privacy-banner' id='privacy-banner' role='dialog'>
-					<div class='banner__content privacy-banner__content'>
-						Distiller.com uses cookies that are essential for us to operate
-						the website and that are helpful for us to improve the services.
-						By continuing to browse our website, you agree to first-party and
-						third-party cookies being stored on your device. <a
-							target="_blank" class="banner__link"
-							href="https://distiller.com/cookie-policy">Learn More About
-							Cookies</a>
-					</div>
-					<button class='accept-privacy banner__close privacy__banner'
-						data-banner-name='privacy' data-behavior='close-banner'
-						id='accept-privacy'>
-						accept <span class='offscreen'>Close Cookie Notification</span>
-					</button>
-					<button class='banner__close privacy__banner'
-						data-banner-name='privacy' data-behavior='close-banner'>
-						cancel <span class='offscreen'>Close Cookie Notification</span>
-					</button>
-				</div>
+				
 				<script>
   window.openDialog('privacy-banner', null, 'accept-privacy');
 </script>
-
-				<div class='header'>
-					<div class='center-column'>
-						<header class='app-header'>
-							<div class='header-content'>
-								<button class='back' data-behavior='back'>
-									<i aria-hidden='true' class='fa fa-angle-left'></i> <span
-										class='offscreen'>Back</span>
-								</button>
-								<div class='menu-toggle'>
-									<button aria-expanded='false'>
-										<i aria-hidden='true' class='fa fa-reorder'></i> <i
-											aria-hidden='true' class='icomoon-x'></i> <span
-											class='offscreen'>Show Menu</span>
-									</button>
-								</div>
-								<a class='search-menu' href='https://distiller.com/search'>
-									<span class='search-a11y'>Search</span> <i aria-hidden='true'
-									class='fa fa-search'></i>
-								</a>
-								<div class='false-status-bar'></div>
-								<a class='logo' href='https://distiller.com/'> <span
-									class='offscreen'>Distiller Home</span>
-								</a>
-								<div class='menu'>
-									<nav aria-hidden='false' class='global-menu'
-										data-behavior='globalMenu' role='navigation'>
-										<ul class='primary'>
-											<li class='mobile search-menu-item'><a
-												href='https://distiller.com/search'> <span
-													class='search'>Search</span> <i aria-hidden='true'
-													class='fa fa-search'></i>
-											</a></li>
-											<li class='mobile user-search-menu-item'><a
-												href='https://distiller.com/user_search'> <span
-													class='search'>Find People</span> <i aria-hidden='true'
-													class='fa fa-user-plus'></i>
-											</a></li>
-											<li class='special-menu-item'><a
-												href='https://distiller.com/join-pro'> <i
-													class='icomoon-crown'></i> Join Pro
-											</a></li>
-											<li><a href='https://distiller.com/recommend'
-												id='global-menu'> Recommend </a></li>
-											<li><a href='https://distiller.com/articles'> <span>Articles</span>
-											</a></li>
-											<li><a href='https://distiller.com/users/sign_in'>
-													Sign In </a></li>
-											<li><a class='nav-accent'
-												href='https://distiller.com/users/sign_up'> Register </a></li>
-											<li class='desktop'><a
-												href='https://distiller.com/search'> <span
-													class='search'>Search</span> <i aria-hidden='true'
-													class='fa fa-search'></i>
-											</a></li>
-											<li class='desktop'><a
-												href='https://distiller.com/user_search'> <span
-													class='search'>Find People</span> <i aria-hidden='true'
-													class='fa fa-user-plus'></i>
-											</a></li>
-										</ul>
-										<ul class='secondary mobile'>
-											<li><a href='https://distiller.com/about'>About
-													Distiller</a></li>
-											<li><a href='https://distiller.com/tasting_table'>The
-													Tasting Table</a></li>
-											<li><a
-												href="https://distiller.com/cdn-cgi/l/email-protection#19717c757576597d706a6d7075757c6b377a7674">Contact
-													Us</a></li>
-											<li><a
-												href="https://distiller.com/cdn-cgi/l/email-protection#31415043455f5443427155584245585d5d54431f525e5c">Advertise</a></li>
-											<li><a href="https://distiller.com/jobs">Jobs</a></li>
-											<li><a href="https://distiller.com/faq">Frequently
-													Asked Questions</a></li>
-											<li><a href='https://distiller.com/'> Home </a></li>
-										</ul>
-									</nav>
-
-								</div>
-							</div>
-						</header>
-					</div>
-				</div>
+				
 
 				<div aria-live='assertive' class='flash-message-alert' role='alert'></div>
 				<main aria-hidden='false' class='main-container' id='main-content'
@@ -822,12 +723,12 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 								</div>
 								<div class='vitals'>
 									<h1 class='secondary-headline name' data-behavior='truncatable'
-										itemprop='name'>Fettercairn 12 Year</h1>
+										itemprop='name'>TABLE - DRINK / DRINKNAME</h1>
 									<div class='secondary-details'>
-										<p class='ultra-mini-headline type'>Single Malt</p>
+										<p class='ultra-mini-headline type'>TABLE - DRINK / SUB1</p>
 										<p class='ultra-mini-headline location middleweight'
-											content='Fettercairn' itemprop='brand_name'>Fettercairn
-											// Highlands, Scotland</p>
+											content='Fettercairn' itemprop='brand_name'>
+											TABLE - DRINK / 여기가 원래 브랜드 들어가야하는데, 우리테이블에 브랜드는 없음, TABLE - DRINK / NATION</p>
 
 									</div>
 								</div>
@@ -843,8 +744,8 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 										</li>
 										<li class='tab-tastes-header ui-tabs-active'>
 											<div class='tab-content'>
-												<a aria-current="page" href="tastes.html"><span
-													class='count'>145</span> Reviews </a>
+												<a aria-current="page" href="tastes.html">
+												<span class='count' th:text="${totalReviews}"> </span> Reviews </a>
 											</div>
 										</li>
 									</ul>
@@ -917,7 +818,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 
 											</div>
 
-											<!-- ������ -->
+											<!-- 리뷰목록 -->
 
 											<div class='results'>
 												<ul>
@@ -943,15 +844,14 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 																		</a>
 
 																		<div class='date'>
-																			<span class='tasted'>Reviewed</span>
-																			<fmt:formatDate value="${review.reviewDate}"
-																				pattern="MMMM d, yyyy" />
+																			<span class='tasted'>Reviewed ${review.reviewDate}</span>
+																			
 																		</div>
 
 																		<div class='rating detail'>
 																			<div class='rating-display'>
 																				<div class='rating-display__value'>${review.rating}</div>
-																				<div class='rating-stars'>
+																				<%-- <div class='rating-stars'>
 																					<div
 																						class='rating-stars stars-${Math.floor(review.rating)}'>
 																						<c:forEach begin="1" end="5" var="i">
@@ -964,7 +864,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 																							alt="${review.rating} out of 5 stars" />
 																						</span>
 																					</div>
-																				</div>
+																				</div> --%>
 																			</div>
 																		</div>
 																	</div>
@@ -979,7 +879,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 																		data-taste-id='${review.reviewId}'>
 																		<div
 																			class='modal js-hideable-modal hidden js-taste-likes-${review.reviewId}'>
-																			<!-- ���ƿ� ��� ���� -->
+																			<!-- 좋아요 모달 내용 -->
 																		</div>
 																		<div class='like-buttons'>
 																			<button class='button mini js-show-modal'
@@ -1010,9 +910,22 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 											</div>
 
 
-											<!-- ���� ����Ʈ �� -->
+											<!-- 리뷰 리스트 끝 -->
+											<!-- 페이지네이션 시작 -->
+											<c:if test="${currentPage > 1}">
+    <a href="reviews?drinkId=${drinkId}&page=${currentPage - 1}">Previous</a>
+</c:if>
 
-											<div class='spirit-show__tastes-pagination'>
+<c:forEach begin="1" end="${totalPages}" var="pageNum">
+    <a href="reviews?drinkId=${drinkId}&page=${pageNum}">${pageNum}</a>
+</c:forEach>
+
+<c:if test="${currentPage < totalPages}">
+    <a href="reviews?drinkId=${drinkId}&page=${currentPage + 1}">Next</a>
+</c:if>
+											
+											
+											<!-- <div class='spirit-show__tastes-pagination'>
 												<div class='pagination-control'>
 													<span class='pagination-control__description'>
 														Results 61-70 of 145 Reviews </span>
@@ -1041,7 +954,10 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 
 												</div>
 
-											</div>
+											</div> -->
+											<!-- 페이지네이션 끝 -->
+											
+											
 										</ol>
 
 									</div>
@@ -1233,49 +1149,13 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 										name="newsletter_recaptcha_token"
 										id="newsletter_recaptcha_token" value=""
 										class="js-newsletter-recaptcha-token-field" />
-									<script
-										src='../../../www.google.com/recaptcha/api6c3a.js?render=6LcnJJMUAAAAAG0QN9grwzsGfQMg5Mht09pzkK_g'></script>
-									<script>
-  grecaptcha.ready(function() {
-  
-    var field = $(".js-newsletter-recaptcha-token-field")
-    var submitButton = field.closest('form').find('input[type=submit]')
-  
-    submitButton.attr('disabled', 'disabled');
-    grecaptcha.execute("6LcnJJMUAAAAAG0QN9grwzsGfQMg5Mht09pzkK_g", {action: 'newsletter'}).then(function(token) {
-      field.val(token);
-      submitButton.attr('disabled', false);
-    });
-  });
-</script>
+									
+							
 
 									<input type="submit" name="commit" value="sign up"
 										data-disable-with="sign up" />
-									<script src="../../../www.recaptcha.net/recaptcha/api.js" async
-										defer></script>
-									<div data-sitekey="6Ld1tO4oAAAAAI0-G63XMzqxtSbnFBpwOfIwxztQ"
-										class="g-recaptcha "></div>
-									<noscript>
-										<div>
-											<div style="width: 302px; height: 422px; position: relative;">
-												<div
-													style="width: 302px; height: 422px; position: absolute;">
-													<iframe
-														src="https://www.recaptcha.net/recaptcha/api/fallback?k=6Ld1tO4oAAAAAI0-G63XMzqxtSbnFBpwOfIwxztQ"
-														name="ReCAPTCHA"
-														style="width: 302px; height: 422px; border-style: none; border: 0; overflow: hidden;">
-													</iframe>
-												</div>
-											</div>
-											<div
-												style="width: 300px; height: 60px; border-style: none; bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px; background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px;">
-												<textarea id="g-recaptcha-response"
-													name="g-recaptcha-response" class="g-recaptcha-response"
-													style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none;">
-                </textarea>
-											</div>
-										</div>
-									</noscript>
+									
+									
 
 								</form>
 							</div>
@@ -1394,6 +1274,6 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 		crossorigin="anonymous"></script>
 </body>
 
-<!-- Mirrored from distiller.com/spirits/fettercairn-12-year/tastes?page=7 by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 01 Jul 2024 07:53:50 GMT -->
+
 </html>
 <%@ include file="footer.jsp"%>
