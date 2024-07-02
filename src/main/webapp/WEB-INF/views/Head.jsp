@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<% String contextPath = request.getContextPath(); %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ page import = "java.util.*" %>
+<% 
+	String loginedEmail = (String) session.getAttribute("loginedEmail");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -123,9 +130,6 @@ End Function
 								href="/user_search"> <span class="search">Find People</span>
 									<i aria-hidden="true" class="fa fa-user-plus"></i>
 							</a></li>
-							<li class="special-menu-item"><a href="/join-pro"> <i
-									class="icomoon-crown"></i> Join Pro
-							</a></li>
 							<li><a href="/recommend" id="global-menu"> Recommend </a></li>
 							</a></li>
 							<li><a href="/users/sign_in"> Sign In </a></li>
@@ -135,7 +139,7 @@ End Function
 									class="search">Search</span> <i aria-hidden="true"
 									class="fa fa-search"></i>
 							</a></li>
-							<li class="desktop"><a href="/user_search"> <span
+							<li class="desktop"><a href="/myProfile"> <span
 									class="search">Find People</span> <i aria-hidden="true"
 									class="fa fa-user-plus"></i>
 							</a></li>
