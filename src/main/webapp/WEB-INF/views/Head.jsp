@@ -6,6 +6,7 @@
 <%@ page import = "java.util.*" %>
 <% 
 	String loginedEmail = (String) session.getAttribute("loginedEmail");
+	String isAdmin = (String) session.getAttribute("isAdmin");
 %>
 <!DOCTYPE html>
 <html>
@@ -137,11 +138,11 @@ End Function
 									Register </a></li>
 							<li><a href="${pageContext.request.contextPath}/myProfile">My Profile</a></li>
 							<li><a href="${pageContext.request.contextPath}/admin">Admin Menu</a></li>
-							<li class="desktop"><a href="/search"> <span
+							<li class="desktop"><a href="${pageContext.request.contextPath}/searchLiquorView"> <span
 									class="search">Search</span> <i aria-hidden="true"
 									class="fa fa-search"></i>
 							</a></li>
-							<li class="desktop"><a href="/myProfile"> <span
+							<li class="desktop"><a href="${pageContext.request.contextPath}/searchUserView"> <span
 									class="search">Find People</span> <i aria-hidden="true"
 									class="fa fa-user-plus"></i>
 							</a></li>

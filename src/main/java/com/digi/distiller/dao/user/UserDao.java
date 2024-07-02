@@ -47,20 +47,25 @@ public class UserDao {
 	}
 	
 	public boolean signIn(String email, String password) {
-		System.out.println(email);
-		System.out.println(password);
 		boolean result = false;
 		String sql = "select password from user where email = ?";
 		try {
 			String passwordData = template.queryForObject(sql,String.class,email);
-			System.out.println(passwordData);
-			if (passwordData.equals(password))
+			if (passwordData.equals(password)) {
 				return result = true;
+			}
 			System.out.println("result :" + result);
 		} catch (DataAccessException e) {
 			System.out.println("error :" + e.getMessage());
 			return result;
 		}
 		return result;
+	}
+	
+	public int isAdmin(String email) {
+		int isAdmin = 0;
+		
+		
+		return isAdmin;
 	}
 }
