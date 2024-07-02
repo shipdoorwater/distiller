@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="Head.jsp" %>
 
 
+
 <!DOCTYPE html>
+
 <html
   lang="en"
   class="js flexbox flexboxlegacy canvas canvastext rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent"
@@ -20,26 +24,21 @@
     </style>
     <meta charset="utf-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
-    <title>drink name (@db)</title>
-
+    <title>${drinkName}</title>
+<!--  
     <link
       rel="stylesheet"
       media="all"
       href="../assets/application-28cb40c83874216760225644183dd932c69a94bfdedcd3d89ebe3271942e9180.css"
     />
+    -->
   </head>
   <body
     class="screened ocean-mood whiskey-selected has-dialog adthrive-device-desktop"
-    ontouchstart=""
-  >
+    >
     <div class="screen background">
       <div class="canvas-wrapper display-privacy-banner">
         <div class="content-container">
-          <div
-            aria-live="assertive"
-            class="flash-message-alert"
-            role="alert"
-          ></div>
           <main
             aria-hidden="false"
             class="main-container"
@@ -51,11 +50,8 @@
                 class="spirit-show center-column js-carousel whiskey-content"
                 data-max-items="1"
                 data-pagination="true"
-                itemscope=""
-                itemtype="http://schema.org/Product"
               >
                 <div class="top-image">
-                  <meta content="" itemprop="image" />
                   <div
                     class="main-image desktop official"
                     style="background-image: url (@술이미지db)"
@@ -64,18 +60,15 @@
                     <h1
                       class="secondary-headline name"
                       data-behavior="truncatable"
-                      itemprop="name"
                     >
-                      GLEN SCOTIA(@db)
+                      ${drinkName}
                     </h1>
                     <div class="secondary-details">
-                      <p class="ultra-mini-headline type">Single Malt(@db)</p>
+                      <p class="ultra-mini-headline type">${sub1}</p>
                       <p
                         class="ultra-mini-headline location middleweight"
-                        content="Glen Scotia"
-                        itemprop="brand_name"
                       >
-                        Scotland(@db)
+                        ${nation }
                       </p>
                     </div>
                   </div>
@@ -86,7 +79,7 @@
                     <ul class="tabs-header">
                       <li class="tab-overview-header ui-tabs-active">
                         <div class="tab-content">
-                          <a aria-current="page" href="drinkdetail/drink?id=@db"
+                          <a aria-current="page" href="drinkdetail?id=@db"
                             >Details (@링크_탭)</a
                           >
                         </div>
@@ -94,7 +87,7 @@
                       <li class="tab-tastes-header">
                         <div class="tab-content">
                           <a href="drinkdetail/review?id=@db"
-                            ><span class="count">399(@db)</span> Reviews
+                            ><span class="count">{$reviewId.count}</span> Reviews
                             (@링크_탭)</a
                           >
                         </div>
@@ -111,20 +104,18 @@
                               <div class="value">
                                 <div
                                   class="rating-display average-user-rating"
-                                  itemprop="aggregateRating"
-                                  itemscope=""
-                                  itemtype="http://schema.org/AggregateRating"
                                 >
                                   <div
                                     class="rating-display__value average-rating"
                                   >
                                     <span itemprop="ratingValue"
-                                      >3.66(@db)</span
+                                      >{$rating.average}</span
                                     >
                                     <meta content="5" itemprop="bestRating" />
                                     <meta content="0" itemprop="worstRating" />
                                   </div>
-                                  <div class="rating-stars stars-3">
+                                  
+                                  <div id="rating-container" class="rating-stars stars-3">
                                     <span class="rate">
                                       <i
                                         aria-hidden="true"
@@ -156,7 +147,7 @@
                                       ></i>
                                     </span>
                                     <span class="offscreen"
-                                      >3.66(@db) out of 5 stars</span
+                                      >{$rating.average} out of 5 stars</span
                                     >
                                   </div>
 
@@ -167,7 +158,7 @@
                                         Total review count:
                                       </span>
                                       <span itemprop="ratingCount">
-                                        399(@db)
+                                        {$reviewId.count}
                                       </span> </a
                                     >)
                                   </div>
@@ -180,7 +171,7 @@
                         <div class="spirit-show__description-container">
                           <div class="only-big">
                             <p class="description" itemprop="description">
-                              drink detail description (@db)
+                              {$drinkExplain}
                             </p>
                           </div>
                           <div class="other-details-container">
@@ -189,22 +180,22 @@
                                 <ul>
                                   <li class="detail age">
                                     <div class="label">age</div>
-                                    <div class="value">NAS (@db)</div>
+                                    <div class="value">NAS {$drinkMaturity}</div>
                                   </li>
                                   <li class="detail cost">
                                     <div class="label">Cost</div>
-                                    <div class="value">$$$ (@db)</div>
+                                    <div class="value">{$price}</div>
                                   </li>
                                   <li class="detail abv">
                                     <div class="label">abv</div>
-                                    <div class="value">46.0 (@db)</div>
+                                    <div class="value">{$adv}</div>
                                   </li>
                                 </ul>
                               </li>
                               <li class="detail whiskey-style">
-                                <div class="label">Single Malt (@db)</div>
+                                <div class="label">{$sub1}</div>
                                 <div class="value">
-                                  chocolate, caramel, spicy (@db)
+                                  {$tag}
                                 </div>
                               </li>
                             </ul>
@@ -218,13 +209,7 @@
                           <div
                             class="content"
                             itemprop="review"
-                            itemscope=""
-                            itemtype="http://schema.org/Review"
                           >
-                            <meta
-                              content="Glen Scotia Double Cask Single Malt"
-                              itemprop="itemReviewed"
-                            />
                             <h2 class="mini-headline">Tasting Notes</h2>
                             <blockquote itemprop="reviewBody">
                               "A sweet dalkom jjapzzarum (@db)"
@@ -272,7 +257,7 @@
                         class="toggle-link js-show-modal"
                         data-modal-selector=".js-registration-prompt-modal"
                       >
-					<a href="tastes/new?spirit=drinkfromdb"></a>
+					          <a href="tastes/new?spirit=drinkfromdb"></a>
                         <span class="double-icon">
                           <i aria-hidden="true" class="fa fa-bars"></i>
                           <i aria-hidden="true" class="fa fa-plus"></i>
@@ -291,6 +276,34 @@
     </div>
   </body>
 </html>
+
+
+<script>
+  function setRatingStars(rating) {
+      const ratingContainer = document.getElementById('rating-container');
+      let starsClass = 'rating-stars ';
+
+      if (rating >= 1 && rating < 2) {
+          starsClass += 'stars-1';
+      } else if (rating >= 2 && rating < 3) {
+          starsClass += 'stars-2';
+      } else if (rating >= 3 && rating < 4) {
+          starsClass += 'stars-3';
+      } else if (rating >= 4 && rating < 5) {
+          starsClass += 'stars-4';
+      } else if (rating === 5) {
+          starsClass += 'stars-5';
+      } else {
+          starsClass += 'stars-0'; // Default case if rating is out of expected range
+      }
+
+      ratingContainer.className = starsClass;
+  }
+
+  // Example rating value
+  const rating = {$rating.average};
+  setRatingStars(rating);
+</script>
 
 
 <%@ include file="footer.jsp" %>

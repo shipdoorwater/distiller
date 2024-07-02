@@ -40,10 +40,20 @@ public class PurchaseController {
 		System.out.println("cartGet()");
 
 		model.addAttribute("request", request);
-		command = new CartGetCommand();
-		command.execute(model);
+		//command = new CartGetCommand();
+		//command.execute(model);
 
 		return "purchase/cart";
 	}
 	
+	@RequestMapping("/order")
+	public String order(HttpServletRequest request, Model model) {
+		System.out.println("order()");
+
+		model.addAttribute("request", request);
+		//command = new OrderGetCommand();
+		//command.execute(model);
+
+		return "purchase/order";
+	}
 }
