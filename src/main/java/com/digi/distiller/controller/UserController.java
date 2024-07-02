@@ -93,4 +93,16 @@ public class UserController {
 		System.out.println("myProfile()");
 		return "user/myProfile";
 	}
+
+	
+	@RequestMapping("/searchUserView")
+	public String searchUserView(Model model) {
+		System.out.println("searchUserView()");
+		return "searchUserView";
+	}
+	@RequestMapping("/searchLiquorView")
+	public String searchLiquorView(Model model) {
+		System.out.println("searchLiquorView()");
+		return "searchLiquorView";
+	}
 }
