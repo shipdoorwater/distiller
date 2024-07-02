@@ -132,9 +132,11 @@ End Function
 							</a></li>
 							<li><a href="/recommend" id="global-menu"> Recommend </a></li>
 							</a></li>
-							<li><a href="/users/sign_in"> Sign In </a></li>
-							<li><a class="nav-accent" href="/users/sign_up">
+							<li><a href="${pageContext.request.contextPath}/signIn"> Sign In </a></li>
+							<li><a class="nav-accent" href="${pageContext.request.contextPath}/register">
 									Register </a></li>
+							<li><a href="${pageContext.request.contextPath}/myProfile">My Profile</a></li>
+							<li><a href="${pageContext.request.contextPath}/admin">Admin Menu</a></li>
 							<li class="desktop"><a href="/search"> <span
 									class="search">Search</span> <i aria-hidden="true"
 									class="fa fa-search"></i>
