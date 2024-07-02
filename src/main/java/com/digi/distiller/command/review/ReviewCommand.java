@@ -23,7 +23,7 @@ public class ReviewCommand implements Command {
 		dto.setReviewId(request.getParameter("REVIEWID"));
 		dto.setDrinkId(request.getParameter("DRINKID"));
 		dto.setUserId(request.getParameter("USERID"));
-		dto.setRatingId(request.getParameter("RATING"));
+		dto.setRating(request.getParameter("RATING"));
 		dto.setTagId(request.getParameter("TAGID"));
 		dto.setReviewDate(request.getParameter("REVIEWDATE"));
 		dto.setReviewContent(request.getParameter("REVIEWCONTENT"));
