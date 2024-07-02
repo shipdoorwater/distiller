@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="Head.jsp"%>
+<%@ include file="../Head.jsp"%>
 <div class="canvas-wrapper">
 	<div class="content-container">
 
@@ -61,7 +61,7 @@
 										data-behavior="internalForm"
 										data-analytics-event="Submit Registration"
 										data-analytics-opts="{&quot;criticalEvent&quot;: true}"
-										action="/users" accept-charset="UTF-8" method="post">
+										action="<%= contextPath %>/registerAction" accept-charset="UTF-8" method="post">
 										<input name="utf8" type="hidden" value="✓"><input
 											type="hidden" name="authenticity_token"
 											value="bwN4ZaACS/CrDZrm/tW6jm+FgzJXb3wZgt6+jiuS5OgOedYhbWtNCESE1Mrpk0QTaonSuXb7ofZnQhnffn+P+w==">
@@ -69,17 +69,17 @@
 											<input autofocus="autofocus" placeholder="EMAIL *"
 												aria-required="true" autocomplete="email"
 												aria-label="EMAIL *" type="email" value=""
-												name="sign_up[email]" id="sign_up_email">
+												name="register_email" id="sign_up_email">
 										</div>
 										<div class="field">
 											<input placeholder="USERNAME *" aria-required="true"
 												autocomplete="username" aria-label="USERNAME *" type="text"
-												name="sign_up[username]" id="sign_up_username">
+												name="register_name" id="sign_up_username">
 										</div>
 										<div class="field password-field">
 											<input placeholder="PASSWORD *" aria-required="true"
 												autocomplete="new-password" aria-label="PASSWORD *"
-												type="password" name="sign_up[password]"
+												type="password" name="register_password"
 												id="sign_up_password"> <span
 												aria-label="Show Password" role="button" tabindex="0">
 												<i class="icon fa fa-eye toggle-password-visibility"
@@ -377,4 +377,4 @@
 	</div>
 </div>
 
-<%@ include file="footer.jsp"%>
+<%@ include file="../footer.jsp"%>

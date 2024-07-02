@@ -27,26 +27,19 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<context:component-scan
-		base-package="com.digi.distiller" />
+	
+	<context:component-scan base-package="com.digi.distiller" />
+	
+	<beans:bean id = "dataSource"
+		class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<beans:property name="url" value = "jdbc:mysql://localhost:3306/distiller?serverTimezone=UTC&amp;useSSL= false"/>
+		<beans:property name="username" value="root"/>
+		<beans:property name="password"	value="qwe123!@#"/>
 
-	<beans:bean id="dataSource"
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<beans:property name="driverClassName"
-			value="com.mysql.cj.jdbc.Driver" />
-		<beans:property name="url"
-			value="jdbc:mysql://localhost:3306/distiller?serverTimezone=UTC&amp;useSSL= false" />
-		<beans:property name="username" value="root" />
-		<beans:property name="password" value="qwe123!@#" />
-
-		<!-- <beans:property name="username" value="root"/> <beans:property name="password" 
-			value="qwe123!@#"/> -->
-
-	</beans:bean>
-
-	<beans:bean name="template"
-		class="org.springframework.jdbc.core.JdbcTemplate">
-		<beans:property name="dataSource" ref="dataSource" />
+<!-- 		<beans:property name="username" value="root"/>
+		<beans:property name="password"	value="qwe123!@#"/> -->
+		
 	</beans:bean>
 
 	<beans:bean id="multipartResolver"

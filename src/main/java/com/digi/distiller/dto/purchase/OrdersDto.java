@@ -1,6 +1,6 @@
 package com.digi.distiller.dto.purchase;
 
-public class OrderDto {
+public class OrdersDto {
 
 	private String orderId;
 	private String drinkId;

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="Head.jsp"%>
+<%@ include file="../Head.jsp"%>
 <main class="main-container" id="main-content" role="main" tabindex="-1">
 	<div class="scroller">
 		<div class="generic-page sign-in access-page">
@@ -118,4 +118,4 @@
 	</div>
 </main>
 
-<%@ include file="footer.jsp"%>
+<%@ include file="../footer.jsp"%>

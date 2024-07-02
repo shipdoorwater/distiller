@@ -2,10 +2,9 @@ package com.digi.distiller.dto.user;
 
 public class UserDto {
 
-	private String userId;
+	private String email;
 	private String password;
 	private String name;
-	private String email;
 	private String birth;
 	private String address;
 	private String phone;
@@ -18,22 +17,14 @@ public class UserDto {
 	
 	public UserDto(String userId, String password, String name, String email, String birth, 
 			String address, String phone) {
-		this.userId = userId;
 		this.password = password;
 		this.name = name;
 		this.email = email;
 		this.birth = birth;
 		this.address = address;
 		this.phone = phone;
-		
 	}
 	
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 	public String getPassword() {
 		return password;
 	}
