@@ -3,12 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../Head.jsp" %>
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>주문 페이지</title>
+
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -16,20 +11,27 @@
         color: #fff;
         line-height: 1.6;
         margin: 0;
-        padding: 20px;
       }
       .container {
         max-width: 800px;
         margin: auto;
+        padding: 20px 20px 40px; /* 상하좌우 패딩 추가, 하단 패딩 더 크게 */
       }
-      h1,
+      h1{
+        margin-top: 40px; /* 상단 여백 추가 */
+        /*margin-bottom: 30px;  하단 여백 추가 */
+      }
+      h1 {
+        color: #fff;        
+      }
       h2 {
-        color: #fff;
-      }
+  		color: #fff;
+  		margin-bottom: 20px; /* 하단 여백 추가 */
+	  }
       .order-summary,
       .order-form {
         background-color: #222;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         padding: 20px;
         border-radius: 5px;
       }
@@ -77,24 +79,25 @@
         background-color: #333;
         color: #fff;
       }
-      .submit-button {
-        background-color: rgb(240, 90, 65);
-        color: white;
-        padding: 12px 20px;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        text-transform: uppercase;
-        margin-top: 20px;
-      }
+	 .submit-button {
+		  background-color: rgb(240, 90, 65);
+		  color: white;
+		  padding: 12px 20px;
+		  border: none;
+		  border-radius: 3px;
+		  cursor: pointer;
+		  font-size: 16px;
+		  font-weight: 600;
+		  text-transform: uppercase;
+		  margin-top: 20px;
+		  width: 100%; /* 버튼을 폼의 전체 너비로 설정 */
+		  transition: background-color 0.3s ease; /* 부드러운 호버 효과를 위한 전환 */
+	  }
       .submit-button:hover {
         background-color: rgb(220, 70, 45);
       }
     </style>
-  </head>
-  <body>
+  
     <div class="container">
       <h1>주문 페이지</h1>
 
@@ -166,8 +169,6 @@
         </form>
       </div>
     </div>
-  </body>
-</html>
 
 
 <%@ include file="../footer.jsp" %>

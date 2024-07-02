@@ -4,12 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>장바구니</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -17,14 +11,16 @@
         color: #fff;
         line-height: 1.6;
         margin: 0;
-        padding: 20px;
       }
       .container {
         max-width: 800px;
         margin: auto;
+        padding: 20px; /* 전체 컨테이너에 패딩 추가 */
       }
       h1 {
         color: #fff;
+        margin-top: 40px; /* 상단 여백 추가 */
+        margin-bottom: 30px; /* 하단 여백 추가 */
       }
       .profile-list {
         list-style-type: none;
@@ -84,6 +80,7 @@
         justify-content: center;
         gap: 30px;
         margin-top: 30px;
+        margin-bottom: 40px; /* 하단 여백 추가 */
       }
       .order-button,
       .add-more-button {
@@ -120,8 +117,7 @@
         border-radius: 5px;
       }
     </style>
-  </head>
-  <body>
+
     <div class="container">
       <h1>장바구니</h1>
 
@@ -203,8 +199,5 @@
         });
       });
     </script>
-  </body>
-</html>
-
 
 <%@ include file="../footer.jsp" %>
