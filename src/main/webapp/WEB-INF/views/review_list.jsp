@@ -4,7 +4,7 @@
 
 <%@ include file="Head.jsp"%>
 <%
-	System.out.println("review_list.jsp 진입성공함.");
+System.out.println("review_list.jsp 진입성공함.");
 %>
 <!DOCTYPE html>
 <html lang='en'>
@@ -698,11 +698,11 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 		<div class='canvas-wrapper display-privacy-banner'>
 			<div class='content-container'>
 
-				
+
 				<script>
   window.openDialog('privacy-banner', null, 'accept-privacy');
 </script>
-				
+
 
 				<div aria-live='assertive' class='flash-message-alert' role='alert'></div>
 				<main aria-hidden='false' class='main-container' id='main-content'
@@ -727,8 +727,8 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 									<div class='secondary-details'>
 										<p class='ultra-mini-headline type'>TABLE - DRINK / SUB1</p>
 										<p class='ultra-mini-headline location middleweight'
-											content='Fettercairn' itemprop='brand_name'>
-											TABLE - DRINK / 여기가 원래 브랜드 들어가야하는데, 우리테이블에 브랜드는 없음, TABLE - DRINK / NATION</p>
+											content='Fettercairn' itemprop='brand_name'>TABLE - DRINK
+											/ 여기가 원래 브랜드 들어가야하는데, 우리테이블에 브랜드는 없음, TABLE - DRINK / NATION</p>
 
 									</div>
 								</div>
@@ -739,13 +739,17 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 									<ul class='tabs-header'>
 										<li class='tab-overview-header'>
 											<div class='tab-content'>
-												<a href="https://distiller.com/spirits/fettercairn-12-year">Details</a>
+												<a
+													href="http://localhost:8080/distiller/drinkdetail?drinkId=${drinkId }">Details</a>
 											</div>
 										</li>
 										<li class='tab-tastes-header ui-tabs-active'>
 											<div class='tab-content'>
-												<a aria-current="page" href="tastes.html">
-												<span class='count' th:text="${totalReviews}"> </span> Reviews </a>
+												<a aria-current="page"
+													href="http://localhost:8080/distiller/reviews?drinkId=${drinkId }">
+													Reviews
+													<span class='count' th:text="${totalReviews}"> (${totalReviews})</span>
+												</a>
 											</div>
 										</li>
 									</ul>
@@ -831,21 +835,22 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 															<div class='taste-content'>
 																<div class='high-level-info'>
 																	<a class='user-avatar'
-																		href='<c:url value="/profile/${review.userId}"/>'>
-																		<div aria-label='${review.userId}&#39;s profile'
+																		href='<c:url value="/profile/${review.email}"/>'>
+																		<div aria-label='${review.email}&#39;s profile'
 																			class='image' role='img'
 																			style='background-image: url(/images/placeholders/placeholder_${status.index % 5 + 1}.png)'></div>
 																	</a>
 
 																	<div class='name-details'>
-																		<a href='<c:url value="/profile/${review.userId}"/>'>
+																		<a href='<c:url value="/profile/${review.email}"/>'>
 																			<h3 class='mini-headline name username truncate-line'>
-																				${review.userId}</h3>
+																				${review.email}</h3>
 																		</a>
 
 																		<div class='date'>
-																			<span class='tasted'>Reviewed ${review.reviewDate}</span>
-																			
+																			<span class='tasted'>Reviewed
+																				${review.reviewDate}</span>
+
 																		</div>
 
 																		<div class='rating detail'>
@@ -881,13 +886,25 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 																			class='modal js-hideable-modal hidden js-taste-likes-${review.reviewId}'>
 																			<!-- 좋아요 모달 내용 -->
 																		</div>
+
+																		<!-- 코멘트 버튼 기능 구현 -->
+
 																		<div class='like-buttons'>
 																			<button class='button mini js-show-modal'
 																				data-modal-selector='.js-registration-prompt-modal'>
 																				Comment</button>
-																			<button class='like button mini js-show-modal'
-																				data-modal-selector='.js-registration-prompt-modal'>
-																				Like</button>
+																			<!-- 좋아요 버튼 기능 구현 -->
+																			<c:choose>
+																				<c:when test="${not empty loggedInUserEmail}">
+																					<button
+																						onclick="addLike('${review.reviewId}', '${loggedInUserEmail}')">Like</button>
+																				</c:when>
+																				<c:otherwise>
+																					<button class='like button mini js-show-modal'
+																						data-modal-selector='.js-registration-prompt-modal'>
+																						Like</button>
+																				</c:otherwise>
+																			</c:choose>
 																		</div>
 																	</div>
 
@@ -911,59 +928,14 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 
 
 											<!-- 리뷰 리스트 끝 -->
-											<!-- 페이지네이션 시작 -->
-											<c:if test="${currentPage > 1}">
-    <a href="reviews?drinkId=${drinkId}&page=${currentPage - 1}">Previous</a>
-</c:if>
+								
 
-<c:forEach begin="1" end="${totalPages}" var="pageNum">
-    <a href="reviews?drinkId=${drinkId}&page=${pageNum}">${pageNum}</a>
-</c:forEach>
-
-<c:if test="${currentPage < totalPages}">
-    <a href="reviews?drinkId=${drinkId}&page=${currentPage + 1}">Next</a>
-</c:if>
-											
-											
-											<!-- <div class='spirit-show__tastes-pagination'>
-												<div class='pagination-control'>
-													<span class='pagination-control__description'>
-														Results 61-70 of 145 Reviews </span>
-													<nav class="pagination" role="navigation"
-														aria-label="pager">
-														<span class="first"> <a href="tastes.html">&laquo;
-																First</a>
-														</span> <span class="prev"> <a rel="prev"
-															href="tastesc575.html?page=6">&lsaquo; Prev</a>
-														</span> <span class="page gap">&hellip;</span> <span class="page">
-															<a href="tastesaf4d.html?page=5">5</a>
-														</span> <span class="page"> <a rel="prev"
-															href="tastesc575.html?page=6">6</a>
-														</span> <span class="page current"> 7 </span> <span class="page">
-															<a rel="next" href="tastesfdfa.html?page=8">8</a>
-														</span> <span class="page"> <a
-															href="tastes0b08.html?page=9">9</a>
-														</span> <span class="page gap">&hellip;</span> <span class="next">
-															<a rel="next" href="tastesfdfa.html?page=8">Next
-																&rsaquo;</a>
-														</span> <span class="last"> <a
-															href="tastes5760.html?page=15">Last &raquo;</a>
-														</span>
-
-													</nav>
-
-												</div>
-
-											</div> -->
-											<!-- 페이지네이션 끝 -->
-											
-											
 										</ol>
 
 									</div>
 								</div>
 								<div class='alternate-recommendations'>
-									
+
 									<h2 class='section-title middleweight'>You may also like</h2>
 									<ul>
 										<li><a
@@ -979,9 +951,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 														</div>
 													</div>
 												</div>
-										</a>
-										
-										</li>
+										</a></li>
 										<li><a
 											href='https://distiller.com/spirits/glenglassaugh-port-wood-finish'>
 												<div class='image'
@@ -1015,7 +985,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 
 							</div>
 							<div class='sidebar' role='list'>
-								
+
 								<div
 									class='user-spirit-content details-module action-buttons js-carousel'
 									data-max-items='1' data-pagination='true' role='listitem'>
@@ -1148,14 +1118,11 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 										name="email_signup[email]" /> <input type="hidden"
 										name="newsletter_recaptcha_token"
 										id="newsletter_recaptcha_token" value=""
-										class="js-newsletter-recaptcha-token-field" />
-									
-							
-
-									<input type="submit" name="commit" value="sign up"
+										class="js-newsletter-recaptcha-token-field" /> <input
+										type="submit" name="commit" value="sign up"
 										data-disable-with="sign up" />
-									
-									
+
+
 
 								</form>
 							</div>

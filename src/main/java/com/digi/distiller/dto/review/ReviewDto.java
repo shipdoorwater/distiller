@@ -4,7 +4,7 @@ public class ReviewDto {
 
 	private String reviewId;
 	private String drinkId;
-	private String userId;
+	private String email;
 	private String rating;
 	private String tagId;
 	private String reviewDate;
@@ -12,8 +12,8 @@ public class ReviewDto {
 	private String reviewStatus;
 	
 
-	public ReviewDto(String userId, String reviewDate, String rating, String reviewContent) {
-		this.userId = userId;
+	public ReviewDto(String email, String reviewDate, String rating, String reviewContent) {
+		this.email = email;
 		this.reviewDate = reviewDate;
 		this.rating = rating;
 		this.reviewContent = reviewContent;
@@ -33,11 +33,11 @@ public class ReviewDto {
 	public void setDrinkId(String drinkId) {
 		this.drinkId = drinkId;
 	}
-	public String getUserId() {
-		return userId;
+	public String getEmail() {
+		return email;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getRating() {
 		return rating;
