@@ -30,7 +30,7 @@ public class ReviewController {
 		this.reviewDao = reviewDao;
 	}
 
-	@RequestMapping(value = "/reviews", method = RequestMethod.GET)
+	@RequestMapping(value = "/drinkdetail/reviews", method = RequestMethod.GET)
 	public String getReviews(@RequestParam String drinkId, String drinkName, Model model, HttpSession session) {
 		System.out.print("컨트롤러 - 리뷰페이지보기");
 		System.out.println("전달된 parameter(drinkId): " + drinkId);
@@ -75,7 +75,7 @@ public class ReviewController {
         model.addAttribute("addedLike", added);
 
         // 다시 리뷰 페이지로 리다이렉트
-        return "redirect:/reviews?drinkId=" + reviewDao.getDrinkIdFromReviewId(reviewId);
+        return "redirect:/drinkdetail/reviews?drinkId=" + reviewDao.getDrinkIdFromReviewId(reviewId);
     }
 
     
@@ -87,7 +87,7 @@ public class ReviewController {
         model.addAttribute("likeCount", likeCount);
 
         // 다시 리뷰 페이지로 리다이렉트
-        return "redirect:/reviews?drinkId=" + reviewDao.getDrinkIdFromReviewId(reviewId);
+        return "redirect:/drinkdetail/reviews?drinkId=" + reviewDao.getDrinkIdFromReviewId(reviewId);
     }
     
     
@@ -95,10 +95,44 @@ public class ReviewController {
 	public String reviewWriteView(@RequestParam String drinkId, String drinkName, Model model, HttpSession session) {
 		System.out.print("컨트롤러 - 리뷰작성화면연결");
 		System.out.println("전달된 parameter(drinkId): " + drinkId);
-		
+
+		DrinkDto dto = reviewDao.getDrinkInfo(drinkId);
+		model.addAttribute("dto", dto);
 		model.addAttribute("drinkId", drinkId);
 		model.addAttribute("drinkName", drinkName);
-		
+
 		return "review_write";
+	}
+	
+	@RequestMapping(value = "/reviewWriteDone", method = RequestMethod.POST)
+	public String insertReview(
+            @RequestParam String drinkId,
+            @RequestParam String rating,
+            @RequestParam String reviewcontent,
+            HttpSession session,
+            Model model) {
+		// 세션에서 이메일 가져오기
+        String email = (String) session.getAttribute("loginedEmail");
+        
+		System.out.println("컨트롤러 - 리뷰작성완료");
+		System.out.println("세션에 저장된 이메일: " + email);
+		
+		if (email == null) {
+            // 로그인 안된 경우
+            return "redirect:/login";
+        }
+
+        // 리뷰 삽입
+        boolean isInserted = reviewDao.insertReview(drinkId, email, rating, reviewcontent);
+
+        if (isInserted) {
+        	return "redirect:/drinkdetail/reviews?drinkId=" + drinkId;
+        }
+        else {
+        	 model.addAttribute("error", "리뷰 작성 중 에러가 발생했습니다.");
+             return "review_write"; // 에러 발생 시 다시 리뷰 작성 폼으로 돌아감
+        }
+		
+		
 	}
 }
