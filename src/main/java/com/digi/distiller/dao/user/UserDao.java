@@ -20,7 +20,7 @@ public class UserDao {
 	
 	public boolean register(String email, String name, String password) {
 		boolean result = false;
-		String sql = "insert into user(EMAIL, PASSWORD, NAME, BIRTH, ADDRESS, PHONE, ADMIN, USERSTATUS) VALUES(?,?,?,?,?,?,?,?)";
+		String sql = "insert into USER(EMAIL, PASSWORD, NAME, BIRTH, ADDRESS, PHONE, ADMIN, USERSTATUS) VALUES(?,?,?,?,?,?,?,?)";
 		try {
 			int success = template.update(sql, new PreparedStatementSetter() {
 				@Override
@@ -48,7 +48,7 @@ public class UserDao {
 	
 	public boolean signIn(String email, String password) {
 		boolean result = false;
-		String sql = "select password from user where email = ?";
+		String sql = "select password from USER where email = ?";
 		try {
 			String passwordData = template.queryForObject(sql,String.class,email);
 			if (passwordData.equals(password)) {
@@ -64,7 +64,7 @@ public class UserDao {
 	
 	public int isAdmin(String email) {
 		int isAdmin = 0;
-		String sql = "select admin from user where email = ?";
+		String sql = "select admin from USER where email = ?";
 		try {
 			String adminData = template.queryForObject(sql,String.class,email);
 			if (adminData.equals("1")) {

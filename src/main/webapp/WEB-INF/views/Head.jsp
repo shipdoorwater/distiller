@@ -14,8 +14,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" media="all" href="${pageContext.request.contextPath}/resources/application.css">
-
 <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+
 <script type="text/javascript" src="https://beacon-v2.helpscout.net/static/js/vendor.ec06f8ec.js"></script>
 <script type="text/javascript" src="https://beacon-v2.helpscout.net/static/js/main.898b28f0.js"></script>
 <script type="text/javascript" async="" src="https://beacon-v2.helpscout.net"></script>
