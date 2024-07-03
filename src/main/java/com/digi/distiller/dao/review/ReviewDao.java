@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.digi.distiller.dto.review.ReviewDto;
+import com.digi.distiller.util.Constant;
 
 @Repository
 public class ReviewDao {
@@ -15,8 +16,8 @@ public class ReviewDao {
     private final JdbcTemplate template;
 
     @Autowired
-    public ReviewDao(JdbcTemplate template) {
-        this.template = template;
+    public ReviewDao() {
+        this.template = Constant.template;
     }
 
     // 리뷰 리스트 불러오기
