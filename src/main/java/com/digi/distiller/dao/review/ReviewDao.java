@@ -22,8 +22,9 @@ public class ReviewDao {
 	private final JdbcTemplate template;
 
 	@Autowired
-	public ReviewDao() {
-		this.template = Constant.template;
+	public ReviewDao(JdbcTemplate template) {
+		this.template = template; 
+//				Constant.template;
 	}
 
 	// 리뷰 리스트 불러오기
