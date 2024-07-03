@@ -37,7 +37,7 @@ public class ReviewDao {
     
     
     public int getTotalReviewCount(String drinkId) {
-        String query = "SELECT COUNT(*) FROM review WHERE drinkId = ?";
+        String query = "SELECT COUNT(*) FROM REVIEW WHERE drinkId = ?";
         try {
             return template.queryForObject(query, Integer.class, drinkId);
         } catch (Exception e) {
@@ -75,4 +75,6 @@ public class ReviewDao {
             throw new RuntimeException("리뷰 ID로 drink ID 조회 중 에러 발생: " + reviewId, e);
         }
     }
+
 }
+

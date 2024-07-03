@@ -33,19 +33,19 @@
 	<beans:bean id = "dataSource"
 		class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-		<beans:property name="url" value = "jdbc:mysql://localhost:3306/distiller?serverTimezone=UTC&amp;useSSL= false"/>
-		<beans:property name="username" value="root"/>
-		<beans:property name="password"	value="qwe123!@#"/>
+		<!-- <beans:property name="url" value = "jdbc:mysql://localhost:3306/distiller?serverTimezone=UTC&amp;useSSL= false"/> -->
+		<beans:property name="url" value = "jdbc:mysql://211.45.162.203:3306/distiller?serverTimezone=UTC&amp;useSSL= false"/>
+		<beans:property name="username" value="manager"/>
+		<beans:property name="password"	value="!Q@W3e4r"/>
 
 <!-- 		<beans:property name="username" value="root"/>
 		<beans:property name="password"	value="qwe123!@#"/> -->
 		
 	</beans:bean>
-	
+
 	<beans:bean name="template" class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="dataSource"/>
 	</beans:bean>
-
 
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

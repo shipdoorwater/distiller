@@ -4,8 +4,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="Head.jsp" %>
 
-
-
 <!DOCTYPE html>
 
 <html
@@ -24,7 +22,7 @@
     </style>
     <meta charset="utf-8" />
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
-    <title>${drinkName}</title>
+    <title>${drink.drinkName}</title>
 <!--  
     <link
       rel="stylesheet"
@@ -61,14 +59,14 @@
                       class="secondary-headline name"
                       data-behavior="truncatable"
                     >
-                      ${drinkName}
+                      ${drink.drinkName}
                     </h1>
                     <div class="secondary-details">
-                      <p class="ultra-mini-headline type">${sub1}</p>
+                      <p class="ultra-mini-headline type">${drink.sub1}</p>
                       <p
                         class="ultra-mini-headline location middleweight"
                       >
-                        ${nation }
+                        ${drink.nation }
                       </p>
                     </div>
                   </div>
@@ -86,9 +84,9 @@
                       </li>
                       <li class="tab-tastes-header">
                         <div class="tab-content">
-                          <a href="drinkdetail/review?id=@db"
-                            ><span class="count">{$reviewId.count}</span> Reviews
-                            (@링크_탭)</a
+                          <a href="drinkdetail/reviews?drinkId=@db"
+                            ><span class="count">${totalReviews}</span> Reviews
+                            </a
                           >
                         </div>
                       </li>
@@ -158,7 +156,7 @@
                                         Total review count:
                                       </span>
                                       <span itemprop="ratingCount">
-                                        {$reviewId.count}
+                                        ${totalReviews}
                                       </span> </a
                                     >)
                                   </div>
@@ -171,7 +169,7 @@
                         <div class="spirit-show__description-container">
                           <div class="only-big">
                             <p class="description" itemprop="description">
-                              {$drinkExplain}
+                              ${drink.drinkExplain}
                             </p>
                           </div>
                           <div class="other-details-container">
@@ -180,22 +178,22 @@
                                 <ul>
                                   <li class="detail age">
                                     <div class="label">age</div>
-                                    <div class="value">NAS {$drinkMaturity}</div>
+                                    <div class="value">${drink.maturity}</div>
                                   </li>
                                   <li class="detail cost">
                                     <div class="label">Cost</div>
-                                    <div class="value">{$price}</div>
+                                    <div class="value">${drink.price}</div>
                                   </li>
                                   <li class="detail abv">
                                     <div class="label">abv</div>
-                                    <div class="value">{$adv}</div>
+                                    <div class="value">${drink.abv}</div>
                                   </li>
                                 </ul>
                               </li>
                               <li class="detail whiskey-style">
-                                <div class="label">{$sub1}</div>
+                                <div class="label">${drink.sub1}</div>
                                 <div class="value">
-                                  {$tag}
+                                  {$drink.tag}
                                 </div>
                               </li>
                             </ul>

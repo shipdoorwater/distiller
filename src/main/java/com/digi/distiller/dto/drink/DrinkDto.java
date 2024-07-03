@@ -12,7 +12,25 @@ public class DrinkDto {
 	private String sub1;
 	private String sub2;
 	private String maturity;
-	private String adv;
+	private String abv;
+	
+	public DrinkDto() {
+		
+	}
+	
+	public DrinkDto(String drinkId, String drinkName, String nation, String photo,
+			String drinkExplain, String price, String type, String sub1, String sub2, String maturity, String abv) {
+		this.drinkId = drinkId;
+		this.drinkName = drinkName;
+		this.nation = nation;
+		this.drinkExplain = drinkExplain;
+		this.price = price;
+		this.type = type;
+		this.sub1 = sub1;
+		this.sub2 = sub2;
+		this.maturity = maturity;
+		this.abv = abv;
+	}
 	
 	public String getDrinkId() {
 		return drinkId;
@@ -74,11 +92,11 @@ public class DrinkDto {
 	public void setMaturity(String maturity) {
 		this.maturity = maturity;
 	}
-	public String getAdv() {
-		return adv;
+	public String getAbv() {
+		return abv;
 	}
-	public void setAdv(String adv) {
-		this.adv = adv;
+	public void setAbv(String abv) {
+		this.abv = abv;
 	}	
 	
 	
