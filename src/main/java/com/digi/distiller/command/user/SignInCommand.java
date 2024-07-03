@@ -20,8 +20,8 @@ public class SignInCommand implements Command {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session = request.getSession();
 		
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+		String email = request.getParameter("user[login]");
+		String password = request.getParameter("user[password]");
 		boolean result = dao.signIn(email, password);
 		
 		if (result)

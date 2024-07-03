@@ -579,15 +579,15 @@
 						<a class="logo download-logo"
 							href="https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4"
 							target="_blank" title="Link opens in a new window">
-							<div aria-label="Download on the App Store."
+							<!-- <div aria-label="Download on the App Store."
 								class="img logo-img apple-store" id="apple-store-home"
-								role="img"></div>
+								role="img"></div> --><img src="<%=contextPath%>/assets/download_app/google-play-badge.png"/>
 						</a> <a class="logo download-logo"
 							href="https://play.google.com/store/apps/details?id=com.distiller.distiller"
 							target="_blank" title="Link opens in a new window">
-							<div aria-label="Distiller Android App on Google Play."
+							<!-- <div aria-label="Distiller Android App on Google Play."
 								class="img logo-img google-store" id="google-store-home"
-								role="img"></div>
+								role="img"></div> --><img src="<%=contextPath%>/assets/download_app/apple-appstore-badge.png" />
 						</a>
 					</div>
 				</div>
