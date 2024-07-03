@@ -723,12 +723,11 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 								</div>
 								<div class='vitals'>
 									<h1 class='secondary-headline name' data-behavior='truncatable'
-										itemprop='name'>TABLE - DRINK / DRINKNAME</h1>
+										itemprop='name'>${dto.drinkName }</h1>
 									<div class='secondary-details'>
-										<p class='ultra-mini-headline type'>TABLE - DRINK / SUB1</p>
+										<p class='ultra-mini-headline type'>${dto.sub1 }</p>
 										<p class='ultra-mini-headline location middleweight'
-											content='Fettercairn' itemprop='brand_name'>TABLE - DRINK
-											/ 여기가 원래 브랜드 들어가야하는데, 우리테이블에 브랜드는 없음, TABLE - DRINK / NATION</p>
+											content='Fettercairn' itemprop='brand_name'>${dto.nation }</p>
 
 									</div>
 								</div>
@@ -747,8 +746,8 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 											<div class='tab-content'>
 												<a aria-current="page"
 													href="http://localhost:8080/distiller/reviews?drinkId=${drinkId }">
-													Reviews
-													<span class='count' th:text="${totalReviews}"> (${totalReviews})</span>
+													Reviews <span class='count' th:text="${totalReviews}">
+														(${totalReviews})</span>
 												</a>
 											</div>
 										</li>
@@ -895,9 +894,9 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 																				Comment</button>
 																			<!-- 좋아요 버튼 기능 구현 -->
 																			<c:choose>
-																				<c:when test="${not empty loggedInUserEmail}">
-																					<button
-																						onclick="addLike('${review.reviewId}', '${loggedInUserEmail}')">Like</button>
+																				<c:when test="${not empty loginedEmail}">
+																					<button class='like button mini js-show-modal'
+																						onclick="addLike('${review.reviewId}', '${loginedEmail}')">Like</button>
 																				</c:when>
 																				<c:otherwise>
 																					<button class='like button mini js-show-modal'
@@ -928,7 +927,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 
 
 											<!-- 리뷰 리스트 끝 -->
-								
+
 
 										</ol>
 
@@ -984,16 +983,17 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 								</div>
 
 							</div>
-							<div class='sidebar' role='list'>
 
+							<!-- 사이드바 시작 -->
+
+							<div class='sidebar' role='list'>
 								<div
 									class='user-spirit-content details-module action-buttons js-carousel'
 									data-max-items='1' data-pagination='true' role='listitem'>
 									<div class='action collection-toggle'>
-										<button class='toggle-link js-show-modal'
-											data-modal-selector='.js-registration-prompt-modal'>
+										<button class='toggle-link' id='reviewButton'>
 											<i aria-hidden='true' class='icon fa fa-check'></i> <span
-												class='label'> Review this </span>
+												class='label'>Review this</span>
 										</button>
 									</div>
 								</div>
@@ -1006,233 +1006,241 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 											<span class='double-icon'> <i aria-hidden='true'
 												class='fa fa-bars'></i> <i aria-hidden='true'
 												class='fa fa-plus'></i>
-											</span> <span class='label'> Add To My Lists </span>
+											</span> <span class='label'>Add To My Lists</span>
 										</button>
 									</div>
 								</div>
-
 							</div>
-						</div>
-						<div
-							class='modal js-hideable-modal hidden js-user-spirit-lists-manage-modal'>
-							<div
-								class='modal-window mobile-light user-spirit-lists-manage-modal'>
-								<button class='js-modal-close close'>
-									<i aria-hidden='true' class='icomoon-x'></i> <span
-										class='offscreen'>Close Modal</span>
-								</button>
-								<div class='user-spirit-lists-manage-modal__mobile-content'>
-									<div class='user-spirit-lists-manage-modal__left'>
-										<h4 class='user-spirit-lists-manage-modal__header'>
-											Create And Manage Custom Lists In The <br> <a
-												href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
-												target='_blank'> Free Distiller App </a>
-										</h4>
-										<div class='user-spirit-list__download-links'>
-											<a class='logo download-logo'
-												href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
-												target='_blank' title='Link opens in a new window'>
-												<div aria-label='Install Distiller from Apple App Store.'
-													class='img logo-img apple-store' id='apple-store-join'
-													role='img'></div>
-											</a> <a class='logo download-logo'
-												href='https://play.google.com/store/apps/details?id=com.distiller.distiller'
-												target='_blank' title='Link opens in a new window'>
-												<div aria-label='Install from Google Play.'
-													class='img logo-img google-store' id='google-store-join'
-													role='img'></div>
-											</a>
-										</div>
-									</div>
-									<div class='user-spirit-lists-manage-modal__right'>
-										<div class='user-spirit-lists-manage__add-spirit-desc'>
-											Add spirit to:</div>
-									</div>
-								</div>
-								<div class='user-spirit-lists-manage-modal__desktop-content'>
-									<div class='user-spirit-lists-manage-modal__left'>
-										<h4 class='user-spirit-lists-manage-modal__header'>
-											Create And Manage Custom Lists In The <br> <a
-												href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
-												target='_blank'> Free Distiller App </a>
-										</h4>
-										<div class='users-spirit-list-manage-modal__todo-list'>
-											<ul>
-												<li>Create your own custom lists</li>
-												<li>Search spirits on the go</li>
-												<li>Easily search thousands of products</li>
-												<li>Follow friends and see what they're drinking</li>
-											</ul>
-										</div>
-										<div class='user-spirit-list-manage__get-desc'>
-											<a
-												href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
-												target='_blank'> Get it now </a>
-										</div>
-										<div class='user-spirit-list__download-links'>
-											<a class='logo download-logo'
-												href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
-												target='_blank' title='Link opens in a new window'>
-												<div aria-label='Install Distiller from Apple App Store.'
-													class='img logo-img apple-store' id='apple-store'
-													role='img'></div>
-											</a> <a class='logo download-logo'
-												href='https://play.google.com/store/apps/details?id=com.distiller.distiller'
-												target='_blank' title='Link opens in a new window'>
-												<div aria-label='Install from Google Play.'
-													class='img logo-img google-store' id='google-store'
-													role='img'></div>
-											</a>
-										</div>
-									</div>
-									<div class='user-spirit-lists-manage-modal__right'>
-										<div class='user-spirit-lists-manage__add-spirit-desc'>
-											Add spirit to:</div>
-									</div>
-								</div>
 
-							</div>
-						</div>
-
-						<script data-cfasync="false"
-							src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-						<script>
-  trackIpSpiritPage();
+							<script type="text/javascript">
+    document.getElementById('reviewButton').addEventListener('click', function() {
+        
+        window.location.href = '/distiller/review_write?drinkId=' + ${drinkId};
+    });
 </script>
 
-						<div class='mobile-footer'>
-							<h2 class='sign_up_label_mobile' id='sign_up_label_mobile'>Sign
-								up for the Distiller Newsletter</h2>
-							<div class='email-signup'>
-								<form data_behavior="email-signup"
-									action="https://distiller.com/email_signups"
-									accept-charset="UTF-8" method="post">
-									<input name="utf8" type="hidden" value="&#x2713;" /><input
-										type="hidden" name="authenticity_token"
-										value="aC944YKU6HKcDU8vbE51qbZXqFBIgiCdEnnQLCcZ+p1Jy21uztOeNtp3Ze1Au1sopctsRAVukiD7vh7CMChiDQ==" />
-									<div data-behavior='message'></div>
-									<input placeholder="Your Email" aria-labelledby="sign_up_label"
-										required="required" autocomplete="email"
-										oninvalid="this.setCustomValidity(&quot;Email is either empty or invalid!&quot;)"
-										oninput="this.setCustomValidity(&quot;&quot;)" type="email"
-										name="email_signup[email]" /> <input type="hidden"
-										name="newsletter_recaptcha_token"
-										id="newsletter_recaptcha_token" value=""
-										class="js-newsletter-recaptcha-token-field" /> <input
-										type="submit" name="commit" value="sign up"
-										data-disable-with="sign up" />
-
-
-
-								</form>
-							</div>
-
-							<div class='social-actions'>
-								<h5 aria-level='2' role='heading'>Follow Us</h5>
-								<div role='list'>
-									<div role='listitem'>
-										<a class='twitter-follow'
-											href='https://twitter.com/intent/follow?screen_name=drinkdistiller'>
-											<span class='offscreen'>Twitter</span> <span
-											class='fa fa-stack'> <i aria-hidden='true'
-												class='fa fa-circle fa-stack-2x'></i> <i aria-hidden='true'
-												class='fa fa-twitter fa-light fa-stack-1x'></i>
-										</span>
-										</a>
-									</div>
-									<div role='listitem'>
-										<a class='facebook-like' data-behavior='facebook-share'
-											data-share-path='/'
-											href='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdrinkdistiller.com'>
-											<span class='offscreen'>Facebook</span> <span
-											class='fa fa-stack'> <i aria-hidden='true'
-												class='fa fa-circle fa-stack-2x'></i> <i aria-hidden='true'
-												class='fa fa-facebook fa-light fa-stack-1x'></i>
-										</span>
-										</a>
-									</div>
-									<div role='listitem'>
-										<a class='instagram-like'
-											href='http://instagram.com/drinkdistiller' target='_blank'>
-											<span class='offscreen'>Instagram</span> <span
-											class='fa fa-stack'> <i aria-hidden='true'
-												class='fa fa-circle fa-stack-2x'></i> <i aria-hidden='true'
-												class='fa fa-instagram fa-light fa-stack-1x'></i>
-										</span>
-										</a>
-									</div>
-								</div>
-							</div>
-
-							<div class='download-app'>
-								<h5 aria-level='2' role='heading'>Download The App</h5>
-								<a class='logo'
-									href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
-									target='_blank' title='Link opens in a new window'>
-									<div aria-label='Install Distiller from Apple App Store.'
-										class='img apple-store' id='apple-store-mobile' role='img'></div>
-								</a> <a class='logo'
-									href='https://play.google.com/store/apps/details?id=com.distiller.distiller'
-									target='_blank' title='Link opens in a new window'>
-									<div aria-label='Install from Google Play.'
-										class='img google-store' id='google-store-mobile' role='img'></div>
-								</a>
-							</div>
-							<div class='responsibility'>
-								To learn more about responsible consumption, please visit <a
-									href='http://responsibility.org/' target='_blank'>
-									Foundation For Advancing Alcohol Responsibility. </a>
-							</div>
-
-							<ul class='legal'>
-								<li><a href="https://distiller.com/terms-of-service">Terms
-										Of Service.</a> &#8482/&copy 2024 Distiller</li>
-								<li><a href="https://distiller.com/privacy-policy">Privacy
-										Policy</a></li>
-								<li><a
-									href="https://distiller.com/cdn-cgi/l/email-protection#670f020b0b0827030e14130e0b0b02154904080a">Contact
-										Us</a></li>
-								<li><a
-									href="https://distiller.com/cdn-cgi/l/email-protection#57273625233932252417333e24233e3b3b32257934383a">Advertise</a></li>
-								<li><a
-									href="https://distiller.com/pages/submitting-for-review">Submit
-										For Review</a></li>
-								<li><a href="https://distiller.com/jobs">Jobs</a></li>
-								<li><a href="https://distiller.com/faq">Frequently
-										Asked Questions</a></li>
-							</ul>
-						</div>
-
-						<div class='fixed-mobile-footer'>
-							<div class='spirit-show-action-bar action-bar'>
-								<ul class='spirit-show-actions'>
-									<li class='spirit-show-action'><a class='create-taste'
-										href='https://distiller.com/tastes/new?spirit=fettercairn-12-year'
-										rel='nofollow'>
-											<div class='mini-headline'>
-												<i aria-hidden='true' class='fa fa-check'></i> Review this
-											</div>
-									</a></li>
-									<li class='spirit-show-action js-toggle-modal'
-										data-modal-selector='.js-registration-prompt-modal'>
-										<button class='collection-target add-to-toggle'>
-											<div class='mini-headline'>
-												<i aria-hidden='true' class='fa fa-plus'></i> Add To My
-												Lists
-											</div>
-										</button>
-									</li>
-								</ul>
-							</div>
-
+							<!-- 사이드바 끝 -->
 
 						</div>
 					</div>
-				</main>
+					<div
+						class='modal js-hideable-modal hidden js-user-spirit-lists-manage-modal'>
+						<div
+							class='modal-window mobile-light user-spirit-lists-manage-modal'>
+							<button class='js-modal-close close'>
+								<i aria-hidden='true' class='icomoon-x'></i> <span
+									class='offscreen'>Close Modal</span>
+							</button>
+							<div class='user-spirit-lists-manage-modal__mobile-content'>
+								<div class='user-spirit-lists-manage-modal__left'>
+									<h4 class='user-spirit-lists-manage-modal__header'>
+										Create And Manage Custom Lists In The <br> <a
+											href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
+											target='_blank'> Free Distiller App </a>
+									</h4>
+									<div class='user-spirit-list__download-links'>
+										<a class='logo download-logo'
+											href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
+											target='_blank' title='Link opens in a new window'>
+											<div aria-label='Install Distiller from Apple App Store.'
+												class='img logo-img apple-store' id='apple-store-join'
+												role='img'></div>
+										</a> <a class='logo download-logo'
+											href='https://play.google.com/store/apps/details?id=com.distiller.distiller'
+											target='_blank' title='Link opens in a new window'>
+											<div aria-label='Install from Google Play.'
+												class='img logo-img google-store' id='google-store-join'
+												role='img'></div>
+										</a>
+									</div>
+								</div>
+								<div class='user-spirit-lists-manage-modal__right'>
+									<div class='user-spirit-lists-manage__add-spirit-desc'>Add
+										spirit to:</div>
+								</div>
+							</div>
+							<div class='user-spirit-lists-manage-modal__desktop-content'>
+								<div class='user-spirit-lists-manage-modal__left'>
+									<h4 class='user-spirit-lists-manage-modal__header'>
+										Create And Manage Custom Lists In The <br> <a
+											href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
+											target='_blank'> Free Distiller App </a>
+									</h4>
+									<div class='users-spirit-list-manage-modal__todo-list'>
+										<ul>
+											<li>Create your own custom lists</li>
+											<li>Search spirits on the go</li>
+											<li>Easily search thousands of products</li>
+											<li>Follow friends and see what they're drinking</li>
+										</ul>
+									</div>
+									<div class='user-spirit-list-manage__get-desc'>
+										<a
+											href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
+											target='_blank'> Get it now </a>
+									</div>
+									<div class='user-spirit-list__download-links'>
+										<a class='logo download-logo'
+											href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
+											target='_blank' title='Link opens in a new window'>
+											<div aria-label='Install Distiller from Apple App Store.'
+												class='img logo-img apple-store' id='apple-store' role='img'></div>
+										</a> <a class='logo download-logo'
+											href='https://play.google.com/store/apps/details?id=com.distiller.distiller'
+											target='_blank' title='Link opens in a new window'>
+											<div aria-label='Install from Google Play.'
+												class='img logo-img google-store' id='google-store'
+												role='img'></div>
+										</a>
+									</div>
+								</div>
+								<div class='user-spirit-lists-manage-modal__right'>
+									<div class='user-spirit-lists-manage__add-spirit-desc'>Add
+										spirit to:</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<script data-cfasync="false"
+						src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+					<script>
+  trackIpSpiritPage();
+</script>
+
+					<div class='mobile-footer'>
+						<h2 class='sign_up_label_mobile' id='sign_up_label_mobile'>Sign
+							up for the Distiller Newsletter</h2>
+						<div class='email-signup'>
+							<form data_behavior="email-signup"
+								action="https://distiller.com/email_signups"
+								accept-charset="UTF-8" method="post">
+								<input name="utf8" type="hidden" value="&#x2713;" /><input
+									type="hidden" name="authenticity_token"
+									value="aC944YKU6HKcDU8vbE51qbZXqFBIgiCdEnnQLCcZ+p1Jy21uztOeNtp3Ze1Au1sopctsRAVukiD7vh7CMChiDQ==" />
+								<div data-behavior='message'></div>
+								<input placeholder="Your Email" aria-labelledby="sign_up_label"
+									required="required" autocomplete="email"
+									oninvalid="this.setCustomValidity(&quot;Email is either empty or invalid!&quot;)"
+									oninput="this.setCustomValidity(&quot;&quot;)" type="email"
+									name="email_signup[email]" /> <input type="hidden"
+									name="newsletter_recaptcha_token"
+									id="newsletter_recaptcha_token" value=""
+									class="js-newsletter-recaptcha-token-field" /> <input
+									type="submit" name="commit" value="sign up"
+									data-disable-with="sign up" />
 
 
+
+							</form>
+						</div>
+
+						<div class='social-actions'>
+							<h5 aria-level='2' role='heading'>Follow Us</h5>
+							<div role='list'>
+								<div role='listitem'>
+									<a class='twitter-follow'
+										href='https://twitter.com/intent/follow?screen_name=drinkdistiller'>
+										<span class='offscreen'>Twitter</span> <span
+										class='fa fa-stack'> <i aria-hidden='true'
+											class='fa fa-circle fa-stack-2x'></i> <i aria-hidden='true'
+											class='fa fa-twitter fa-light fa-stack-1x'></i>
+									</span>
+									</a>
+								</div>
+								<div role='listitem'>
+									<a class='facebook-like' data-behavior='facebook-share'
+										data-share-path='/'
+										href='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdrinkdistiller.com'>
+										<span class='offscreen'>Facebook</span> <span
+										class='fa fa-stack'> <i aria-hidden='true'
+											class='fa fa-circle fa-stack-2x'></i> <i aria-hidden='true'
+											class='fa fa-facebook fa-light fa-stack-1x'></i>
+									</span>
+									</a>
+								</div>
+								<div role='listitem'>
+									<a class='instagram-like'
+										href='http://instagram.com/drinkdistiller' target='_blank'>
+										<span class='offscreen'>Instagram</span> <span
+										class='fa fa-stack'> <i aria-hidden='true'
+											class='fa fa-circle fa-stack-2x'></i> <i aria-hidden='true'
+											class='fa fa-instagram fa-light fa-stack-1x'></i>
+									</span>
+									</a>
+								</div>
+							</div>
+						</div>
+
+						<div class='download-app'>
+							<h5 aria-level='2' role='heading'>Download The App</h5>
+							<a class='logo'
+								href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
+								target='_blank' title='Link opens in a new window'>
+								<div aria-label='Install Distiller from Apple App Store.'
+									class='img apple-store' id='apple-store-mobile' role='img'></div>
+							</a> <a class='logo'
+								href='https://play.google.com/store/apps/details?id=com.distiller.distiller'
+								target='_blank' title='Link opens in a new window'>
+								<div aria-label='Install from Google Play.'
+									class='img google-store' id='google-store-mobile' role='img'></div>
+							</a>
+						</div>
+						<div class='responsibility'>
+							To learn more about responsible consumption, please visit <a
+								href='http://responsibility.org/' target='_blank'>
+								Foundation For Advancing Alcohol Responsibility. </a>
+						</div>
+
+						<ul class='legal'>
+							<li><a href="https://distiller.com/terms-of-service">Terms
+									Of Service.</a> &#8482/&copy 2024 Distiller</li>
+							<li><a href="https://distiller.com/privacy-policy">Privacy
+									Policy</a></li>
+							<li><a
+								href="https://distiller.com/cdn-cgi/l/email-protection#670f020b0b0827030e14130e0b0b02154904080a">Contact
+									Us</a></li>
+							<li><a
+								href="https://distiller.com/cdn-cgi/l/email-protection#57273625233932252417333e24233e3b3b32257934383a">Advertise</a></li>
+							<li><a
+								href="https://distiller.com/pages/submitting-for-review">Submit
+									For Review</a></li>
+							<li><a href="https://distiller.com/jobs">Jobs</a></li>
+							<li><a href="https://distiller.com/faq">Frequently Asked
+									Questions</a></li>
+						</ul>
+					</div>
+
+					<div class='fixed-mobile-footer'>
+						<div class='spirit-show-action-bar action-bar'>
+							<ul class='spirit-show-actions'>
+								<li class='spirit-show-action'><a class='create-taste'
+									href='https://distiller.com/tastes/new?spirit=fettercairn-12-year'
+									rel='nofollow'>
+										<div class='mini-headline'>
+											<i aria-hidden='true' class='fa fa-check'></i> Review this
+										</div>
+								</a></li>
+								<li class='spirit-show-action js-toggle-modal'
+									data-modal-selector='.js-registration-prompt-modal'>
+									<button class='collection-target add-to-toggle'>
+										<div class='mini-headline'>
+											<i aria-hidden='true' class='fa fa-plus'></i> Add To My Lists
+										</div>
+									</button>
+								</li>
+							</ul>
+						</div>
+
+
+					</div>
 			</div>
+			</main>
+
+
 		</div>
+	</div>
 	</div>
 	<script defer
 		src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
