@@ -77,14 +77,14 @@
                     <ul class="tabs-header">
                       <li class="tab-overview-header ui-tabs-active">
                         <div class="tab-content">
-                          <a aria-current="page" href="drinkdetail?id=@db"
-                            >Details (@링크_탭)</a
+                          <a aria-current="page"
+                            >Details</a
                           >
                         </div>
                       </li>
                       <li class="tab-tastes-header">
                         <div class="tab-content">
-                          <a href="drinkdetail/reviews?drinkId=@db"
+                          <a href="drinkdetail/reviews?drinkId=${drinkId}"
                             ><span class="count">${totalReviews}</span> Reviews
                             </a
                           >
@@ -107,12 +107,12 @@
                                     class="rating-display__value average-rating"
                                   >
                                     <span itemprop="ratingValue"
-                                      >{$rating.average}</span
+                                      >${ratingAvg}</span
                                     >
                                     <meta content="5" itemprop="bestRating" />
                                     <meta content="0" itemprop="worstRating" />
                                   </div>
-                                  
+                                  <%-- 
                                   <div id="rating-container" class="rating-stars stars-3">
                                     <span class="rate">
                                       <i
@@ -145,13 +145,13 @@
                                       ></i>
                                     </span>
                                     <span class="offscreen"
-                                      >{$rating.average} out of 5 stars</span
+                                      >${ratingAvg} out of 5 stars</span
                                     >
                                   </div>
-
+--%>
                                   <div class="total-ratings">
                                     (
-                                    <a href="drinkdetail/review?id=@db"
+                                    <a href="drinkdetail/reviews?drinkId=${drinkId}"
                                       ><span class="offscreen">
                                         Total review count:
                                       </span>
@@ -182,7 +182,7 @@
                                   </li>
                                   <li class="detail cost">
                                     <div class="label">Cost</div>
-                                    <div class="value">${drink.price}</div>
+                                    <div class="value">${drink.price}$</div>
                                   </li>
                                   <li class="detail abv">
                                     <div class="label">abv</div>
@@ -191,15 +191,15 @@
                                 </ul>
                               </li>
                               <li class="detail whiskey-style">
-                                <div class="label">${drink.sub1}</div>
+                                <div class="label">TYPES</div>
                                 <div class="value">
-                                  {$drink.tag}
+                                  ${drink.sub1}
                                 </div>
                               </li>
                             </ul>
                           </div>
                         </div>
-
+<!--
                         <div
                           class="details-module spirit-show__tasting-notes screened"
                         >
@@ -222,7 +222,7 @@
                               Score <span>81 (@db)</span>
                             </div>
                           </div>
-                        </div>
+                        </div> -->
                       </div>
                     </div>
                   </div>

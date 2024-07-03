@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.digi.distiller.dto.drink.DrinkDto;
 import com.digi.distiller.dto.review.ReviewDto;
+import com.digi.distiller.util.Constant;
 
 @Repository
 public class ReviewDao {
@@ -16,8 +17,8 @@ public class ReviewDao {
 	private final JdbcTemplate template;
 
 	@Autowired
-	public ReviewDao(JdbcTemplate template) {
-		this.template = template;
+	public ReviewDao() {
+		this.template = Constant.template;
 	}
 
 	// 리뷰 리스트 불러오기
@@ -38,7 +39,7 @@ public class ReviewDao {
 	}
 
 	public int getTotalReviewCount(String drinkId) {
-		String query = "SELECT COUNT(*) FROM REVIEW WHERE drinkId = ?";
+		String query = "SELECT COALESCE(COUNT(*), 0) FROM REVIEW WHERE drinkId = ?";
 		try {
 			return template.queryForObject(query, Integer.class, drinkId);
 		} catch (Exception e) {
@@ -64,8 +65,13 @@ public class ReviewDao {
 	}
 
 	public int getLikeCount(String reviewId) {
-		String sql = "SELECT COUNT(*) FROM LIKES WHERE reviewId = ?";
+		String sql = "SELECT COUNT(*)  FROM LIKES WHERE reviewId = ?";
 		return template.queryForObject(sql, Integer.class, reviewId);
+	}
+
+	public double getReviewRatingAverage(String drinkId) {
+		String sql = "SELECT COALESCE(AVG(RATING), 0) FROM REVIEW WHERE drinkId = ?";
+		return template.queryForObject(sql, Double.class, drinkId);
 	}
 
 	public String getDrinkIdFromReviewId(String reviewId) {
