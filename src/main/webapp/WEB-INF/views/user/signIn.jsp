@@ -41,11 +41,11 @@
 												data-disable-with="Sign in">
 										</div>
 										<p class="forgot-password">
-											<a href="/users/password/new">Forgot password?</a>
+											<a href="findPassword">Forgot password?</a>
 										</p>
 									</div>
 								</form>
-								<div class="connect">
+								<!-- <div class="connect">
 									<h2 class="mini-headline">Or sign in with</h2>
 									<div class="social-login-btn">
 										<a rel="nofollow" class="apple-auth button small"
@@ -66,7 +66,7 @@
 											<span class="offscreen"> </span> </a>
 									</div>
 
-								</div>
+								</div> -->
 							</div>
 						</div>
 
@@ -102,7 +102,7 @@
 										</div>
 									</div>
 									<div class="register">
-										<a class="button small" href="/users/sign_up">Sign up <i
+										<a class="button small" href="/register">Sign up <i
 											aria-hidden="true" class="fa fa-arrow-right"></i>
 										</a>
 									</div>

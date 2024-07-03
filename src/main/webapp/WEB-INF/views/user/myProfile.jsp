@@ -54,22 +54,21 @@ System.out.println(test);
 						<div class="menu">
 							<div class="menu-content">
 								<ul>
-									<li class="profile-menu__item" id="active"><a
+							<!-- 		<li class="profile-menu__item" id="active"><a
 										href="/profile/munsu-bae/feed"> <i aria-hidden="true"
 											class="icomoon-activity-feed"></i> <span
 											class="mini-headline">My Feed</span> <span class="offscreen">Current
 												Page</span>
-									</a></li>
+									</a></li> -->
 									<li class="profile-menu__item"><a
 										href="/profile/munsu-bae/lists"> <i aria-hidden="true"
-											class="fa fa-list-ul"></i> <span class="mini-headline">My
-												Lists</span>
+											class="fa fa-list-ul"></i> <span class="mini-headline">My Carts</span>
 									</a></li>
-									<li class="profile-menu__item"><a
+			<!-- 						<li class="profile-menu__item"><a
 										href="/profile/munsu-bae/saved_articles"> <i
 											aria-hidden="true" class="far fa-bookmark"></i> <span
 											class="mini-headline">My Saved Articles</span>
-									</a></li>
+									</a></li> -->
 									<li class="profile-menu__item"><a
 										href="/profile/munsu-bae/settings"> <i aria-hidden="true"
 											class="icomoon-cog"></i> <span class="mini-headline">Settings</span>
@@ -79,9 +78,9 @@ System.out.println(test);
 											<i aria-hidden="true" class="fa fa-envelope"></i> <span
 											class="mini-headline"> Contact Us </span>
 									</a></li>
-									<li><a data-method="delete" href="/users/sign_out"
+									<li><a data-method="delete" href="/logout"
 										rel="nofollow"> <i aria-hidden="true" class="icomoon-x"></i>
-											<span class="mini-headline"> Sign Out </span>
+											<span class="mini-headline"> LogOut </span>
 									</a></li>
 								</ul>
 							</div>
@@ -143,22 +142,21 @@ System.out.println(test);
 								<div class="menu">
 									<div class="menu-content">
 										<ul>
-											<li class="profile-menu__item" id="active"><a
+											<!-- <li class="profile-menu__item" id="active"><a
 												href="/profile/munsu-bae/feed"> <i aria-hidden="true"
 													class="icomoon-activity-feed"></i> <span
 													class="mini-headline">My Feed</span> <span
 													class="offscreen">Current Page</span>
-											</a></li>
+											</a></li> -->
 											<li class="profile-menu__item"><a
 												href="/profile/munsu-bae/lists"> <i aria-hidden="true"
-													class="fa fa-list-ul"></i> <span class="mini-headline">My
-														Lists</span>
+													class="fa fa-list-ul"></i> <span class="mini-headline">My Carts</span>
 											</a></li>
-											<li class="profile-menu__item"><a
+				<!-- 							<li class="profile-menu__item"><a
 												href="/profile/munsu-bae/saved_articles"> <i
 													aria-hidden="true" class="far fa-bookmark"></i> <span
 													class="mini-headline">My Saved Articles</span>
-											</a></li>
+											</a></li> -->
 											<li class="profile-menu__item"><a
 												href="/profile/munsu-bae/settings"> <i
 													aria-hidden="true" class="icomoon-cog"></i> <span
@@ -171,7 +169,7 @@ System.out.println(test);
 											</a></li>
 											<li><a data-method="delete" href="/users/sign_out"
 												rel="nofollow"> <i aria-hidden="true" class="icomoon-x"></i>
-													<span class="mini-headline"> Sign Out </span>
+													<span class="mini-headline"> LogOut </span>
 											</a></li>
 										</ul>
 									</div>
@@ -181,13 +179,13 @@ System.out.println(test);
 
 						</div>
 					</div>
-					<a class="button mini notifications-only"
+					<!-- <a class="button mini notifications-only"
 						href="/profile/munsu-bae/feed?notifications_only=true"> Show
-						Only My Activity </a>
+						Only My Activity </a> -->
 					<div class="clear"></div>
 					<div class="results">
 						<div class="empty-feed">
-							<h3 class="tertiary-headline">No Activity Yet</h3>
+							<!-- <h3 class="tertiary-headline">No Activity Yet</h3> -->
 							<ul>
 								<li><a class="button accented" href="/search"> Search
 										Spirits </a></li>
@@ -197,14 +195,14 @@ System.out.println(test);
 						</div>
 
 					</div>
-					<div class="pagination-control-container">
+					<!-- <div class="pagination-control-container">
 						<div class="pagination-control">
 							<span class="pagination-control__description"> No
 								Activities Found </span>
 
 						</div>
 
-					</div>
+					</div> -->
 
 				</div>
 			</div>

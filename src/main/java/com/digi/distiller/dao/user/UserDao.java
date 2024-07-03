@@ -64,8 +64,17 @@ public class UserDao {
 	
 	public int isAdmin(String email) {
 		int isAdmin = 0;
-		
-		
+		String sql = "select admin from user where email = ?";
+		try {
+			String adminData = template.queryForObject(sql,String.class,email);
+			if (adminData.equals("1")) {
+				return isAdmin = 1;
+			}
+			System.out.println("isAdmin :" + isAdmin);
+		} catch (DataAccessException e) {
+			System.out.println("error :" + e.getMessage());
+			return isAdmin;
+		}
 		return isAdmin;
 	}
 }
