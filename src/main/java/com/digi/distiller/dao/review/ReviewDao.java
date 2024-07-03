@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.digi.distiller.dto.review.ReviewDto;
-import com.digi.distiller.util.Constant;
 
 @Repository
 public class ReviewDao {
@@ -16,11 +15,11 @@ public class ReviewDao {
     private final JdbcTemplate template;
 
     @Autowired
-    public ReviewDao() {
-        this.template = Constant.template;
+    public ReviewDao(JdbcTemplate template) {
+        this.template = template;
     }
 
-    // 리뷰 리스트 불러오기
+	// 리뷰 리스트 불러오기
     public List<ReviewDto> reviewListDao(String drinkId) {
         String query = "SELECT drinkId, email, rating, reviewDate, reviewContent FROM review WHERE drinkId = ? ORDER BY reviewId DESC";
 
@@ -46,6 +45,34 @@ public class ReviewDao {
             throw new RuntimeException("drink ID 기준으로 DB에서 리뷰 수 count(*) 가져오기 에러: " + drinkId, e);
         }
     }
-
     
+    public boolean addLike(String reviewId, String email) {
+        // 이미 좋아요를 눌렀는지 확인
+        String checkSql = "SELECT COUNT(*) FROM likes WHERE reviewId = ? AND email = ?";
+
+        int count = template.queryForObject(checkSql, Integer.class, reviewId, email);
+        
+        // email, reviewid 로 기존에 좋아요 했는지
+        if (count == 0) {
+            // 좋아요 추가
+            String sql = "INSERT INTO likes (reviewId, email) VALUES (?, ?)";
+            template.update(sql, reviewId, email);
+            return true;
+        }
+        return false;
+    }
+
+    public int getLikeCount(String reviewId) {
+        String sql = "SELECT COUNT(*) FROM likes WHERE reviewId = ?";
+        return template.queryForObject(sql, Integer.class, reviewId);
+    }
+
+    public String getDrinkIdFromReviewId(String reviewId) {
+        String query = "SELECT drinkId FROM review WHERE reviewId = ?";
+        try {
+            return template.queryForObject(query, String.class, reviewId);
+        } catch (Exception e) {
+            throw new RuntimeException("리뷰 ID로 drink ID 조회 중 에러 발생: " + reviewId, e);
+        }
+    }
 }
