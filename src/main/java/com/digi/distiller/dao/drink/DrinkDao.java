@@ -20,7 +20,7 @@ public class DrinkDao {
     // 술id 관련 drink테이블 정보 리스트 불러오기
     public DrinkDto getDrinkDetail(String drinkId) {
     	System.out.println("getDrinkDetail 진입");
-    	String query = "SELECT * FROM drink WHERE drinkId = ?";
+    	String query = "SELECT * FROM DRINK WHERE drinkId = ?";
     	System.out.println("drinkId");
         try {
             return template.queryForObject(query, new Object[]{drinkId}, new BeanPropertyRowMapper<>(DrinkDto.class));
