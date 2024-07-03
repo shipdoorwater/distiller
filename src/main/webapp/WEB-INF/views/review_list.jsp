@@ -754,75 +754,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 									</ul>
 									<div class='tabs-body'>
 										<ol class='spirit-tastes spirit-list' role='none'>
-											<div class='filter-container'>
-												<div class='spirit-filters taste-filters'>
-													<div class='filter-bar'>
-														<div class='filter-bar-container'>
-															<button class='close hide-filters'
-																data-behavior='hide-filters'>
-																<i class='icomoon-x'></i>
-															</button>
-															<form autocomplete='off' class='filter light'>
-																<h5
-																	class='filter-label taste-filters__label sortable light'
-																	role='none'>
-																	<span class='taste-filters__label-text' id='filter'>Filter</span>
-																	<span class='taste-filters filter-icon'> <i
-																		aria-hidden='true' class='icon fa fa-filter'></i>
-																	</span>
-																</h5>
-																<select aria-labelledby='filter'
-																	class='taste-filters__select js-redirect-select light'
-																	title='Changing values from this dropdown reloads the page. Expand the dropdown before making choices!'>
-																	<option
-																		value='/spirits/fettercairn-12-year/tastes?page=1'>
-																		All Reviews</option>
-																	<option
-																		value='/spirits/fettercairn-12-year/tastes?page=1&amp;require_rating=true'>
-																		ratings</option>
-																	<option
-																		value='/spirits/fettercairn-12-year/tastes?page=1&amp;require_note=true'>
-																		notes</option>
-																	<option
-																		value='/spirits/fettercairn-12-year/tastes?page=1&amp;require_price=true'>
-																		prices</option>
-																	<option
-																		value='/spirits/fettercairn-12-year/tastes?page=1&amp;require_location=true'>
-																		locations</option>
-																</select>
-																<h5
-																	class='filter-label taste-filters__label sortable light'
-																	role='none'>
-																	<span class='taste-filters__label-text' id='sort'>Sort</span>
-																	<span class='taste-filters__label-icon'> <i
-																		aria-hidden='true' class='icon fa fa-sort'></i>
-																	</span>
-																</h5>
-																<select aria-labelledby='sort'
-																	class='taste-filters__select js-redirect-select light'
-																	title='Changing values from this dropdown reloads the page. Expand the dropdown before making choices!'>
-																	<option selected='selected'
-																		value='/spirits/fettercairn-12-year/tastes?page=7&amp;sort=recent'>
-																		Newest</option>
-																	<option
-																		value='/spirits/fettercairn-12-year/tastes?page=7&amp;sort=chronological'>
-																		Oldest</option>
-																	<option
-																		value='/spirits/fettercairn-12-year/tastes?page=7&amp;sort=highest_rated'>
-																		Highest Rated</option>
-																	<option
-																		value='/spirits/fettercairn-12-year/tastes?page=7&amp;sort=lowest_rated'>
-																		Lowest Rated</option>
-																</select>
-															</form>
-														</div>
-													</div>
-												</div>
-
-											</div>
-
-											<!-- 리뷰목록 -->
-
+										
 											<div class='results'>
 												<ul>
 													<c:forEach items="${reviews}" var="review"
@@ -1014,8 +946,8 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 
 							<script type="text/javascript">
     document.getElementById('reviewButton').addEventListener('click', function() {
-        
-        window.location.href = '/distiller/review_write?drinkId=' + ${drinkId};
+    	var drinkId = '${drinkId}';
+        window.location.href = '/distiller/review_write?drinkId=' + drinkId;
     });
 </script>
 

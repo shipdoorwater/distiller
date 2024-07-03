@@ -1,10 +1,15 @@
 package com.digi.distiller.dao.review;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.stereotype.Repository;
 
 import com.digi.distiller.dto.drink.DrinkDto;
@@ -88,4 +93,33 @@ public class ReviewDao {
 		String query = "SELECT * FROM DRINK WHERE drinkId = ?";
 		return template.queryForObject(query, new Object[] { drinkId }, new BeanPropertyRowMapper<>(DrinkDto.class));
 	}
+
+	public boolean insertReview(String drinkId, String email, String rating, String reviewcontent) {
+		boolean result = false;
+		
+		// 현재 날짜를 'YYYYMMDD' 형태로 포맷
+        String reviewdate = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+        String reviewstatus = "1";
+        
+        
+		String query = "INSERT INTO REVIEW(DRINKID, EMAIL, RATING, REVIEWDATE, REVIEWCONTENT, REVIEWSTATUS) VALUES (?, ?, ?, ?, ?, ?)";
+		
+		try {
+            int success = template.update(query, new PreparedStatementSetter() {
+                @Override
+                public void setValues(PreparedStatement ps) throws SQLException {
+                    ps.setString(1, drinkId);
+                    ps.setString(2, email);
+                    ps.setString(3, rating);
+                    ps.setString(4, reviewdate);
+                    ps.setString(5, reviewcontent);
+                    ps.setString(6, reviewstatus);
+                }
+            });
+            result = success > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
