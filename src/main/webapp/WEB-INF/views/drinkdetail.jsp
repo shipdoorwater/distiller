@@ -52,25 +52,27 @@
                 <div class="top-image">
                   <div
                     class="main-image desktop official"
-                    style="background-image: url (@술이미지db)"
-                  ></div>
+    				style="background-image: url('${pageContext.request.contextPath}/assets/images/${drink.photo}')"
+                    ></div>
                   <div class="vitals">
                     <h1
                       class="secondary-headline name"
                       data-behavior="truncatable"
                     >
-                      ${drink.drinkName}
+                     <br> ${drink.drinkName}
                     </h1>
                     <div class="secondary-details">
-                      <p class="ultra-mini-headline type">${drink.sub1}</p>
+                      <p class="ultra-mini-headline type"><br>${drink.sub1}</p>
                       <p
                         class="ultra-mini-headline location middleweight"
-                      >
+                      ><br>
                         ${drink.nation }
                       </p>
                     </div>
                   </div>
                 </div>
+                <br>
+                <br>
 
                 <div class="primary-content">
                   <div class="tabs">

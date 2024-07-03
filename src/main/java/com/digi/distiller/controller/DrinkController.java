@@ -4,7 +4,6 @@ package com.digi.distiller.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,14 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.digi.distiller.Command;
 import com.digi.distiller.command.drink.DrinkCommand;
 
-import com.digi.distiller.util.Constant;
 
 @Controller
 public class DrinkController {
 
 	Command command = null;
 	
-	private JdbcTemplate template;
+    private final DrinkCommand drinkCommand;
 	
 	/*
 	 * private DrinkDao drinkDao; private ReviewDao reviewDao;
@@ -29,11 +27,10 @@ public class DrinkController {
 	 * this.drinkDao = drinkDao; this.reviewDao = reviewDao; }
 	 */
 	
-	@Autowired
-	public void setTemplate(JdbcTemplate template) {
-		this.template = template;
-		Constant.template = this.template;
-	}
+    @Autowired
+    public DrinkController(DrinkCommand drinkCommand) {
+        this.drinkCommand = drinkCommand;
+    }
 	
 	
 	@RequestMapping(value = "/drinkdetail", method = RequestMethod.GET)
@@ -41,9 +38,7 @@ public class DrinkController {
 								(Model model, HttpServletRequest request) {
 		
 		model.addAttribute("request",request);
-		command = new DrinkCommand();
-		command.execute(model);
-	     	
+        drinkCommand.execute(model);
 		return "drinkdetail";
 			
         
