@@ -154,21 +154,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
     })(window, document);
   }
   
-  function joinProYearly() {
-    if (isCurrentUser) {
-      findOrCreateWallet("yearly");
-    } else {
-      window.location = "https://distiller.com/users/sign_up?join_pro=true"
-    }
-  }
-  
-  function joinProMonthly(){
-    if(isCurrentUser) {
-      findOrCreateWallet("monthly");
-    } else {
-      window.location = "https://distiller.com/users/sign_up?join_pro=true"
-    }
-  }
+
   
   function findOrCreateWallet(plan_type) {
     $.ajax({
@@ -190,33 +176,6 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
     });
   }
   
-  function buildProPacket(wallet_id, plan_type){
-    let plan = "yearly"
-    if(plan_type){
-      plan = plan_type
-    }
-  
-    let createSessionData = {
-      session_type: "buy_pro",
-      success_url: `https://distiller.com/?welcome_pro=true`,
-      cancel_url: `https://distiller.com/join-pro`,
-      plan_style: plan
-    };
-  
-    if (usePromotionCode && promotionCode != '') {
-      createSessionData = Object.assign(createSessionData, { promotion_code: promotionCode })
-    }
-  
-    $.ajax({
-      method: 'PUT',
-      url: "https://api.distiller.com/microlive/wallet/" + wallet_id + "/create_stripe_session",
-      data: JSON.stringify(createSessionData),
-      contentType: 'application/json; charset=utf-8',
-      success: function(session_id) { redirectToStripe(wallet_id, session_id) },
-      error(xhr) {console.log('error', xhr)}
-    });
-  }
-  
   
   function redirectToStripe(wallet_id, session_id) {
     let params = {};
@@ -235,18 +194,6 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
     .catch(function(xhr) {
       console.log('redirect to checkout error', xhr)
       window.location = "https://distiller.com/join-pro?registration_error=true"
-    });
-  }
-  function unsubscribeFromPro() {
-    document.getElementById('spinner').style.display = "block";
-    $.ajax({
-      type: 'DELETE',
-      url: `https://api.distiller.com/microlive/wallet/${walletId}/pro`,
-      success: redirectToSubscriptionPage,
-      error(xhr) {
-        document.getElementById('spinner').style.display = "block";
-        console.log('error', xhr)
-        }
     });
   }
   
@@ -277,24 +224,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
       redirectToSubscriptionPage
     })
   }
-  
-  function renewSubscription() {
-    document.getElementById('spinner').style.display = "block";
-    $.ajax({
-      method: 'POST',
-      url: `https://api.distiller.com/microlive/wallet/${walletId}/pro`,
-      data: {},
-      success: redirectToSubscriptionPage,
-      error(xhr) {
-        document.getElementById('spinner').style.display = "block";
-        console.log('error', xhr)
-      }
-    });
-  }
-  
-  function redirectToSubscriptionPage() {
-    return window.location = `https://distiller.com/profile/${slug}/subscription`
-  }
+
   
   function getCookie(cname){
     var name = cname + "=";
@@ -387,32 +317,10 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
   
   gtag('config', location.hostname == "distiller.com" ? "G-8K2RFRHH4Q" : "G-YPDT3WKNSR");
   
-  /******************** ECOMMERCE TRACKING **********************/
-  if (location.href.includes('welcome_pro')) {
-    gtag('event', 'purchase', {
-      transaction_id: "bbakssang-2024-07-03 00:37:12 UTC",
-      value: 10.00,
-      currency: 'USD',
-      items: [{
-        item_id: "plan_GBDF29WWuegJJk",
-        item_name: 'Pro Annual Plan',
-        item_category: 'Pro',
-        quantity: 1,
-        price: 10.00,
-      }]
-    });
-  }
+ 
 </script>
 
-<script>
-  $(document).ready(function(){
-    Distiller.googleTagTracker.setUserTag({
-      id: "400087",
-      slug: "bbakssang",
-      current_sign_in_ip: "183.98.203.84"
-    })
-  });
-</script>
+
 <script>
   /************ Track initial page load ********************/
   $(document).ready(function(){
@@ -677,83 +585,6 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 	<div class='screen background'>
 		<div class='canvas-wrapper'>
 			<div class='content-container'>
-
-
-				<div class='header'>
-					<div class='center-column'>
-						<header class='app-header'>
-							<div class='header-content'>
-								<button class='back' data-behavior='back'>
-									<i aria-hidden='true' class='fa fa-angle-left'></i> <span
-										class='offscreen'>Back</span>
-								</button>
-								<div class='menu-toggle'>
-									<button aria-expanded='false'>
-										<i aria-hidden='true' class='fa fa-reorder'></i> <i
-											aria-hidden='true' class='icomoon-x'></i> <span
-											class='offscreen'>Show Menu</span>
-									</button>
-								</div>
-								<a class='search-menu' href='/search'> <span
-									class='search-a11y'>Search</span> <i aria-hidden='true'
-									class='fa fa-search'></i>
-								</a>
-								<div class='false-status-bar'></div>
-								<a class='logo' href='/'> <span class='offscreen'>Distiller
-										Home</span>
-								</a>
-								<div class='menu'>
-									<nav aria-hidden='false' class='global-menu'
-										data-behavior='globalMenu' role='navigation'>
-										<ul class='primary'>
-											<li class='mobile search-menu-item'><a href='/search'>
-													<span class='search'>Search</span> <i aria-hidden='true'
-													class='fa fa-search'></i>
-											</a></li>
-											<li class='mobile user-search-menu-item'><a
-												href='/user_search'> <span class='search'>Find
-														People</span> <i aria-hidden='true' class='fa fa-user-plus'></i>
-											</a></li>
-											<li class='special-menu-item'><a href='/join-pro'> <i
-													class='icomoon-crown'></i> Join Pro
-											</a></li>
-											<li><a href='/recommend' id='global-menu'> Recommend
-											</a></li>
-											<li><a href='/articles'> <span>Articles</span>
-											</a></li>
-											<li><a class='js-global-my-profile-link'
-												href='/profile/bbakssang'> My Profile </a></li>
-											<li class='mobile sign-out-link'><a rel="nofollow"
-												data-method="delete" href="/users/sign_out">Sign Out</a></li>
-											<li class='desktop'><a href='/search'> <span
-													class='search'>Search</span> <i aria-hidden='true'
-													class='fa fa-search'></i>
-											</a></li>
-											<li class='desktop'><a href='/user_search'> <span
-													class='search'>Find People</span> <i aria-hidden='true'
-													class='fa fa-user-plus'></i>
-											</a></li>
-										</ul>
-										<ul class='secondary mobile'>
-											<li><a href='/about'>About Distiller</a></li>
-											<li><a href='/tasting_table'>The Tasting Table</a></li>
-											<li><a
-												href="/cdn-cgi/l/email-protection#fb939e979794bb9f92888f9297979e89d5989496">Contact
-													Us</a></li>
-											<li><a
-												href="/cdn-cgi/l/email-protection#5828392a2c363d2a2b183c312b2c3134343d2a763b3735">Advertise</a></li>
-											<li><a href="/jobs">Jobs</a></li>
-											<li><a href="/faq">Frequently Asked Questions</a></li>
-											<li><a href='/'> Home </a></li>
-										</ul>
-									</nav>
-
-								</div>
-							</div>
-						</header>
-					</div>
-				</div>
-
 				<div aria-live='assertive' class='flash-message-alert' role='alert'></div>
 				<main aria-hidden='false' class='main-container' id='main-content'
 					tabIndex='-1'>
@@ -761,21 +592,17 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 						<div class='center-column taste-form-page'>
 							<div class='taste-form whiskey'>
 								<h2 class='taste-form__title'>You're Reviewing</h2>
-								<h3 class='taste-form__spirit-name'>${drinkDto.drinkName }</h3>
-								<form class="new_taste" id="new_taste" action="/tastes"
+								<h3 class='taste-form__spirit-name'>${dto.drinkName }</h3>
+
+								<form class="new_taste" id="new_taste" action=""${pageContext.request.contextPath}/reviewWriteDone"
 									accept-charset="UTF-8" method="post">
-									<input name="utf8" type="hidden" value="&#x2713;" /><input
-										type="hidden" name="authenticity_token"
-										value="QBV3cSWGcHIBI4jFoEltcyuxXF/1bUdBpJLJfWwvEVpUEgMamd2imzq47qCh0KeVAY1JVodF8NF3Jww+cMdKlw==" /><input
-										type="hidden" value="18348" name="taste[spirit_id]"
-										id="taste_spirit_id" />
+									<input type="hidden" name="drinkId" value="${param.drinkId}">
+
 									<div class='taste-form__field taste-form__rating-field'>
 										<h4 class='taste-form__field-label'>Your Rating</h4>
 										<div class='taste-form__rating-slider'>
 											<div class='js-star-selector star-selector'>
-												<select name="taste[rating_attributes][stars]"
-													id="taste_rating_attributes_stars"><option
-														value=""></option>
+												<select name="rating" id="rating"><option value=""></option>
 													<option value="0.25">0.25</option>
 													<option value="0.5">0.5</option>
 													<option value="0.75">0.75</option>
@@ -804,252 +631,20 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 										<h4 class='taste-form__field-label'>Your Note</h4>
 										<textarea
 											placeholder="Start typing your tasting notes here..."
-											class="js-mentionable-input"
-											name="taste[user_spirit_note_attributes][body]"
-											id="taste_user_spirit_note_attributes_body">
+											class="js-mentionable-input" name="reviewcontent"
+											id="reviewcontent">
 </textarea>
 									</div>
 
-									<div class='taste-form__field'>
-										<h4 class='taste-form__field-label'>Cost</h4>
-										<div class='taste-form__price-field-set'>
-											<span class='taste-form__price-field-set__cost-fields'>
-												<input min="0" step="0.01" class="taste-form__price-field"
-												type="number" name="taste[price]" id="taste_price" /> <select
-												name="taste[price_currency]" id="taste_price_currency"><option
-														value="usd">usd</option>
-													<option value="eur">eur</option>
-													<option value="jpy">jpy</option>
-													<option value="gbp">gbp</option>
-													<option value="aud">aud</option>
-													<option value="cad">cad</option>
-													<option value="chf">chf</option>
-													<option value="cny">cny</option>
-													<option value="sek">sek</option>
-													<option value="mxn">mxn</option></select>
-											</span> <span>per</span> <select name="taste[price_per]"
-												id="taste_price_per"><option value="bottle">bottle</option>
-												<option value="pour">pour</option>
-												<option value="shot">shot</option>
-												<option value="cocktail">cocktail</option></select>
-										</div>
-									</div>
-
-									<div class='taste-form__field field pretty-checkbox-field'>
-										<div class='pretty p-default'>
-											<input name="taste[private]" type="hidden" value="0" /><input
-												type="checkbox" value="1" name="taste[private]"
-												id="taste_private" />
-											<div class='state'>
-												<label for="taste_private">Private</label>
-											</div>
-										</div>
-									</div>
 									<input type="submit" name="commit" value="Save"
-										class="button small accented" disabled="disabled"
+										class="button small accented" 
 										data-disable-with="Save" />
 								</form>
 							</div>
 						</div>
 
-
-						<div class='mobile-footer'>
-							<h2 class='sign_up_label_mobile' id='sign_up_label_mobile'>Sign
-								up for the Distiller Newsletter</h2>
-							<div class='email-signup'>
-								<form data_behavior="email-signup" action="/email_signups"
-									accept-charset="UTF-8" method="post">
-									<input name="utf8" type="hidden" value="&#x2713;" /><input
-										type="hidden" name="authenticity_token"
-										value="NkVAZYKM74CDPDfBEDoHulHDag5xvOBtjhtvn+xnX1IiQjQOPtc9abinUaQRo81ce/9/BwOUV/1drqrc8I8Enw==" />
-									<div data-behavior='message'></div>
-									<input placeholder="Your Email" aria-labelledby="sign_up_label"
-										required="required" autocomplete="email"
-										oninvalid="this.setCustomValidity(&quot;Email is either empty or invalid!&quot;)"
-										oninput="this.setCustomValidity(&quot;&quot;)" type="email"
-										name="email_signup[email]" />
-
-									<script data-cfasync="false"
-										src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-
-
-									<input type="submit" name="commit" value="sign up"
-										data-disable-with="sign up" />
-
-								</form>
-							</div>
-
-							<div class='social-actions'>
-								<h5 aria-level='2' role='heading'>Follow Us</h5>
-								<div role='list'>
-									<div role='listitem'>
-										<a class='twitter-follow'
-											href='https://twitter.com/intent/follow?screen_name=drinkdistiller'>
-											<span class='offscreen'>Twitter</span> <span
-											class='fa fa-stack'> <i aria-hidden='true'
-												class='fa fa-circle fa-stack-2x'></i> <i aria-hidden='true'
-												class='fa fa-twitter fa-light fa-stack-1x'></i>
-										</span>
-										</a>
-									</div>
-									<div role='listitem'>
-										<a class='facebook-like' data-behavior='facebook-share'
-											data-share-path='/'
-											href='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdrinkdistiller.com'>
-											<span class='offscreen'>Facebook</span> <span
-											class='fa fa-stack'> <i aria-hidden='true'
-												class='fa fa-circle fa-stack-2x'></i> <i aria-hidden='true'
-												class='fa fa-facebook fa-light fa-stack-1x'></i>
-										</span>
-										</a>
-									</div>
-									<div role='listitem'>
-										<a class='instagram-like'
-											href='http://instagram.com/drinkdistiller' target='_blank'>
-											<span class='offscreen'>Instagram</span> <span
-											class='fa fa-stack'> <i aria-hidden='true'
-												class='fa fa-circle fa-stack-2x'></i> <i aria-hidden='true'
-												class='fa fa-instagram fa-light fa-stack-1x'></i>
-										</span>
-										</a>
-									</div>
-								</div>
-							</div>
-
-							<div class='download-app'>
-								<h5 aria-level='2' role='heading'>Download The App</h5>
-								<a class='logo'
-									href='https://itunes.apple.com/us/app/distiller-your-whiskey-companion/id784925833?mt=8&amp;uo=4'
-									target='_blank' title='Link opens in a new window'>
-									<div aria-label='Install Distiller from Apple App Store.'
-										class='img apple-store' id='apple-store-mobile' role='img'></div>
-								</a> <a class='logo'
-									href='https://play.google.com/store/apps/details?id=com.distiller.distiller'
-									target='_blank' title='Link opens in a new window'>
-									<div aria-label='Install from Google Play.'
-										class='img google-store' id='google-store-mobile' role='img'></div>
-								</a>
-							</div>
-							<div class='responsibility'>
-								To learn more about responsible consumption, please visit <a
-									href='http://responsibility.org' target='_blank'>
-									Foundation For Advancing Alcohol Responsibility. </a>
-							</div>
-
-							<ul class='legal'>
-								<li><a href="/terms-of-service">Terms Of Service.</a>
-									&#8482/&copy 2024 Distiller</li>
-								<li><a href="/privacy-policy">Privacy Policy</a></li>
-								<li><a
-									href="/cdn-cgi/l/email-protection#3c54595050537c58554f48555050594e125f5351">Contact
-										Us</a></li>
-								<li><a
-									href="/cdn-cgi/l/email-protection#3f4f5e4d4b515a4d4c7f5b564c4b5653535a4d115c5052">Advertise</a></li>
-								<li><a href="/pages/submitting-for-review">Submit For
-										Review</a></li>
-								<li><a href="/jobs">Jobs</a></li>
-								<li><a href="/faq">Frequently Asked Questions</a></li>
-							</ul>
-						</div>
-
-						<div class='fixed-mobile-footer'></div>
 					</div>
 				</main>
-				<footer class='global-footer'>
-					<div class='center-column'>
-						<ul class='links primary-text'>
-							<li><a id="global-footer" href="/about">About Distiller</a></li>
-							<li><a href="/tasting_table">The Tasting Table</a></li>
-							<li><a
-								href="/cdn-cgi/l/email-protection#83ebe6efefecc3e7eaf0f7eaefefe6f1ade0eceebcf0f6e1e9e6e0f7bec7eaf0f7eaefefe6f1ade0eceea6b1b3c5e6e6e7e1e2e0e8a5e2eef3b8e1ece7fabea6b3c2a6b3c2d0e6edf7a6b1b3e5f1eceeb9a6b1b3ceecf9eaefefe2acb6adb3a3abd4eaede7ecf4f0a3cdd7a3b2b3adb3b8a3d4eaedb5b7b8a3fbb5b7aaa3c2f3f3efe6d4e6e1c8eaf7acb6b0b4adb0b5a3abc8cbd7cecfafa3efeae8e6a3c4e6e0e8ecaaa3c0ebf1eceee6acb2b1b5adb3adb3adb3a3d0e2e5e2f1eaacb6b0b4adb0b5">Contact
-									Us</a></li>
-							<li><a
-								href="/cdn-cgi/l/email-protection#30405142445e5542437054594344595c5c55421e535f5d">Advertise</a></li>
-							<li><a href="/pages/submitting-for-review">Submit For
-									Review</a></li>
-							<li><a href="/jobs">Jobs</a></li>
-							<li><a href="https://help.distiller.com/">Help</a></li>
-							<li><a href="/privacy-policy">Privacy Policy</a></li>
-							<li><a rel="nofollow" data-method="delete"
-								href="/users/sign_out">Sign Out</a></li>
-							<li class='terms legal'><a href="/terms-of-service">Terms
-									Of Service.</a> &#8482/&copy 2024 Distiller</li>
-						</ul>
-						<div class='social-actions'>
-							<h5 aria-level='2' role='heading'>Follow Us</h5>
-							<div role='list'>
-								<div role='listitem'>
-									<a class='twitter-follow'
-										href='https://twitter.com/intent/follow?screen_name=drinkdistiller'>
-										<span class='offscreen'>Twitter</span> <span
-										class='fa fa-stack'> <i aria-hidden='true'
-											class='fa fa-circle fa-stack-2x'></i> <i aria-hidden='true'
-											class='fa fa-twitter fa-light fa-stack-1x'></i>
-									</span>
-									</a>
-								</div>
-								<div role='listitem'>
-									<a class='facebook-like' data-behavior='facebook-share'
-										data-share-path='/'
-										href='https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Fdrinkdistiller.com'>
-										<span class='offscreen'>Facebook</span> <span
-										class='fa fa-stack'> <i aria-hidden='true'
-											class='fa fa-circle fa-stack-2x'></i> <i aria-hidden='true'
-											class='fa fa-facebook fa-light fa-stack-1x'></i>
-									</span>
-									</a>
-								</div>
-								<div role='listitem'>
-									<a class='instagram-like'
-										href='http://instagram.com/drinkdistiller' target='_blank'>
-										<span class='offscreen'>Instagram</span> <span
-										class='fa fa-stack'> <i aria-hidden='true'
-											class='fa fa-circle fa-stack-2x'></i> <i aria-hidden='true'
-											class='fa fa-instagram fa-light fa-stack-1x'></i>
-									</span>
-									</a>
-								</div>
-							</div>
-						</div>
-
-						<div class='newsletter-column'>
-							<h5 aria-level='2' role='heading'>Newsletter</h5>
-							<span id='sign_up_label'>Sign up for the Distiller
-								Newsletter for new bottle & feature updates</span>
-							<div class='email-signup'>
-								<form data_behavior="email-signup" action="/email_signups"
-									accept-charset="UTF-8" method="post">
-									<input name="utf8" type="hidden" value="&#x2713;" /><input
-										type="hidden" name="authenticity_token"
-										value="ff52/47BBe3pQ/Wc7z1YLHVsqPU6cWAlrzHsWATUcnFp+QKUMprXBNLYk/nupJLKX1C9/EhZ17V8hCkbGDwpvA==" />
-									<div data-behavior='message'></div>
-									<input placeholder="Your Email" aria-labelledby="sign_up_label"
-										required="required" autocomplete="email"
-										oninvalid="this.setCustomValidity(&quot;Email is either empty or invalid!&quot;)"
-										oninput="this.setCustomValidity(&quot;&quot;)" type="email"
-										name="email_signup[email]" />
-
-									<script data-cfasync="false"
-										src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-
-
-									<input type="submit" name="commit" value="sign up"
-										data-disable-with="sign up" />
-
-
-								</form>
-							</div>
-
-							<div class='responsibility'>
-								To learn more about responsible consumption, please visit <a
-									href='http://responsibility.org' target='_blank'>
-									Foundation For Advancing Alcohol Responsibility. </a>
-							</div>
-
-						</div>
-					</div>
-				</footer>
-
 			</div>
 		</div>
 	</div>
