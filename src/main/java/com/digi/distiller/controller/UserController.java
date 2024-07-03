@@ -87,10 +87,39 @@ public class UserController {
 		else return "redirect:signIn";
 	}
 	
+	// 비밀번호 찾기
+	@RequestMapping("/findPassword")
+	public String findPassword(Model model, HttpServletRequest request) {
+		System.out.println("findPassword()");
+		
+		return "user/findPassword";
+	}
+	@RequestMapping("/sendPw")
+	public String sendPw(Model model, HttpServletRequest request) {
+		System.out.println("sendPw()");
+		
+		/*
+		 * model.addAttribute("request",request);
+		 * command = new MyProfileCommand();
+		 * command.execute(model);
+		 */
+		
+		return "redirect:signIn";
+	}
+	
+	
 	
 	@RequestMapping("/myProfile")
-	public String myProfile(Model model) {
+	public String myProfile(Model model, HttpServletRequest request) {
 		System.out.println("myProfile()");
+		
+		/*
+		 * model.addAttribute("request",request);
+		 * command = new MyProfileCommand();
+		 * command.execute(model);
+		 */
+		
+		
 		return "user/myProfile";
 	}
 
@@ -104,5 +133,20 @@ public class UserController {
 	public String searchLiquorView(Model model) {
 		System.out.println("searchLiquorView()");
 		return "searchLiquorView";
+	}
+	
+	
+	
+	
+	// 로그아웃
+	@RequestMapping("logout")
+	public String logout(Model model, HttpServletRequest request) {
+		System.out.println("logout()");
+		
+		model.addAttribute("request", request);
+		command = new LogoutCommand();
+		command.execute(model);
+		
+		return "redirect:main";
 	}
 }
