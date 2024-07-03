@@ -75,4 +75,6 @@ public class ReviewDao {
             throw new RuntimeException("리뷰 ID로 drink ID 조회 중 에러 발생: " + reviewId, e);
         }
     }
+
 }
+
