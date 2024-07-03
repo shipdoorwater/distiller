@@ -15,11 +15,6 @@ public class ReviewDao {
     private final JdbcTemplate template;
 
     @Autowired
-    public ReviewDao() {
-		this.template = new JdbcTemplate();
-    }
-    
-    @Autowired
     public ReviewDao(JdbcTemplate template) {
         this.template = template;
     }
@@ -42,7 +37,7 @@ public class ReviewDao {
     
     
     public int getTotalReviewCount(String drinkId) {
-        String query = "SELECT COUNT(*) FROM review WHERE drinkId = ?";
+        String query = "SELECT COUNT(*) FROM REVIEW WHERE drinkId = ?";
         try {
             return template.queryForObject(query, Integer.class, drinkId);
         } catch (Exception e) {

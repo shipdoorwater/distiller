@@ -46,7 +46,7 @@ public class DrinkController {
         	DrinkDto drink = drinkDao.getDrinkDetail(drinkId);
         	System.out.println("drinkDao 로드");
 	        
-        	ReviewDao reviewDao=new ReviewDao();
+        	ReviewDao reviewDao=new ReviewDao(template);
 	        int totalReviews = reviewDao.getTotalReviewCount(drinkId); // 리뷰 수 계산
 	        System.out.println("reviewDao 로드");
 	        model.addAttribute("drinkId", drinkId);
