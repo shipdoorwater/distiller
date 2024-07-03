@@ -15,6 +15,11 @@ public class ReviewDao {
     private final JdbcTemplate template;
 
     @Autowired
+    public ReviewDao() {
+		this.template = new JdbcTemplate();
+    }
+    
+    @Autowired
     public ReviewDao(JdbcTemplate template) {
         this.template = template;
     }
