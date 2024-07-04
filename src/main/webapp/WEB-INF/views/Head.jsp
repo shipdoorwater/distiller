@@ -117,7 +117,7 @@ End Function
 				</a>
 				<div class="false-status-bar"></div>
 				<a class="logo" href="${pageContext.request.contextPath}/main" id="main-logo" >
-					<img src="${pageContext.request.contextPath}/assets/logo_black_trans_agave.png" alt="Distiller Home">
+					<%-- <img src="${pageContext.request.contextPath}/assets/logo_black_trans_agave.png" alt="Distiller Home"> --%>
 					<span class="offscreen">Distiller Home</span>
 				</a>
 				<div class="menu">
@@ -132,7 +132,7 @@ End Function
 								href="/user_search"> <span class="search">Find People</span>
 									<i aria-hidden="true" class="fa fa-user-plus"></i>
 							</a></li>
-							<li><a href="/distiller/recommend/step1" id="global-menu"> Recommend </a></li>
+							<li><a href="/recommend/step1" id="global-menu"> Recommend </a></li>
 			
 							<% if (loginedEmail == null) { %>
 						        <li><a href="${pageContext.request.contextPath}/signIn">Sign In</a></li>
