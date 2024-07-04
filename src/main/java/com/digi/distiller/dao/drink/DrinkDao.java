@@ -6,7 +6,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.digi.distiller.dto.drink.DrinkDto;
-import com.digi.distiller.util.Constant;
 
 @Repository
 public class DrinkDao {
