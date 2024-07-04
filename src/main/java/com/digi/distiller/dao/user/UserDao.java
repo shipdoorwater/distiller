@@ -116,4 +116,6 @@ public class UserDao {
 		
 		return list;
 	}
+	
+//	public boolean changeSetting(String email, )
 }
