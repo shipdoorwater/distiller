@@ -51,7 +51,7 @@ public class UserDao {
 	
 	public boolean signIn(String email, String password) {
 		boolean result = false;
-		String sql = "select password from USER where email = ?";
+		String sql = "select password from USER where email = ? and userstatus= '1'";
 		try {
 			String passwordData = template.queryForObject(sql,String.class,email);
 			if (passwordData.equals(password)) {
@@ -179,6 +179,31 @@ public class UserDao {
 				return result;
 			}
 		}	
+		
+		return result;
+	}
+	
+	public boolean deleteAccount(String email) {
+		boolean result = false;
+		String sql = "update USER SET USERSTATUS = '0' WHERE EMAIL = ?";
+		
+		try {
+			int success = template.update(sql, new PreparedStatementSetter() {
+
+				@Override
+				public void setValues(PreparedStatement ps) throws SQLException {
+					// TODO Auto-generated method stub
+					ps.setString(1, email);
+				}
+			});
+			
+			if (success == 1)
+				result = true;
+			
+		} catch (DataAccessException e) {
+			System.out.println("error :" + e.getMessage());
+			return result;
+		}
 		
 		return result;
 	}
