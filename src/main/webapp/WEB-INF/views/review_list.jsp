@@ -736,13 +736,13 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 										<li class='tab-overview-header'>
 											<div class='tab-content'>
 												<a
-													href="http://localhost:8080/distiller/drinkdetail?drinkId=${drinkId }">Details</a>
+													href="${pageContext.request.contextPath}/drinkdetail?drinkId=${drinkId }">Details</a>
 											</div>
 										</li>
 										<li class='tab-tastes-header ui-tabs-active'>
 											<div class='tab-content'>
 												<a aria-current="page"
-													href="http://localhost:8080/distiller/drinkdetail/reviews?drinkId=${drinkId }">
+													href="${pageContext.request.contextPath}/drinkdetail/reviews?drinkId=${drinkId }">
 													${totalReviews} Reviews <span class='count'
 													th:text="${totalReviews}"> </span>
 												</a>
