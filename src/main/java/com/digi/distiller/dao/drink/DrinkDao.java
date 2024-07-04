@@ -3,23 +3,29 @@ package com.digi.distiller.dao.drink;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import com.digi.distiller.dto.drink.DrinkDto;
 import com.digi.distiller.util.Constant;
 
+@Repository
 public class DrinkDao {
 
     private final JdbcTemplate template;
 
     @Autowired
-    public DrinkDao() {
-        this.template = Constant.template;
+    public DrinkDao(JdbcTemplate template) {
+        this.template = template;
     }
     
     
     // 술id 관련 drink테이블 정보 리스트 불러오기
     public DrinkDto getDrinkDetail(String drinkId) {
     	System.out.println("getDrinkDetail 진입");
+        if (template == null) {
+            System.err.println("JdbcTemplate is null");
+            throw new IllegalStateException("JdbcTemplate is not initialized");
+        }
     	String query = "SELECT * FROM DRINK WHERE drinkId = ?";
     	System.out.println("drinkId");
         try {
