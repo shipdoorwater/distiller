@@ -11,8 +11,8 @@
 				<div class="center-column">
 					<ul class="spirit-family-select__options">
 						<li class="spirit-family-select__option">
-							<button onclick="location.href='main';"
-								class="spirit-family-select__button js-select-spirit-family all selected">
+							<button onclick="selectSpiritFamily(this, 'main');"
+								class="spirit-family-select__button js-select-spirit-family all ${type == null ? 'selected' : ''}">
 								<span class="spirit-family-select__label ultra-mini-headline">
 									All Spirits <i aria-hidden="true"
 									class="fa fa-chevron-down spirit-family-select__chevron"></i>
@@ -20,8 +20,8 @@
 							</button>
 						</li>
 						<li class="spirit-family-select__option whiskey">
-							<button onclick="location.href='main?type=위스키';"
-								class="spirit-family-select__button js-select-spirit-family"
+							<button onclick="selectSpiritFamily(this, 'main?type=위스키');"
+								class="spirit-family-select__button js-select-spirit-family ${'위스키'.equals(type) ? 'selected' : ''}"
 								data-value="whiskey">
 								<span class="spirit-family-select__label ultra-mini-headline">
 									Whiskey <i
@@ -31,8 +31,8 @@
 							</button>
 						</li>
 						<li class="spirit-family-select__option agave">
-							<button
-								class="spirit-family-select__button js-select-spirit-family"
+							<button onclick="selectSpiritFamily(this, 'main?type=테킬라');"
+								class="spirit-family-select__button js-select-spirit-family ${'테킬라'.equals(type) ? 'selected' : ''}"
 								data-value="agave">
 								<span class="spirit-family-select__label ultra-mini-headline">
 									Tequila/Mezcal <i
@@ -42,8 +42,8 @@
 							</button>
 						</li>
 						<li class="spirit-family-select__option sugarcane">
-							<button
-								class="spirit-family-select__button js-select-spirit-family"
+							<button onclick="selectSpiritFamily(this, 'main?type=럼');"
+								class="spirit-family-select__button js-select-spirit-family ${'럼'.equals(type) ? 'selected' : ''}"
 								data-value="sugarcane">
 								<span class="spirit-family-select__label ultra-mini-headline">
 									Rum <i class="fa fa-chevron-down spirit-family-select__chevron"
@@ -52,8 +52,8 @@
 							</button>
 						</li>
 						<li class="spirit-family-select__option brandy">
-							<button onclick="location.href='main?type=브랜디';"
-								class="spirit-family-select__button js-select-spirit-family"
+							<button onclick="selectSpiritFamily(this, 'main?type=브랜디');"
+								class="spirit-family-select__button js-select-spirit-family ${'브랜디'.equals(type) ? 'selected' : ''}"
 								data-value="brandy">
 								<span class="spirit-family-select__label ultra-mini-headline">
 									Brandy <i
@@ -63,8 +63,8 @@
 							</button>
 						</li>
 						<li class="spirit-family-select__option gin">
-							<button
-								class="spirit-family-select__button js-select-spirit-family"
+							<button onclick="selectSpiritFamily(this, 'main?type=진');"
+								class="spirit-family-select__button js-select-spirit-family ${'진'.equals(type) ? 'selected' : ''}"
 								data-value="gin">
 								<span class="spirit-family-select__label ultra-mini-headline">
 									Gin <i class="fa fa-chevron-down spirit-family-select__chevron"
@@ -73,8 +73,8 @@
 							</button>
 						</li>
 						<li class="spirit-family-select__option vodka">
-							<button
-								class="spirit-family-select__button js-select-spirit-family"
+							<button onclick="selectSpiritFamily(this, 'main?type=보드카');"
+								class="spirit-family-select__button js-select-spirit-family ${'보드카'.equals(type) ? 'selected' : ''}" 
 								data-value="vodka">
 								<span class="spirit-family-select__label ultra-mini-headline">
 									Vodka <i
@@ -84,8 +84,8 @@
 							</button>
 						</li>
 						<li class="spirit-family-select__option liqueur">
-							<button
-								class="spirit-family-select__button js-select-spirit-family"
+							<button onclick="selectSpiritFamily(this, 'main?type=리큐르');"
+								class="spirit-family-select__button js-select-spirit-family ${'리큐르'.equals(type) ? 'selected' : ''}"
 								data-value="liqueur">
 								<span class="spirit-family-select__label ultra-mini-headline">
 									Liqueurs/Bitters <i
@@ -95,8 +95,8 @@
 							</button>
 						</li>
 						<li class="spirit-family-select__option other">
-							<button
-								class="spirit-family-select__button js-select-spirit-family"
+							<button onclick="selectSpiritFamily(this, 'main?type=기타');"
+								class="spirit-family-select__button js-select-spirit-family ${'기타'.equals(type) ? 'selected' : ''}"
 								data-value="other">
 								<span class="spirit-family-select__label ultra-mini-headline">
 									Other <i
@@ -226,6 +226,72 @@
 
 
 			<div class="content-block new-bottles home-page-list js-carousel"
+			     data-carousel-title="Recently Added" data-max-items="3"
+			     data-pagination="true">
+			    <div class="center-column">
+			        <h2 class="secondary-headline carousel-title">Recently Added</h2>
+			        <div class="new-bottles-container list-container carousel">
+			            <ul data-behavior="carousel-slides" class="owl-carousel owl-theme"
+			                role="none" style="opacity: 1; display: block;">
+			                <div class="owl-wrapper-outer">
+			                    <div class="owl-wrapper" role="list"
+			                         style="width: 2424px; left: 0px; display: block;">
+			                         
+			                        <!-- For each item -->
+			                        <c:forEach var="item" items="${drinkList}">
+			                            <div class="owl-item active" aria-hidden="false"
+			                                 role="listitem" style="width: 404px;">
+			                                <li class="homepage-list-item bottle ${item.drinkName}-content"
+			                                    role="none">
+			                                    <a aria-hidden="true"
+			                                       href="/distiller/drinkdetail?drinkId=${item.drinkId}"
+			                                       tabindex="-1">
+			                                        <div aria-label="${item.drinkName} Bottle">
+			                                        	<img class="thumbnail" role="img" style="object-fit: cover;" src ="${pageContext.request.contextPath}/assets/images/${item.photo}">     
+			                                        </div>
+			                                    </a>
+			                                    <div class="details">
+			                                        <a href="/">
+			                                            <h3 class="mini-headline name" data-behavior="truncatable">${item.drinkName}</h3>
+			                                        </a>
+			                                        <div class="notes-container">
+			                                            <p data-behavior="truncatable">${item.drinkExplain}</p>
+			                                        </div>
+			                                        <div class="user-rating-container">
+			                                            <div class="rating-display average-user-rating"
+			                                                 itemprop="aggregateRating" itemscope=""
+			                                                 itemtype="http://schema.org/AggregateRating">
+			                                                <div class="rating-display__value no-rating">
+			                                                    <%-- <span>
+			                                                        <c:choose>
+			                                                            <c:when test="${item.reviewCount == 0}">
+			                                                                No one has reviewed this yet. 
+			                                                                <a class="add-taste-link" href="/tastes/new?spirit=${item.slug}">
+			                                                                    <span> Be the first </span> 
+			                                                                </a>
+			                                                            </c:when>
+			                                                            <c:otherwise>
+			                                                                ${item.averageRating} stars from ${item.reviewCount} reviews
+			                                                            </c:otherwise>
+			                                                        </c:choose>
+			                                                    </span> --%>
+			                                                </div>
+			                                            </div>
+			                                        </div>
+			                                    </div>
+			                                </li>
+			                            </div>
+			                        </c:forEach>
+			                        <!-- End for each item -->
+			                    </div>
+			                </div>
+			            </ul>
+			        </div>
+			    </div>
+			</div>
+
+
+			<!-- <div class="content-block new-bottles home-page-list js-carousel"
 				data-carousel-title="Recently Added" data-max-items="3"
 				data-pagination="true">
 				<div class="center-column">
@@ -242,7 +308,7 @@
 											role="none"><a aria-hidden="true"
 											href="/distiller/drinkdetail?drinkId=W01"
 											tabindex="-1">
-											<!-- href="/spirits/mayenda-reposado-double-cask" --> 
+											href="/spirits/mayenda-reposado-double-cask" 
 											
 												<div aria-label="Mayenda Reposado Double Cask Bottle"
 													class="thumbnail" role="img"
@@ -356,7 +422,7 @@
 							</div>
 
 
-							<!-- <div class="owl-controls clickable" style="display: none;" >
+							<div class="owl-controls clickable" style="display: none;" >
 								<div class="owl-pagination">
 									<div class="owl-page active"
 										data-behavior="carousel-slide-controls">
@@ -364,11 +430,11 @@
 											data-page-index="0" aria-label="Page 1 of 1"></span>
 									</div>
 								</div>
-							</div> -->
+							</div>
 						</ul>
 					</div>
 				</div>
-			</div>
+			</div> -->
 
 			<div class="content-block download-app">
 				<div class="center-column">
@@ -399,6 +465,21 @@
 </main>
 
 
-
-
 <%@ include file="footer.jsp"%>
+
+<script>
+    function selectSpiritFamily(button, url) {
+        // 모든 버튼의 selected 클래스를 제거
+        document.querySelectorAll('.js-select-spirit-family').forEach(function(btn) {
+            btn.classList.remove('selected');
+        });
+
+        
+
+        // 페이지 이동
+        location.href = url;
+        
+     // 클릭한 버튼에 selected 클래스 추가
+        button.classList.add('selected');
+    }
+</script>

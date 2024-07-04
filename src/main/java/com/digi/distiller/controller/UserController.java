@@ -7,9 +7,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.digi.distiller.Command;
-import com.digi.distiller.command.user.*;
+import com.digi.distiller.command.user.LogoutCommand;
+import com.digi.distiller.command.user.MainViewCommand;
+import com.digi.distiller.command.user.RegisterCommand;
+import com.digi.distiller.command.user.SearchCommand;
+import com.digi.distiller.command.user.SignInCommand;
 import com.digi.distiller.util.Constant;
 
 
@@ -131,14 +136,35 @@ public class UserController {
 	}
 
 	
-	@RequestMapping("/searchUserView")
-	public String searchUserView(Model model) {
-		System.out.println("searchUserView()");
-		return "searchUserView";
-	}
+//	@RequestMapping("/searchUserView")
+//	public String searchUserView(Model model) {
+//		System.out.println("searchUserView()");
+//		return "searchUserView";
+//	}
 	@RequestMapping("/searchLiquorView")
-	public String searchLiquorView(Model model) {
+	public String searchLiquorView(Model model, HttpServletRequest request,
+            @RequestParam(value = "page", defaultValue = "1") int page,
+            @RequestParam(value = "keyword", required = false) String keyword) {
 		System.out.println("searchLiquorView()");
+		
+		model.addAttribute("request", request);
+		model.addAttribute("page", page);
+		model.addAttribute("keyword", keyword);
+
+		command = new SearchCommand();
+		command.execute(model);
+		
+		int totalCount = (int) model.asMap().get("totalCount");
+		int pageSize = (int) model.asMap().get("pageSize");
+
+		// 결과 범위 계산
+	    int startResult = (page - 1) * pageSize + 1;
+	    int endResult = Math.min(page * pageSize, totalCount);
+
+	    
+	    model.addAttribute("startResult", startResult);
+	    model.addAttribute("endResult", endResult);
+		
 		return "searchLiquorView";
 	}
 	
