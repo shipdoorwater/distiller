@@ -653,7 +653,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 		integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
 		data-cf-beacon='{"rayId":"89d2ce386e0eaa69","version":"2024.4.1","token":"0ee8b19124ad4a8ab1320cedb1148c5d"}'
 		crossorigin="anonymous"></script> -->
-
+<script src="${pageContext.request.contextPath}/resources/application.js"></script>
 </body>
 </html>
 
