@@ -643,22 +643,22 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
             <h1 class='secondary-headline question-text'>What are you looking to spend?</h1>
             <div class='progress step-1'></div>
             <ul class='choices'>
-                <li><a class='choice' href='/distiller/recommend/step3?type=${param.type}&price=p1'>
+                <li><a class='choice' href='/recommend/step3?type=${param.type}&price=p1'>
                     <div class='label-container'>
                         <div class='label'>$ (0-10)</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step3?type=${param.type}&price=p2'>
+                <li><a class='choice' href='/recommend/step3?type=${param.type}&price=p2'>
                     <div class='label-container'>
                         <div class='label'>$$ (10-30)</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step3?type=${param.type}&price=p3'>
+                <li><a class='choice' href='/recommend/step3?type=${param.type}&price=p3'>
                     <div class='label-container'>
                         <div class='label'>$$$ (30-40)</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step3?type=${param.type}&price=p4'>
+                <li><a class='choice' href='/recommend/step3?type=${param.type}&price=p4'>
                     <div class='label-container'>
                         <div class='label'>$$$$ (40+)</div>
                     </div>

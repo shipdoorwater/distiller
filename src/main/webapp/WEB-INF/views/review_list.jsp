@@ -944,7 +944,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 							<script type="text/javascript">
     document.getElementById('reviewButton').addEventListener('click', function() {
     	var drinkId = '${drinkId}';
-        window.location.href = '/distiller/review_write?drinkId=' + drinkId;
+        window.location.href = '/review_write?drinkId=' + drinkId;
     });
 </script>
 
