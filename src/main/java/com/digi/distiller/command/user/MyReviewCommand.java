@@ -1,17 +1,17 @@
 package com.digi.distiller.command.user;
 
+import java.util.ArrayList;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
 import com.digi.distiller.Command;
 import com.digi.distiller.dao.user.UserDao;
-import com.digi.distiller.dto.user.UserDto;
+import com.digi.distiller.dto.user.PersonalReviewDto;
 
-public class MyProfileCommand implements Command {
+public class MyReviewCommand implements Command {
 
 	@Override
 	public void execute(Model model) {
@@ -19,18 +19,12 @@ public class MyProfileCommand implements Command {
 		UserDao userDao = new UserDao();
 		
 		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session = (HttpSession) map.get("session");
 		
 		String email = (String) session.getAttribute("loginedEmail");
 		System.out.println(email);
-		UserDto userDto = userDao.getUserInfo(email);
-		if (userDto == null)
-			System.out.println("userDto is null");
-		else System.out.println("userDto is not null");
-		
-		model.addAttribute("userDto", userDto);
+		ArrayList<PersonalReviewDto> reviewList = userDao.getUserReview(email);
+		System.out.println("check");
+		model.addAttribute("reviewList", reviewList);
 	}
-
-	
 }

@@ -1,6 +1,7 @@
 package com.digi.distiller.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.digi.distiller.Command;
 import com.digi.distiller.command.user.LogoutCommand;
 import com.digi.distiller.command.user.MainViewCommand;
+import com.digi.distiller.command.user.MyProfileCommand;
+import com.digi.distiller.command.user.MyReviewCommand;
 import com.digi.distiller.command.user.RegisterCommand;
 import com.digi.distiller.command.user.SearchCommand;
 import com.digi.distiller.command.user.SignInCommand;
@@ -122,18 +125,29 @@ public class UserController {
 	
 	
 	@RequestMapping("/myProfile")
-	public String myProfile(Model model, HttpServletRequest request) {
+	public String myProfile(Model model, HttpServletRequest request, HttpSession session) {
 		System.out.println("myProfile()");
-		
-		/*
-		 * model.addAttribute("request",request);
-		 * command = new MyProfileCommand();
-		 * command.execute(model);
-		 */
-		
+	
+		model.addAttribute("request",request);
+		model.addAttribute("session", session);
+		command = new MyProfileCommand();
+		command.execute(model);
 		
 		return "user/myProfile";
 	}
+	@RequestMapping("/myReview")
+	public String myReview(Model model,HttpServletRequest request, HttpSession session) {
+		System.out.println("myReview()");
+		
+		model.addAttribute("request",request);
+		model.addAttribute("session",session);
+		command = new MyReviewCommand();
+		command.execute(model);
+		
+		return "user/myReview";
+	}
+
+	
 
 	
 //	@RequestMapping("/searchUserView")
