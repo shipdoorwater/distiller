@@ -151,10 +151,10 @@ End Function
 									class="search">Search</span> <i aria-hidden="true"
 									class="fa fa-search"></i>
 							</a></li>
-							<li class="desktop"><a href="${pageContext.request.contextPath}/searchUserView"> <span
+							<%-- <li class="desktop"><a href="${pageContext.request.contextPath}/searchUserView"> <span
 									class="search">Find People</span> <i aria-hidden="true"
 									class="fa fa-user-plus"></i>
-							</a></li>
+							</a></li> --%>
 						</ul>
 						<ul class="secondary mobile">
 							<li><a href="/about">About Distiller</a></li>
