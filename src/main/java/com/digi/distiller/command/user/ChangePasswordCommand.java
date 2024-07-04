@@ -11,7 +11,7 @@ import com.digi.distiller.Command;
 import com.digi.distiller.dao.user.UserDao;
 import com.digi.distiller.dto.user.UserDto;
 
-public class ChangeSettingCommand implements Command {
+public class ChangePasswordCommand implements Command {
 
 	@Override
 	public void execute(Model model) {
@@ -23,16 +23,13 @@ public class ChangeSettingCommand implements Command {
 		HttpSession session = (HttpSession) map.get("session");
 		
 		String email = (String) session.getAttribute("loginedEmail");
-		String userName = request.getParameter("userName");
-		String userPhone = request.getParameter("userPhone");
-		String userAddress = request.getParameter("userAddress");
+		String currentPassword = request.getParameter("currentPassword");
+		String newPassword = request.getParameter("newPassword");
 		
 		UserDto userDto = userDao.getUserInfo(email);
-		boolean result = userDao.changeSetting(email, userName, userPhone, userAddress);
+		boolean result = userDao.changePassword(email, currentPassword, newPassword);
 		
 		model.addAttribute("userDto", userDto);
 		model.addAttribute("result", result);
-	}
-
-	
+	}	
 }
