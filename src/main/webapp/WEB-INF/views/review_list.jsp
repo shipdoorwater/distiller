@@ -716,11 +716,8 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 									content='https://ip-distiller.imgix.net/images/spirits/ffc27d90-781c-0136-4bc1-06009c1ae3e8/fettercairn_12_year_original.jpg?w=640&amp;h=280&amp;mark-w=70&amp;mark-h=70&amp;fit=crop&amp;crop=right&amp;mark-align=top,left&amp;mark-pad=0&amp;mark='
 									itemprop='image'>
 								<div class='main-image desktop official'
-									style='background-image: url(../../../ip-distiller.imgix.net/images/spirits/ffc27d90-781c-0136-4bc1-06009c1ae3e8/fettercairn_12_year_original5526.jpg?w=280&amp;h=280&amp;mark-w=70&amp;mark-h=70&amp;fit=crop&amp;crop=right&amp;mark-align=top,left&amp;mark-pad=0&amp;mark=)'></div>
-								<div class='main-image mobile official'
-									style='background-image: url(../../../ip-distiller.imgix.net/images/spirits/ffc27d90-781c-0136-4bc1-06009c1ae3e8/fettercairn_12_year_original6a7b.jpg?w=640&amp;h=280&amp;mark-w=70&amp;mark-h=70&amp;fit=crop&amp;crop=right&amp;mark-align=top,left&amp;mark-pad=0&amp;mark=)'>
-
-								</div>
+									style="background-image: url('${pageContext.request.contextPath}/assets/images/${dto.photo}')"></div>
+								
 								<div class='vitals'>
 									<h1 class='secondary-headline name' data-behavior='truncatable'
 										itemprop='name'>${dto.drinkName }</h1>
