@@ -1,6 +1,6 @@
 package com.digi.distiller.controller;
 
-import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.digi.distiller.command.purchase.CartAddCommand;
 import com.digi.distiller.command.purchase.CartCommand;
 import com.digi.distiller.command.purchase.CartDeleteCommand;
-import com.digi.distiller.command.purchase.OrderCommand;
-import com.digi.distiller.command.purchase.PaymentCommand;
+import com.digi.distiller.command.purchase.CartToOrdersCommand;
+import com.digi.distiller.command.purchase.OrdersCommand;
 
 
 @Controller
@@ -25,20 +25,20 @@ public class PurchaseController {
 	 private final CartAddCommand cartAddCommand;
 	    private final CartCommand cartCommand;
 	    private final CartDeleteCommand cartDeleteCommand;
-	    private final OrderCommand orderCommand;
-	    private final PaymentCommand paymentCommand;
+	    private final OrdersCommand ordersCommand;
+	    private final CartToOrdersCommand cartToOrdersCommand;
 
 	    @Autowired
 	    public PurchaseController(CartAddCommand cartAddCommand, 
 	                              CartCommand cartCommand, 
 	                              CartDeleteCommand cartDeleteCommand,
-	                              OrderCommand orderCommand,
-	                              PaymentCommand paymentCommand) {
+	                              OrdersCommand ordersCommand,
+	                              CartToOrdersCommand cartToOrdersCommand) {
 	        this.cartAddCommand = cartAddCommand;
 	        this.cartCommand = cartCommand;
 	        this.cartDeleteCommand = cartDeleteCommand;
-	        this.orderCommand = orderCommand;
-	        this.paymentCommand = paymentCommand;
+	        this.ordersCommand = ordersCommand;
+	        this.cartToOrdersCommand = cartToOrdersCommand;
 	    }	
 	
 	@RequestMapping(value = "/cartAdd", method = RequestMethod.GET)
@@ -70,14 +70,15 @@ public class PurchaseController {
     @RequestMapping(value = "/cart")
     public String cart(@ModelAttribute("email") String email, 
             @RequestParam(value = "email", required = false) String paramEmail, 
-            Model model,
-    		RedirectAttributes redirectAttributes) {
+            Model model, 
+    		RedirectAttributes redirectAttributes, HttpSession session
+    		) {
         System.out.println("cart()");
      // 플래시 속성의 email이 없으면 파라미터의 email 사용
         if (email == null || email.isEmpty()) {
             email = paramEmail;
         }
-        
+        model.addAttribute("session", session);
 		model.addAttribute("email", email);
         
         cartCommand.execute(model);
@@ -87,33 +88,66 @@ public class PurchaseController {
     
     @RequestMapping(value = "/cartDelete", method = RequestMethod.POST)
     public String cartDelete(@ModelAttribute("email") String email, 
-            @RequestParam(value = "email", required = false) String paramEmail,
-            @RequestParam("drinkId") String drinkId, 
-            Model model,
-    		RedirectAttributes redirectAttributes) {
+				            @RequestParam(value = "email", required = false) String paramEmail,
+				            @RequestParam("drinkId") String drinkId, 
+				            Model model,
+				    		RedirectAttributes redirectAttributes) {
         System.out.println("cartDelete()");
+        
         if (email == null || email.isEmpty()) {
             email = paramEmail;
         }
-		model.addAttribute("email", email);
+
+        model.addAttribute("email", email);
 		model.addAttribute("drinkId", drinkId);
+
+	    // 이메일을 플래시 속성으로 추가
+	    redirectAttributes.addFlashAttribute("email", email);
         cartDeleteCommand.execute(model);
-        return "redirect:/purchase/cart?email=" + email;
+        return "redirect:/purchase/cart";
     }
 
-    @RequestMapping(value = "/order", method = RequestMethod.POST)
-    public String order(Model model, HttpServletRequest request) {
-        System.out.println("order()");
-        model.addAttribute("request", request);
-        orderCommand.execute(model);
-        return "order";  // 주문 확인 페이지로 이동
+    @RequestMapping(value = "/cartToOrders", method = RequestMethod.POST)
+    public String processOrder(@ModelAttribute("email") String email,
+    		@RequestParam(value = "email", required = false) String paramEmail,
+    		@RequestParam("selectedDrinkIds") String selectedDrinkIdsString,
+            Model model,
+    		RedirectAttributes redirectAttributes, HttpSession session) {
+    	
+        System.out.println("orders()"); 
+        if (email == null || email.isEmpty()) {
+            email = paramEmail;
+        }
+        model.addAttribute("session", session);
+        model.addAttribute("selectedDrinkIds", selectedDrinkIdsString);
+
+	    cartToOrdersCommand.execute(model);
+	    redirectAttributes.addAttribute("orderProcessed", true);
+
+        return "redirect:/purchase/orders";
+    }
+    
+    @RequestMapping(value = "/orders", method = RequestMethod.GET)
+    public String orders(@ModelAttribute("email") String email, 
+            @RequestParam(value = "email", required = false) String paramEmail,
+            Model model, HttpSession session,
+    		RedirectAttributes redirectAttributes,
+            @ModelAttribute("orderProcessed") boolean orderProcessed) {
+        System.out.println("orders()");
+        model.addAttribute("email", email);
+
+        if (email == null || email.isEmpty()) {
+            email = paramEmail;
+        }
+        model.addAttribute("session", session);
+        if (orderProcessed) {
+            ordersCommand.execute(model);
+        }
+
+
+	    // 이메일을 플래시 속성으로 추가
+	    redirectAttributes.addFlashAttribute("email", email);
+        return "purchase/orders";
     }
 
-    @RequestMapping(value = "/payment", method = RequestMethod.POST)
-    public String payment(Model model, HttpServletRequest request) {
-        System.out.println("payment()");
-        model.addAttribute("request", request);
-        paymentCommand.execute(model);
-        return "orderComplete";  // 결제 결과 페이지로 이동
-    }
 }

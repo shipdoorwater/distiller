@@ -1,5 +1,6 @@
 package com.digi.distiller.dao.purchase;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.digi.distiller.dto.purchase.CartDto;
+import com.digi.distiller.dto.purchase.OrdersDto;
 
 @Repository
 public class PurchaseDao {
@@ -88,5 +90,69 @@ public class PurchaseDao {
     	
         
     }
+    
+    public List<OrdersDto> orderView(String email) {
+        System.out.println("orderView 진입");
+        
+        if (template == null) {
+            System.err.println("JdbcTemplate is null");
+            throw new IllegalStateException("JdbcTemplate is not initialized");
+        }
+    	String query = "SELECT c.drinkId, count, c.email, u.name, d.drinkname, d.photo, d.price, d.type, d.nation     FROM ORDERS c left join USER u on c.email = u.email left join DRINK d on c.drinkid = d.drinkid WHERE c.email = ?";
+    	System.out.println("ORDERquery");
+    	System.out.println(email);
+        try {
+            return template.query(query, new Object[]{email}, new BeanPropertyRowMapper<>(OrdersDto.class));
+        } catch (Exception e) {
+            System.err.println("orderView 에러: " + email);
+            e.printStackTrace();
+         // 런타임 예외로 감싸서 다시 던짐
+            throw new RuntimeException("orderView 에러: " + email, e);
+        }
+        
+    }
+    
+    public void cartToOrders(String email, List<String> selectedDrinkIds) {
+        System.out.println("cartToOrder 진입");
+        if (template == null) {
+            throw new IllegalStateException("JdbcTemplate is not initialized");
+        }
+
+        // 선택된 상품들을 comma-separated string으로 변환
+        String drinkIdList = String.join(",", selectedDrinkIds);
+        
+        String insertSql = "INSERT INTO ORDERS (email, drinkid, count, orderdate) " +
+                "SELECT email, drinkid, count, CURDATE() AS ORDERDATE " +
+                "FROM CART " +
+                "WHERE email = ? AND drinkid IN (" +
+                String.join(",", Collections.nCopies(selectedDrinkIds.size(), "?")) + ")";
+
+        String deleteSql = "DELETE FROM CART " +
+                "WHERE email = ? AND drinkid IN (" +
+                String.join(",", Collections.nCopies(selectedDrinkIds.size(), "?")) + ")";
+        
+        try {
+            // Insert 쿼리 실행
+            Object[] insertParams = new Object[selectedDrinkIds.size() + 1];
+            insertParams[0] = email;
+            System.arraycopy(selectedDrinkIds.toArray(), 0, insertParams, 1, selectedDrinkIds.size());
+            
+            int insertOrderResult = template.update(insertSql, insertParams);
+            System.out.println("선택 카트내역 주문 추가 결과: " + (insertOrderResult > 0 ? "성공" : "실패"));
+
+            // Delete 쿼리 실행
+            Object[] deleteParams = new Object[selectedDrinkIds.size() + 1];
+            deleteParams[0] = email;
+            System.arraycopy(selectedDrinkIds.toArray(), 0, deleteParams, 1, selectedDrinkIds.size());
+            
+            int deleteCartResult = template.update(deleteSql, deleteParams);
+            System.out.println("이동시킨 카트내역 삭제 결과: " + (deleteCartResult > 0 ? "성공" : "실패"));
+
+        } catch (DataAccessException e) {
+            System.err.println("데이터베이스 작업 중 오류 발생: " + e.getMessage());
+            throw new RuntimeException("주문 처리 중 오류 발생", e);
+        }
+    }
+    
     
 }

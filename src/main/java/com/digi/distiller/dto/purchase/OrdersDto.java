@@ -2,22 +2,37 @@ package com.digi.distiller.dto.purchase;
 
 public class OrdersDto {
 
-	private String orderId;
+	private String email;
 	private String drinkId;
-	private String userId;
 	private int count;
-	private String recvAddress;
-	private String recvPhone;
-	private String recvName;
-	private String orderDate;
-	private String recvDate;
-	private String orderStatus;
+	private String name;
+	private String drinkname;
+	private String photo;
+	private String price;
+	private String type;
+	private String nation;
 	
-	public String getOrderId() {
-		return orderId;
+	public OrdersDto() {
+		
 	}
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
+	
+	public OrdersDto(String email, String drinkId, int count, String name, String drinkname, String photo, String price, String type, String nation) {
+		this.drinkId = drinkId;
+		this.email = email;
+		this.count = count;
+		this.drinkname = drinkname;
+		this.photo = photo;
+		this.name = name;
+		this.price = price;
+		this.type = type;
+		this.nation = nation;
+	}	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getDrinkId() {
 		return drinkId;
@@ -25,55 +40,61 @@ public class OrdersDto {
 	public void setDrinkId(String drinkId) {
 		this.drinkId = drinkId;
 	}
-	public String getUserId() {
-		return userId;
-	}
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
 	public int getCount() {
 		return count;
 	}
 	public void setCount(int count) {
 		this.count = count;
 	}
-	public String getRecvAddress() {
-		return recvAddress;
+
+	public String getName() {
+		return name;
 	}
-	public void setRecvAddress(String recvAddress) {
-		this.recvAddress = recvAddress;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getRecvPhone() {
-		return recvPhone;
+
+	public String getDrinkname() {
+		return drinkname;
 	}
-	public void setRecvPhone(String recvPhone) {
-		this.recvPhone = recvPhone;
+
+	public void setDrinkname(String drinkname) {
+		this.drinkname = drinkname;
 	}
-	public String getRecvName() {
-		return recvName;
+
+	public String getPhoto() {
+		return photo;
 	}
-	public void setRecvName(String recvName) {
-		this.recvName = recvName;
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
-	public String getOrderDate() {
-		return orderDate;
+
+	public String getPrice() {
+		return price;
 	}
-	public void setOrderDate(String orderDate) {
-		this.orderDate = orderDate;
+
+	public void setPrice(String price) {
+		this.price = price;
 	}
-	public String getRecvDate() {
-		return recvDate;
+
+	public String getType() {
+		return type;
 	}
-	public void setRecvDate(String recvDate) {
-		this.recvDate = recvDate;
-	}
-	public String getOrderStatus() {
-		return orderStatus;
-	}
-	public void setOrderStatus(String orderStatus) {
-		this.orderStatus = orderStatus;
+
+	public void setType(String type) {
+		this.type = type;
 	}
 	
-	
+	public String getNation() {
+		return nation;
+	}
+
+	public void setNation(String nation) {
+		this.nation = nation;
+	}
+
+
 
 }

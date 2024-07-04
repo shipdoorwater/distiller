@@ -3,7 +3,6 @@ package com.digi.distiller.command.purchase;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,37 +11,43 @@ import org.springframework.ui.Model;
 
 import com.digi.distiller.Command;
 import com.digi.distiller.dao.purchase.PurchaseDao;
-import com.digi.distiller.dto.purchase.CartDto;
+import com.digi.distiller.dto.purchase.OrdersDto;
 
 @Component
-public class CartCommand implements Command {
+public class OrdersCommand implements Command {
 
 
     private final PurchaseDao purchaseDao;
     
     @Autowired
-    public CartCommand(PurchaseDao purchaseDao) {
+    public OrdersCommand(PurchaseDao purchaseDao) {
         this.purchaseDao = purchaseDao;
     }
     
 	@Override
 	public void execute(Model model) {
 		// TODO Auto-generated method stub		
-		
-		
 		Map<String, Object> map = model.asMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		System.out.println("cartcommand 맵 조회");
+//		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session = (HttpSession) map.get("session");
-//		HttpSession session = request.getSession();
+		
+
 		String email = //(String) map.get("email");
 				(String) session.getAttribute("loginedEmail");
-		System.out.println("cartcommand email 조회");
-        List<CartDto> cart = purchaseDao.cartView(email);
-        System.out.println("cartView 조회후 cartCommand로 돌아옴");
-        System.out.println("purchaseDao.cartView 로드완료");
-        model.addAttribute("cartDto", cart);
+		
+//		String email = request.getParameter("email");
 
+        System.out.println(email);
+
+        if (email == null) {
+            model.addAttribute("error", "Email is missing");
+            return;
+        }
+
+        List<OrdersDto> orders = purchaseDao.orderView(email);
+        model.addAttribute("ordersDto", orders);
+        System.out.println("ordersCommand 완료");
+		
 	}
 
 	
