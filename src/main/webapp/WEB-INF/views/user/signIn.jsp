@@ -102,7 +102,7 @@
 										</div>
 									</div>
 									<div class="register">
-										<a class="button small" href="/register">Sign up <i
+										<a class="button small" href="${pageContext.request.contextPath}/register">Sign up <i
 											aria-hidden="true" class="fa fa-arrow-right"></i>
 										</a>
 									</div>

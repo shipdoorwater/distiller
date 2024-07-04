@@ -2,12 +2,15 @@ package com.digi.distiller.dao.user;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.digi.distiller.dto.user.PersonalReviewDto;
+import com.digi.distiller.dto.user.UserDto;
 import com.digi.distiller.util.Constant;
 
 public class UserDao {
@@ -76,5 +79,41 @@ public class UserDao {
 			return isAdmin;
 		}
 		return isAdmin;
+	}
+	
+	public UserDto getUserInfo(String email) {
+		UserDto userDto = new UserDto();
+		String sql = "select * from USER where email = ?";
+		try {
+			userDto = (UserDto) template.queryForObject(sql, new Object[]{email},
+					new BeanPropertyRowMapper<UserDto>(UserDto.class));
+		} catch (DataAccessException e) {
+			System.out.println("error :" + e.getMessage());
+			return null;
+		}
+		return userDto;
+	}
+	
+	public ArrayList<PersonalReviewDto> getUserReview(String email) {
+		ArrayList<PersonalReviewDto> list = new ArrayList<>();
+		String sql = "SELECT A.REVIEWID, A.DRINKID, A.RATING, A.REVIEWCONTENT, A.REVIEWDATE, \r\n"
+				+ "	B.DRINKNAME, B.NATION, B.PHOTO, B.DRINKEXPLAIN, B.PRICE, B.TYPE, B.SUB1\r\n"
+				+ "FROM REVIEW A\r\n"
+				+ "JOIN DRINK B\r\n"
+				+ "ON A.DRINKID = B.DRINKID\r\n"
+				+ "WHERE A.EMAIL = ?";
+		try {
+			list = (ArrayList<PersonalReviewDto>)template.query(sql, new PreparedStatementSetter() {
+				@Override
+				public void setValues(PreparedStatement ps) throws SQLException {
+					ps.setString(1, email);
+				}
+			}, new BeanPropertyRowMapper<PersonalReviewDto>(PersonalReviewDto.class));
+		} catch (DataAccessException e) {
+			System.out.println("error :" + e.getMessage());
+			return null;
+		}
+		
+		return list;
 	}
 }

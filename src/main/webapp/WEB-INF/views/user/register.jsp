@@ -157,7 +157,7 @@
 										</div>
 									</form>
 									<p class="sign-in">
-										Already registered? <a class="accented" href="/users/sign_in">Sign
+										Already registered? <a class="accented" href="${pageContext.request.contextPath}/signIn">Sign
 											in</a> <i aria-hidden="true" class="fa fa-arrow-right accented"></i>
 									</p>
 								</div>
@@ -334,7 +334,7 @@
 									</div>
 								</form>
 								<p class="sign-in">
-									Already registered? <a class="accented" href="/users/sign_in">Sign
+									Already registered? <a class="accented" href="${pageContext.request.contextPath}/signIn">Sign
 										in</a> <i aria-hidden="true" class="fa fa-arrow-right accented"></i>
 								</p>
 							</div>
