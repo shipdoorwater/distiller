@@ -40,6 +40,7 @@ public class DrinkController {
 		model.addAttribute("request",request);
         drinkCommand.execute(model);
 		return "drinkdetail";
+
 			
         
 	}

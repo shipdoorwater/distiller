@@ -716,11 +716,8 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 									content='https://ip-distiller.imgix.net/images/spirits/ffc27d90-781c-0136-4bc1-06009c1ae3e8/fettercairn_12_year_original.jpg?w=640&amp;h=280&amp;mark-w=70&amp;mark-h=70&amp;fit=crop&amp;crop=right&amp;mark-align=top,left&amp;mark-pad=0&amp;mark='
 									itemprop='image'>
 								<div class='main-image desktop official'
-									style='background-image: url(../../../ip-distiller.imgix.net/images/spirits/ffc27d90-781c-0136-4bc1-06009c1ae3e8/fettercairn_12_year_original5526.jpg?w=280&amp;h=280&amp;mark-w=70&amp;mark-h=70&amp;fit=crop&amp;crop=right&amp;mark-align=top,left&amp;mark-pad=0&amp;mark=)'></div>
-								<div class='main-image mobile official'
-									style='background-image: url(../../../ip-distiller.imgix.net/images/spirits/ffc27d90-781c-0136-4bc1-06009c1ae3e8/fettercairn_12_year_original6a7b.jpg?w=640&amp;h=280&amp;mark-w=70&amp;mark-h=70&amp;fit=crop&amp;crop=right&amp;mark-align=top,left&amp;mark-pad=0&amp;mark=)'>
-
-								</div>
+									style="background-image: url('${pageContext.request.contextPath}/assets/images/${dto.photo}')"></div>
+								
 								<div class='vitals'>
 									<h1 class='secondary-headline name' data-behavior='truncatable'
 										itemprop='name'>${dto.drinkName }</h1>
@@ -745,9 +742,9 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 										<li class='tab-tastes-header ui-tabs-active'>
 											<div class='tab-content'>
 												<a aria-current="page"
-													href="http://localhost:8080/distiller/reviews?drinkId=${drinkId }">
-													Reviews <span class='count' th:text="${totalReviews}">
-														(${totalReviews})</span>
+													href="http://localhost:8080/distiller/drinkdetail/reviews?drinkId=${drinkId }">
+													${totalReviews} Reviews <span class='count' th:text="${totalReviews}">
+														</span>
 												</a>
 											</div>
 										</li>
@@ -938,7 +935,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 											<span class='double-icon'> <i aria-hidden='true'
 												class='fa fa-bars'></i> <i aria-hidden='true'
 												class='fa fa-plus'></i>
-											</span> <span class='label'>Add To My Lists</span>
+											</span> <span class='label'>Add To My cart</span>
 										</button>
 									</div>
 								</div>
@@ -1144,29 +1141,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 						</ul>
 					</div>
 
-					<div class='fixed-mobile-footer'>
-						<div class='spirit-show-action-bar action-bar'>
-							<ul class='spirit-show-actions'>
-								<li class='spirit-show-action'><a class='create-taste'
-									href='https://distiller.com/tastes/new?spirit=fettercairn-12-year'
-									rel='nofollow'>
-										<div class='mini-headline'>
-											<i aria-hidden='true' class='fa fa-check'></i> Review this
-										</div>
-								</a></li>
-								<li class='spirit-show-action js-toggle-modal'
-									data-modal-selector='.js-registration-prompt-modal'>
-									<button class='collection-target add-to-toggle'>
-										<div class='mini-headline'>
-											<i aria-hidden='true' class='fa fa-plus'></i> Add To My Lists
-										</div>
-									</button>
-								</li>
-							</ul>
-						</div>
-
-
-					</div>
+			
 			</div>
 			</main>
 
@@ -1174,11 +1149,11 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 		</div>
 	</div>
 	</div>
-	<script defer
+	<!-- <script defer
 		src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
 		integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
 		data-cf-beacon='{"rayId":"89c4d2ef4e0ba7b9","b":1,"version":"2024.4.1","token":"0ee8b19124ad4a8ab1320cedb1148c5d"}'
-		crossorigin="anonymous"></script>
+		crossorigin="anonymous"></script> -->
 </body>
 
 

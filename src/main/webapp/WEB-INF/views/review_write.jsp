@@ -445,11 +445,11 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 		</div>
 	</div>
 
-	<script>
+	<!-- <script>
   $(document).ready(function(){
     new Distiller.EmailOptPrompt($('.js-email-opt'));
   });
-</script>
+</script> -->
 
 	<ul id='skip-links'>
 		<li><a href='#global-menu'>Skip to navigation</a></li>
@@ -594,7 +594,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 								<h2 class='taste-form__title'>You're Reviewing</h2>
 								<h3 class='taste-form__spirit-name'>${dto.drinkName }</h3>
 
-								<form class="new_taste" id="new_taste" action=""${pageContext.request.contextPath}/reviewWriteDone"
+								<form class="new_taste" id="new_taste" action="${pageContext.request.contextPath}/reviewWriteDone"
 									accept-charset="UTF-8" method="post">
 									<input type="hidden" name="drinkId" value="${param.drinkId}">
 
@@ -648,11 +648,12 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 			</div>
 		</div>
 	</div>
-	<script defer
+	<!-- <script defer
 		src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
 		integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
 		data-cf-beacon='{"rayId":"89d2ce386e0eaa69","version":"2024.4.1","token":"0ee8b19124ad4a8ab1320cedb1148c5d"}'
-		crossorigin="anonymous"></script>
+		crossorigin="anonymous"></script> -->
+
 </body>
 </html>
 

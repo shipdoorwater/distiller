@@ -76,7 +76,7 @@ public class ReviewDao {
 	}
 
 	public double getReviewRatingAverage(String drinkId) {
-		String sql = "SELECT COALESCE(AVG(RATING), 0) FROM REVIEW WHERE drinkId = ?";
+		String sql = "SELECT COALESCE(ROUND(AVG(CAST(rating AS DECIMAL(10,2))), 2),0) AS average_value FROM REVIEW WHERE rating REGEXP '^-?[0-9]+(\\\\.[0-9]+)?$' AND drinkId = ?";
 		return template.queryForObject(sql, Double.class, drinkId);
 	}
 
@@ -119,8 +119,15 @@ public class ReviewDao {
             });
             result = success > 0;
         } catch (Exception e) {
+        	System.out.println("리뷰 작성 중 에러남.." + e);
             e.printStackTrace();
         }
         return result;
     }
+	
+	public double reviewAverage(String drinkId) {
+		String query = "SELECT ROUND(AVG(CAST(rating AS DECIMAL(10,2))), 2) AS average_value FROM REVIEW WHERE rating REGEXP '^-?[0-9]+(\\\\.[0-9]+)?$' AND drinkId = ?";
+		Double ratingAverage = template.queryForObject(query, Double.class, drinkId);
+		return ratingAverage != null ? ratingAverage : 0.0;
+	}
 }

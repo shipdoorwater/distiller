@@ -23,7 +23,7 @@ public class ReviewController {
 	Command command = null;
 
 	private JdbcTemplate template;
-	private final ReviewDao reviewDao;
+	private ReviewDao reviewDao;
 
 	@Autowired
 	public ReviewController(ReviewDao reviewDao) {
@@ -114,12 +114,13 @@ public class ReviewController {
 		// 세션에서 이메일 가져오기
         String email = (String) session.getAttribute("loginedEmail");
         
-		System.out.println("컨트롤러 - 리뷰작성완료");
+		System.out.println("컨트롤러 - 리뷰작성완료 진입");
 		System.out.println("세션에 저장된 이메일: " + email);
 		
 		if (email == null) {
             // 로그인 안된 경우
-            return "redirect:/login";
+			System.out.println("세션에 이메일이 없어서 돌아감");
+            return "redirect:/main";
         }
 
         // 리뷰 삽입
@@ -130,7 +131,7 @@ public class ReviewController {
         }
         else {
         	 model.addAttribute("error", "리뷰 작성 중 에러가 발생했습니다.");
-             return "review_write"; // 에러 발생 시 다시 리뷰 작성 폼으로 돌아감
+        	 return "redirect:/review_write?drinkId=" + drinkId + "&error=true";
         }
 		
 		
