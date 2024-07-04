@@ -643,42 +643,42 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
             <h1 class='secondary-headline question-text'>Know What Type of Spirit You're Looking For?</h1>
             <div class='progress step-0'></div>
             <ul class='choices'>
-                <li><a class='choice' href='/distiller/recommend/step2?type=위스키'>
+                <li><a class='choice' href='/recommend/step2?type=위스키'>
                     <div class='label-container'>
                         <div class='label'>Whiskey</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step2?type=테킬라'>
+                <li><a class='choice' href='/recommend/step2?type=테킬라'>
                     <div class='label-container'>
                         <div class='label'>Tequila/Mezcal</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step2?type=브랜디'>
+                <li><a class='choice' href='/recommend/step2?type=브랜디'>
                     <div class='label-container'>
                         <div class='label'>Brandy</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step2?type=럼'>
+                <li><a class='choice' href='/recommend/step2?type=럼'>
                     <div class='label-container'>
                         <div class='label'>Rum</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step2?type=보드카'>
+                <li><a class='choice' href='/recommend/step2?type=보드카'>
                     <div class='label-container'>
                         <div class='label'>Vodka</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step2?type=진'>
+                <li><a class='choice' href='/recommend/step2?type=진'>
                     <div class='label-container'>
                         <div class='label'>Gin</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step2?type=리큐르'>
+                <li><a class='choice' href='/recommend/step2?type=리큐르'>
                     <div class='label-container'>
                         <div class='label'>Liqueurs/Bitters</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step2?type=기타'>
+                <li><a class='choice' href='/recommend/step2?type=기타'>
                     <div class='label-container'>
                         <div class='label'>Other</div>
                     </div>

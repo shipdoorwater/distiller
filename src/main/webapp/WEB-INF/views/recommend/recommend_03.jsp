@@ -643,22 +643,22 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
             <h1 class='secondary-headline question-text'>HOW ADVENTUROUS ARE YOU FEELING?</h1>
             <div class='progress step-3'></div>
             <ul class='choices'>
-                <li><a class='choice' href='/distiller/recommend/step4?type=${param.type}&price=${param.price}&adventure=1'>
+                <li><a class='choice' href='/recommend/step4?type=${param.type}&price=${param.price}&adventure=1'>
                     <div class='label-container'>
                         <div class='label'>Not very</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step4?type=${param.type}&price=${param.price}&adventure=2'>
+                <li><a class='choice' href='/recommend/step4?type=${param.type}&price=${param.price}&adventure=2'>
                     <div class='label-container'>
                         <div class='label'>Mildly adventurous</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step4?type=${param.type}&price=${param.price}&adventure=3'>
+                <li><a class='choice' href='/recommend/step4?type=${param.type}&price=${param.price}&adventure=3'>
                     <div class='label-container'>
                         <div class='label'>Pretty adventurous</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/step4?type=${param.type}&price=${param.price}&adventure=4'>
+                <li><a class='choice' href='/recommend/step4?type=${param.type}&price=${param.price}&adventure=4'>
                     <div class='label-container'>
                         <div class='label'>Off the charts</div>
                     </div>

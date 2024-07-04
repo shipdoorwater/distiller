@@ -643,22 +643,22 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
             <h1 class='secondary-headline question-text'>How drunk do you want to get?</h1>
             <div class='progress step-4'></div>
             <ul class='choices'>
-                <li><a class='choice' href='/distiller/recommend/result?type=${param.type}&price=${param.price}&adventure=${param.adventure}&abv=1'>
+                <li><a class='choice' href='/recommend/result?type=${param.type}&price=${param.price}&adventure=${param.adventure}&abv=1'>
                     <div class='label-container'>
                         <div class='label'>Just a little buzzed</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/result?type=${param.type}&price=${param.price}&adventure=${param.adventure}&abv=2'>
+                <li><a class='choice' href='/recommend/result?type=${param.type}&price=${param.price}&adventure=${param.adventure}&abv=2'>
                     <div class='label-container'>
                         <div class='label'>A bit tipsy</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/result?type=${param.type}&price=${param.price}&adventure=${param.adventure}&abv=3'>
+                <li><a class='choice' href='/recommend/result?type=${param.type}&price=${param.price}&adventure=${param.adventure}&abv=3'>
                     <div class='label-container'>
                         <div class='label'>Quite drunk</div>
                     </div>
                 </a></li>
-                <li><a class='choice' href='/distiller/recommend/result?type=${param.type}&price=${param.price}&adventure=${param.adventure}&abv=4'>
+                <li><a class='choice' href='/recommend/result?type=${param.type}&price=${param.price}&adventure=${param.adventure}&abv=4'>
                     <div class='label-container'>
                         <div class='label'>Completely wasted</div>
                     </div>
