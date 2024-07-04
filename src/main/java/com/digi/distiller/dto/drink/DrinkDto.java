@@ -13,6 +13,8 @@ public class DrinkDto {
 	private String sub2;
 	private String maturity;
 	private String abv;
+	private int recommendStep;
+	private String reviewCount;
 	
 	public DrinkDto() {
 		
@@ -97,6 +99,22 @@ public class DrinkDto {
 	}
 	public void setAbv(String abv) {
 		this.abv = abv;
+	}
+
+	public int getRecommendStep() {
+		return recommendStep;
+	}
+
+	public void setRecommendStep(int recommendStep) {
+		this.recommendStep = recommendStep;
+	}
+
+	public String getReviewCount() {
+		return reviewCount;
+	}
+
+	public void setReviewCount(String reviewCount) {
+		this.reviewCount = reviewCount;
 	}	
 	
 	

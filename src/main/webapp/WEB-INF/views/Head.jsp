@@ -132,7 +132,7 @@ End Function
 								href="/user_search"> <span class="search">Find People</span>
 									<i aria-hidden="true" class="fa fa-user-plus"></i>
 							</a></li>
-							<li><a href="/recommend" id="global-menu"> Recommend </a></li>
+							<li><a href="/distiller/recommend/step1" id="global-menu"> Recommend </a></li>
 			
 							<% if (loginedEmail == null) { %>
 						        <li><a href="${pageContext.request.contextPath}/signIn">Sign In</a></li>

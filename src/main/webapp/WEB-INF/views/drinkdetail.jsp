@@ -247,9 +247,10 @@
                         class="toggle-link js-show-modal"
                         data-modal-selector=".js-registration-prompt-modal"
                       >
-                        <a href="review_write?drinkId=${drinkId }">
+
+                        <a href="review_write?drinkId=${drinkId}">
                           <i aria-hidden="true" class="icon fa fa-check"></i>
-                          <span class="label"> Review this </span>
+                          <span class="label"> Review this</span>
                         </a>
                       </button>
                     </div>
@@ -263,13 +264,14 @@
                         class="toggle-link js-show-modal"
                         data-modal-selector=".js-registration-prompt-modal"
                       >
-					          <a href="tastes/new?spirit=drinkfromdb"></a>
+			          <a href="purchase/cartAdd?drinkId=${drink.drinkId}&email=${loginedEmail}">
                         <span class="double-icon">
                           <i aria-hidden="true" class="fa fa-bars"></i>
                           <i aria-hidden="true" class="fa fa-plus"></i>
                         </span>
-                        <span class="label"> Add To My Cart (@링크) </span>
-					</a>
+                        <span class="label"> Add To My Cart</span>
+						</a>
+						
                       </button>
                     </div>
                   </div>
