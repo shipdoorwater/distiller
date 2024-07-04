@@ -102,7 +102,7 @@
 					<div class="edit-panel-container">
 						<div class="error"></div>
 						<form class="edit-profile" id="edit_user_400356"
-							action="/changeSetting"
+							action="${pageContext.request.contextPath}/changeSetting"
 							accept-charset="UTF-8" method="post">
 						<!-- 	<input name="utf8" type="hidden" value="✓"><input
 								type="hidden" name="_method" value="patch"><input
@@ -131,8 +131,8 @@
 							</div>
 						</form>
 						<div class="additional-links">
-							<a class="button small export-tastes href="/">Change Password</a>
-							<a class="button small export-tastes href="/">Delete Account</a>
+							<a class="button small export-tastes" href="${pageContext.request.contextPath}/changePasswordView"> Change Password</a>
+							<a class="button small export-tastes" href="/">Delete Account</a>
 						</div>
 					</div>
 

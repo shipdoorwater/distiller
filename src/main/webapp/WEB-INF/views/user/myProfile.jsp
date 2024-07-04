@@ -73,7 +73,7 @@
 											class="mini-headline">My Orders</span>
 									</a></li> 
 									<li class="profile-menu__item"><a
-										href="${pageContext.request.contextPath}/settings"> <i aria-hidden="true"
+										href="${pageContext.request.contextPath}/mySetting"> <i aria-hidden="true"
 											class="icomoon-cog"></i> <span class="mini-headline">Settings</span>
 									</a></li>
 									<!-- <li><a
