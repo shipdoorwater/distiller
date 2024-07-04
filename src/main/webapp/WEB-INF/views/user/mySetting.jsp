@@ -132,7 +132,7 @@
 						</form>
 						<div class="additional-links">
 							<a class="button small export-tastes" href="${pageContext.request.contextPath}/changePasswordView"> Change Password</a>
-							<a class="button small export-tastes" href="/">Delete Account</a>
+							<a class="button small export-tastes" href="${pageContext.request.contextPath}/deleteAccountView">Delete Account</a>
 						</div>
 					</div>
 

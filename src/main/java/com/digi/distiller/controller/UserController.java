@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.digi.distiller.Command;
 import com.digi.distiller.command.user.ChangePasswordCommand;
 import com.digi.distiller.command.user.ChangeSettingCommand;
+import com.digi.distiller.command.user.DeleteAccountCommand;
 import com.digi.distiller.command.user.LogoutCommand;
 import com.digi.distiller.command.user.MainViewCommand;
 import com.digi.distiller.command.user.MyProfileCommand;
@@ -211,7 +212,27 @@ public class UserController {
 			
 	}
 	
-	
+	@RequestMapping("/deleteAccountView")
+	public String deleteAccountView(Model model) {
+		System.out.println("deleteAccountView()");
+		
+		return "user/deleteAccount";
+	}
+	@RequestMapping("/deleteAccount")
+	public String deleteAccount(Model model, HttpSession session) {
+		System.out.println("deleteAccount()");
+		
+		model.addAttribute("session",session);
+		command = new DeleteAccountCommand();
+		command.execute(model);
+		
+		boolean result = (boolean) model.getAttribute("result");
+		System.out.println("result : " + result);
+		if (result)
+			return "redirect:main";
+		else return "redirect:myProfile";
+	}
+
 
 	
 	// search ¹Ù
