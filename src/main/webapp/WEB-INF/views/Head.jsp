@@ -3,6 +3,7 @@
 <% String contextPath = request.getContextPath(); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import = "java.util.*" %>
 <% 
 	String loginedEmail = (String) session.getAttribute("loginedEmail");
@@ -115,7 +116,7 @@ End Function
 					<i aria-hidden="true" class="fa fa-search"></i>
 				</a>
 				<div class="false-status-bar"></div>
-				<a class="logo" href="/" id="main-logo" >
+				<a class="logo" href="${pageContext.request.contextPath}/main" id="main-logo" >
 					<img src="${pageContext.request.contextPath}/assets/logo_black_trans_agave.png" alt="Distiller Home">
 					<span class="offscreen">Distiller Home</span>
 				</a>
@@ -131,7 +132,7 @@ End Function
 								href="/user_search"> <span class="search">Find People</span>
 									<i aria-hidden="true" class="fa fa-user-plus"></i>
 							</a></li>
-							<li><a href="/recommend" id="global-menu"> Recommend </a></li>
+							<li><a href="/distiller/recommend/step1" id="global-menu"> Recommend </a></li>
 			
 							<% if (loginedEmail == null) { %>
 						        <li><a href="${pageContext.request.contextPath}/signIn">Sign In</a></li>
@@ -170,9 +171,9 @@ End Function
 		</header>
 	</div>
 </div>
-<script src="${pageContext.request.contextPath}/resources/application.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/application.js"></script>
 <script src="${pageContext.request.contextPath}/resources/main.js"></script>
 <script src="${pageContext.request.contextPath}/resources/distiller_api.js"></script>
-
+ --%>
 </body>
 </html>

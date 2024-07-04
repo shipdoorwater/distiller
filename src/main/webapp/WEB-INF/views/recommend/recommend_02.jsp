@@ -2,10 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@ include file="Head.jsp"%>
+<%@ include file="../Head.jsp"%>
 <%
-System.out.println("review_write.jsp 진입성공함.");
+
+System.out.println("recommand_02.jsp 진입성공함.");
 %>
+
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -30,6 +32,34 @@ html, body {
 <link
 	href='/assets/square_logo-b7451ae02f20ca4dadb0c1c71e27791c8aab79d600fe1a7a01c2d491ffefed11.png'
 	rel='apple-touch-icon'>
+<link
+	href='/assets/loading/Distiller_Load_Iphone-8c0b0cc4f1b3bdb02fdc7d61c8ba3965779df0517e571c824720d1b1fa773d13.jpg'
+	media='(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 1)'
+	rel='apple-touch-startup-image'>
+<link
+	href='/assets/loading/Distiller_Load_IphoneRetina-8f737aa4342d447420a12d454cb65f1f706029ed78a37f12b68f577c050917aa.jpg'
+	media='(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)'
+	rel='apple-touch-startup-image'>
+<link
+	href='/assets/loading/Distiller_Load_Iphone5-ffb683fc4e8ba1f5ca6e370f679de208d9572a10958da5a9b25365fd1d0373a4.jpg'
+	media='(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+	rel='apple-touch-startup-image'>
+<link
+	href='/assets/loading/Distiller_Load_iPad_Portrait-eeea25cabad583f4d5ecae743021e2f0bebbb37d811c3ac77f5797651164fa76.jpg'
+	media='(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 1)'
+	rel='apple-touch-startup-image'>
+<link
+	href='/assets/loading/Distiller_Load_iPadRetina_Portrait-4b4cac021437dfb6c56799e73dbac3bfecb6eb02df8a58dddd452279f50d773b.jpg'
+	media='(device-width: 768px) and (device-height: 1024px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)'
+	rel='apple-touch-startup-image'>
+<link
+	href='/assets/loading/Distiller_Load_iPad_Landscape-65d4e90661dedfeda4b7e23bba97915912b4ad071db3edb6253d5390ced0c90a.jpg'
+	media='(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 1)'
+	rel='apple-touch-startup-image'>
+<link
+	href='/assets/loading/Distiller_Load_iPadRetina_Landscape-b94690f99f4251b31de0754ce8f6aa19610a48008a81914481908963a6427ccf.jpg'
+	media='(device-width: 768px) and (device-height: 1024px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)'
+	rel='apple-touch-startup-image'>
 
 <meta content='app' name='twitter:card'>
 <meta content='@DrinkDistiller' name='twitter:site'>
@@ -50,13 +80,11 @@ html, body {
 <meta content='com.distiller.distiller' name='twitter:app:id:googleplay'>
 <meta content='distiller://' name='twitter:app:url:googleplay'>
 
-<title>World’s Largest Spirits Community. Reviews, Tasting
-	Notes, Collection Tracking</title>
+<title>Get a Recommendation</title>
 <meta name="description"
-	content="Distiller is filled with expert reviews of liquor from all over the world so your next purchase, bar order, or gift, will be the right one!"></meta>
+	content="Distiller can help you find new flavors by giving you liquor recommendations based on your taste."></meta>
 <meta property="fb:app_id" content="347622362043610"></meta>
-<meta property="og:title"
-	content="World’s Largest Spirits Community. Reviews, Tasting Notes, Collection Tracking"></meta>
+<meta property="og:title" content="Get a Recommendation"></meta>
 <meta property="og:type" content="website"></meta>
 <meta property="og:url" content="https://distiller.com/"></meta>
 <meta property="og:image"
@@ -67,23 +95,19 @@ html, body {
 <meta property="og:image:width" content="1200"></meta>
 <meta property="og:image:height" content="650"></meta>
 <meta property="og:description"
-	content="Distiller is filled with expert reviews of liquor from all over the world so your next purchase, bar order, or gift, will be the right one!"></meta>
+	content="Distiller can help you find new flavors by giving you liquor recommendations based on your taste."></meta>
 <meta property="og:site_name" content="Distiller - The Liquor Expert"></meta>
-<meta property="og:review" content=""></meta>
-<meta property="og:brand" content=""></meta>
-<meta property="og:gtin" content=""></meta>
 <meta name="twitter:card" content="summary_large_image"></meta>
 <meta name="twitter:site" content="@drinkdistiller"></meta>
-<meta name="twitter:title" content="Distiller - The Liquor Expert"></meta>
+<meta name="twitter:title" content="Get a Recommendation"></meta>
 <meta name="twitter:description"
-	content="Distiller is filled with expert reviews of liquor from all over the world so your next purchase, bar order, or gift, will be the right one!"></meta>
+	content="Distiller can help you find new flavors by giving you liquor recommendations based on your taste."></meta>
 <meta name="twitter:image"
 	content="https://distiller.com/assets/share-banner-63c764ff422596da41c4c1b2b20cd89acd9761fd5d33a46bfc4a745082e44b22.png"></meta>
 <meta name="propeller" content="5dccddb793c866930849e367b1ace8a0"></meta>
 <meta name="hilltopads-site-verification"
 	content="78c2afa53789ff649fa49297f79c1cd05ad5c8a6"></meta>
-<link href='https://distiller.com/tastes/new?spirit=hibiki-21-year'
-	rel='canonical'>
+<link href='https://distiller.com/recommend' rel='canonical'>
 
 <link rel="stylesheet" media="all"
 	href="/assets/application-28cb40c83874216760225644183dd932c69a94bfdedcd3d89ebe3271942e9180.css" />
@@ -93,7 +117,7 @@ html, body {
 	href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" />
 <meta name="csrf-param" content="authenticity_token" />
 <meta name="csrf-token"
-	content="ZNyKOjVGyupBl2JC3F4Psw1euYk3u5NjWrSS3ZYL3Blw2/5RiR0YA3oMBCfdx8VVJ2KsgEWTJPOJAVeeiuOH1A==" />
+	content="wW3M2vjseSA6x8y+/Yx2t5xpM2KdWTmmBHgRrArKDBHVarixRLeryQFcqtv8FbxRtlUma+9xjjbXzdTvFiJX3A==" />
 <script
 	src="/assets/main-e3ef31261e3877cfda54e1c8890a8b5000b07b5b9b0f6dc7fcfadba8eff9a101.js"></script>
 <script
@@ -139,42 +163,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
     })(window,document,'script','dataLayer','GTM-MR88FL8');
   }
   
-  if(!isProUser) {
-    (function(w, d) {
-      w.adthrive = w.adthrive || {};
-      w.adthrive.cmd = w.adthrive.cmd || [];
-      w.adthrive.plugin = 'adthrive-ads-1.0.40-manual';
-      w.adthrive.host = 'ads.adthrive.com';
-      var s = d.createElement('script');
-      s.async = true;
-      s.referrerpolicy='no-referrer-when-downgrade';
-      s.src = 'https://' + w.adthrive.host + '/sites/606c5a9360a4830c06758746/ads.min.js?referrer=' + w.encodeURIComponent(w.location.href);
-      var n = d.getElementsByTagName('script')[0];
-      n.parentNode.insertBefore(s, n);
-    })(window, document);
-  }
   
-
-  
-  function findOrCreateWallet(plan_type) {
-    $.ajax({
-      method: 'PUT',
-      url: `https://api.distiller.com/microlive/wallet/`,
-      data: JSON.stringify({ system_id: slug}),
-      success: function(wallet_id) {updateUser(wallet_id, plan_type)},
-      error(xhr) { console.log('error', xhr) }
-    });
-  }
-  
-  function updateUser(wallet_id, plan_type) {
-    $.ajax({
-      method: 'PUT',
-      url: '/users/' + slug,
-      data: { user: { wallet_id }},
-      success: function() { buildProPacket(wallet_id, plan_type) },
-      error(xhr) { console.log('error', xhr)}
-    });
-  }
   
   
   function redirectToStripe(wallet_id, session_id) {
@@ -196,6 +185,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
       window.location = "https://distiller.com/join-pro?registration_error=true"
     });
   }
+
   
   function findSessionId() {
     $.ajax({
@@ -224,8 +214,22 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
       redirectToSubscriptionPage
     })
   }
-
   
+  function renewSubscription() {
+    document.getElementById('spinner').style.display = "block";
+    $.ajax({
+      method: 'POST',
+      url: `https://api.distiller.com/microlive/wallet/${walletId}/pro`,
+      data: {},
+      success: redirectToSubscriptionPage,
+      error(xhr) {
+        document.getElementById('spinner').style.display = "block";
+        console.log('error', xhr)
+      }
+    });
+  }
+  
+
   function getCookie(cname){
     var name = cname + "=";
     var ca = document.cookie.split(';');
@@ -317,14 +321,14 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
   
   gtag('config', location.hostname == "distiller.com" ? "G-8K2RFRHH4Q" : "G-YPDT3WKNSR");
   
- 
+
 </script>
 
 
 <script>
   /************ Track initial page load ********************/
   $(document).ready(function(){
-    Distiller.googleTagTracker.trackPageLoad("New Taste");
+    Distiller.googleTagTracker.trackPageLoad("recommender#index");
   });
 </script>
 <script async='' await='' defer='defer'
@@ -358,11 +362,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
     });
   });
 </script>
-<!-- ********************* AdThrive Ad Block Recovery *********************************** -->
-<script>!function(){"use strict";!function(e){if(-1===e.cookie.indexOf("__adblocker")){e.cookie="__adblocker=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";var t=new XMLHttpRequest;t.open("GET","https://www.npttech.com/advertising.js",!0),t.onreadystatechange=function(){if(XMLHttpRequest.DONE===t.readyState)if(200===t.status){var n=e.createElement("script");n.innerHTML=t.responseText,e.getElementsByTagName("head")[0].appendChild(n)}else{var a=new Date;a.setTime(a.getTime()+3e5),e.cookie="__adblocker=true; expires="+a.toUTCString()+"; path=/"}},t.send()}}(document)}();
-</script>
-<script>!function(){"use strict";var e;e=document,function(){var t,n;function r(){var t=e.createElement("script");t.src="https://cafemedia-com.videoplayerhub.com/galleryplayer.js",e.head.appendChild(t)}function a(){var t=e.cookie.match("(^|[^;]+)\\s*__adblocker\\s*=\\s*([^;]+)");return t&&t.pop()}function c(){clearInterval(n)}return{init:function(){var e;"true"===(t=a())?r():(e=0,n=setInterval((function(){100!==e&&"false"!==t||c(),"true"===t&&(r(),c()),t=a(),e++}),50))}}}().init()}();
-</script>
+
 <!-- ********* Adthrive - Disable all ads ********* -->
 <!-- ********* Google Sitelinks Searchbox ********* -->
 <script type="application/ld+json">
@@ -378,29 +378,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 }
 </script>
 <script async='' src='https://cdn.onesignal.com/sdks/OneSignalSDK.js'></script>
-<script>
-  var username = "bbakssang"
-  
-  window.OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "9a4d5120-39da-44f6-ba88-f7b8c71c8849",
-    });
-    if (isCurrentUser) {
-      OneSignal.setExternalUserId(slug);
-      OneSignal.sendTag("username", username);
-      if (isProUser) {
-        OneSignal.sendTag("account_type", "pro");
-      } else {
-        OneSignal.sendTag("account_type", "free");
-      }
-    } else {
-      OneSignal.removeExternalUserId();
-      OneSignal.deleteTag("username");
-      OneSignal.deleteTag("account_type");
-    }
-  });
-</script>
+
 <script>
   $(document).ready(function(){
     if($.cookie('DISMISS_DOWNLOAD_BANNER')) {
@@ -426,7 +404,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 
 
 </head>
-<body class='screened' ontouchstart=''>
+<body class='screened whiskey-selected' ontouchstart=''>
 	<div class='modal error-modal js-hideable-modal hidden js-error-modal'>
 		<div class='modal-window'>
 			<button class='button close js-modal-close'>
@@ -445,11 +423,11 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 		</div>
 	</div>
 
-	<!-- <script>
+	<script>
   $(document).ready(function(){
     new Distiller.EmailOptPrompt($('.js-email-opt'));
   });
-</script> -->
+</script>
 
 	<ul id='skip-links'>
 		<li><a href='#global-menu'>Skip to navigation</a></li>
@@ -585,76 +563,131 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 	<div class='screen background'>
 		<div class='canvas-wrapper'>
 			<div class='content-container'>
+
+
 				<div aria-live='assertive' class='flash-message-alert' role='alert'></div>
 				<main aria-hidden='false' class='main-container' id='main-content'
 					tabIndex='-1'>
 					<div class='scroller'>
-						<div class='center-column taste-form-page'>
-							<div class='taste-form whiskey'>
-								<h2 class='taste-form__title'>You're Reviewing</h2>
-								<h3 class='taste-form__spirit-name'>${dto.drinkName }</h3>
-
-								<form class="new_taste" id="new_taste" action="${pageContext.request.contextPath}/reviewWriteDone"
-									accept-charset="UTF-8" method="post">
-									<input type="hidden" name="drinkId" value="${param.drinkId}">
-
-									<div class='taste-form__field taste-form__rating-field'>
-										<h4 class='taste-form__field-label'>Your Rating</h4>
-										<div class='taste-form__rating-slider'>
-											<div class='js-star-selector star-selector'>
-												<select name="rating" id="rating"><option value=""></option>
-													<option value="0.25">0.25</option>
-													<option value="0.5">0.5</option>
-													<option value="0.75">0.75</option>
-													<option value="1.0">1.0</option>
-													<option value="1.25">1.25</option>
-													<option value="1.5">1.5</option>
-													<option value="1.75">1.75</option>
-													<option value="2.0">2.0</option>
-													<option value="2.25">2.25</option>
-													<option value="2.5">2.5</option>
-													<option value="2.75">2.75</option>
-													<option value="3.0">3.0</option>
-													<option value="3.25">3.25</option>
-													<option value="3.5">3.5</option>
-													<option value="3.75">3.75</option>
-													<option value="4.0">4.0</option>
-													<option value="4.25">4.25</option>
-													<option value="4.5">4.5</option>
-													<option value="4.75">4.75</option>
-													<option value="5.0">5.0</option></select>
-											</div>
-										</div>
-									</div>
-
-									<div class='taste-form__field'>
-										<h4 class='taste-form__field-label'>Your Note</h4>
-										<textarea
-											placeholder="Start typing your tasting notes here..."
-											class="js-mentionable-input" name="reviewcontent"
-											id="reviewcontent">
-</textarea>
-									</div>
-
-									<input type="submit" name="commit" value="Save"
-										class="button small accented" 
-										data-disable-with="Save" />
-								</form>
+						 
+						 
+						 
+						 <!-- <section class='site-content'>
+							<h1 aria-hidden='true' class='offscreen'>Get a custom
+								spirits recommendation</h1>
+							<div id='question'>
+								<div class='question'>
+									<h1 class='secondary-headline question-text'>Know What
+										Type of Spirit You&#39;re Looking For?</h1>
+									<div class='progress step-0'></div>
+									<ul class='choices'>
+										<li><a class='choice'
+											href='/recommend?answers%5Bwhich_spirit_family%5D=whiskey'>
+												<div class='label-container'>
+													<div class='label'>Whiskey</div>
+												</div>
+										</a></li>
+										<li><a class='choice'
+											href='/recommend?answers%5Bwhich_spirit_family%5D=agave'>
+												<div class='label-container'>
+													<div class='label'>Tequila/Mezcal</div>
+												</div>
+										</a></li>
+										<li><a class='choice'
+											href='/recommend?answers%5Bwhich_spirit_family%5D=brandy'>
+												<div class='label-container'>
+													<div class='label'>Brandy</div>
+												</div>
+										</a></li>
+										<li><a class='choice'
+											href='/recommend?answers%5Bwhich_spirit_family%5D=sugarcane'>
+												<div class='label-container'>
+													<div class='label'>Rum</div>
+												</div>
+										</a></li>
+										<li><a class='choice'
+											href='/recommend?answers%5Bwhich_spirit_family%5D=vodka'>
+												<div class='label-container'>
+													<div class='label'>Vodka</div>
+												</div>
+										</a></li>
+										<li><a class='choice'
+											href='/recommend?answers%5Bwhich_spirit_family%5D=gin'>
+												<div class='label-container'>
+													<div class='label'>Gin</div>
+												</div>
+										</a></li>
+										<li><a class='choice'
+											href='/recommend?answers%5Bwhich_spirit_family%5D=liqueur'>
+												<div class='label-container'>
+													<div class='label'>Liqueurs/Bitters</div>
+												</div>
+										</a></li>
+										<li><a class='choice'
+											href='/recommend?answers%5Bwhich_spirit_family%5D=other'>
+												<div class='label-container'>
+													<div class='label'>Other</div>
+												</div>
+										</a></li>
+									</ul>
+								</div>
 							</div>
-						</div>
+						</section>  -->
+
+
+
+						<section class='site-content'>
+    <h1 aria-hidden='true' class='offscreen'>Get a custom spirits recommendation</h1>
+    <div id='question'>
+        <div class='question'>
+            <h1 class='secondary-headline question-text'>What are you looking to spend?</h1>
+            <div class='progress step-1'></div>
+            <ul class='choices'>
+                <li><a class='choice' href='/distiller/recommend/step3?type=${param.type}&price=p1'>
+                    <div class='label-container'>
+                        <div class='label'>$ (0-10)</div>
+                    </div>
+                </a></li>
+                <li><a class='choice' href='/distiller/recommend/step3?type=${param.type}&price=p2'>
+                    <div class='label-container'>
+                        <div class='label'>$$ (10-30)</div>
+                    </div>
+                </a></li>
+                <li><a class='choice' href='/distiller/recommend/step3?type=${param.type}&price=p3'>
+                    <div class='label-container'>
+                        <div class='label'>$$$ (30-40)</div>
+                    </div>
+                </a></li>
+                <li><a class='choice' href='/distiller/recommend/step3?type=${param.type}&price=p4'>
+                    <div class='label-container'>
+                        <div class='label'>$$$$ (40+)</div>
+                    </div>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
 
 					</div>
 				</main>
+				
 			</div>
 		</div>
 	</div>
-	<!-- <script defer
+	<script defer
 		src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
 		integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
-		data-cf-beacon='{"rayId":"89d2ce386e0eaa69","version":"2024.4.1","token":"0ee8b19124ad4a8ab1320cedb1148c5d"}'
-		crossorigin="anonymous"></script> -->
-<script src="${pageContext.request.contextPath}/resources/application.js"></script>
+		data-cf-beacon='{"rayId":"89dbbeaf7ec7f615","version":"2024.4.1","token":"0ee8b19124ad4a8ab1320cedb1148c5d"}'
+		crossorigin="anonymous"></script>
 </body>
+
 </html>
 
-<%@ include file="footer.jsp"%>
+
+<%@ include file="../footer.jsp"%>
