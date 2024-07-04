@@ -28,7 +28,7 @@ public class UserController {
 	
 	@RequestMapping("/")
 	public String index(Model model) {
-		System.out.println("main()");
+		System.out.println("index()");
 		return "redirect:main";
 	}
 	@RequestMapping("/head")
@@ -40,9 +40,16 @@ public class UserController {
 	public String footer(Model model) {
 		return "footer";
 	}
+	
+	// 메인화면
 	@RequestMapping("/main")
-	public String main(Model model) {
+	public String main(Model model, HttpServletRequest request) {
 		System.out.println("main()");
+		
+		model.addAttribute("request",request);
+		command = new MainViewCommand();
+		command.execute(model);
+		
 		return "main";
 	}
 

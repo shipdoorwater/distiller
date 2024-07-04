@@ -3,6 +3,7 @@
 <% String contextPath = request.getContextPath(); %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import = "java.util.*" %>
 <% 
 	String loginedEmail = (String) session.getAttribute("loginedEmail");
@@ -115,7 +116,7 @@ End Function
 					<i aria-hidden="true" class="fa fa-search"></i>
 				</a>
 				<div class="false-status-bar"></div>
-				<a class="logo" href="/distiller/main" id="main-logo" >
+				<a class="logo" href="${pageContext.request.contextPath}/main" id="main-logo" >
 					<img src="${pageContext.request.contextPath}/assets/logo_black_trans_agave.png" alt="Distiller Home">
 					<span class="offscreen">Distiller Home</span>
 				</a>
@@ -170,9 +171,9 @@ End Function
 		</header>
 	</div>
 </div>
-<script src="${pageContext.request.contextPath}/resources/application.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/application.js"></script>
 <script src="${pageContext.request.contextPath}/resources/main.js"></script>
 <script src="${pageContext.request.contextPath}/resources/distiller_api.js"></script>
-
+ --%>
 </body>
 </html>

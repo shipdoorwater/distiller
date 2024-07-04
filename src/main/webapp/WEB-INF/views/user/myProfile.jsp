@@ -24,7 +24,7 @@ System.out.println(test);
 							</a>
 							<p class="tertiary-headline name">Munsu-Bae</p>
 						</div>
-						<div class="user-statistics">
+						<!-- <div class="user-statistics">
 							<div class="statistic reviews-link">
 								<a href="/profile/munsu-bae/tastes"> <span class="link-wrap">
 										0
@@ -33,7 +33,7 @@ System.out.println(test);
 								</a>
 							</div>
 
-							<div class="statistic followers-link">
+							 <div class="statistic followers-link">
 								<a href="/profile/munsu-bae/followers"> <span
 									class="link-wrap"> 0
 										<div>Followers</div>
@@ -47,9 +47,9 @@ System.out.println(test);
 										<div>Following</div>
 								</span>
 								</a>
-							</div>
+							</div> 
 
-						</div>
+						</div> -->
 
 						<div class="menu">
 							<div class="menu-content">
@@ -60,6 +60,12 @@ System.out.println(test);
 											class="mini-headline">My Feed</span> <span class="offscreen">Current
 												Page</span>
 									</a></li> -->
+									
+									<li class="profile-menu__item"><a
+										href="/profile/munsu-bae/lists"> <i aria-hidden="true"
+											class="fa fa-list-ul"></i> <span class="mini-headline">Reviews</span>
+									</a></li>
+				
 									<li class="profile-menu__item"><a
 										href="/profile/munsu-bae/lists"> <i aria-hidden="true"
 											class="fa fa-list-ul"></i> <span class="mini-headline">My Carts</span>
@@ -73,11 +79,11 @@ System.out.println(test);
 										href="/profile/munsu-bae/settings"> <i aria-hidden="true"
 											class="icomoon-cog"></i> <span class="mini-headline">Settings</span>
 									</a></li>
-									<li><a
+									<!-- <li><a
 										href="mailto:hello@distiller.com?subject=Distiller.com%20Feedback&amp;body=%0A%0ASent%20from:%20{{userAgent}}">
 											<i aria-hidden="true" class="fa fa-envelope"></i> <span
 											class="mini-headline"> Contact Us </span>
-									</a></li>
+									</a></li> -->
 									<li><a data-method="delete" href="/logout"
 										rel="nofollow"> <i aria-hidden="true" class="icomoon-x"></i>
 											<span class="mini-headline"> LogOut </span>

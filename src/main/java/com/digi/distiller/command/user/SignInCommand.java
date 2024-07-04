@@ -23,9 +23,13 @@ public class SignInCommand implements Command {
 		String email = request.getParameter("user[login]");
 		String password = request.getParameter("user[password]");
 		boolean result = dao.signIn(email, password);
+		int isAdmin = dao.isAdmin(email);
 		
-		if (result)
+		if (result) {
 			session.setAttribute("loginedEmail", email);
+			session.setAttribute("isAdmin", String.valueOf(isAdmin));
+		}
+			
 		model.addAttribute("result", result);
 	}	
 }
