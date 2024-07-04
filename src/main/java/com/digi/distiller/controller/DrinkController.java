@@ -53,6 +53,11 @@ public class DrinkController {
 	        model.addAttribute("drink", drink);
 	        model.addAttribute("totalReviews", totalReviews); // ¸ðµ¨¿¡ ¸®ºä ¼ö Ãß°¡
 	     	
+	        // ÆòÁ¡ Æò±Õ°ª Ãß°¡
+	        double ratingAverage = reviewDao.reviewAverage(drinkId);
+	        model.addAttribute("ratingAverage", ratingAverage); // ¸ðµ¨¿¡ ¸®ºä ¼ö Ãß°¡
+	        
+	        
 			return "drinkdetail";
 			
         }catch (Exception e) {

@@ -441,7 +441,10 @@
 										role="listitem" style="width: 404px;">
 										<li class="homepage-list-item bottle agave-content"
 											role="none"><a aria-hidden="true"
-											href="/spirits/mayenda-reposado-double-cask" tabindex="-1">
+											href="/distiller/drinkdetail?drinkId=W01"
+											tabindex="-1">
+											<!-- href="/spirits/mayenda-reposado-double-cask" --> 
+											
 												<div aria-label="Mayenda Reposado Double Cask Bottle"
 													class="thumbnail" role="img"
 													style="background-image: url(https://ip-distiller.imgix.net/images/spirits/473e4e00-f8f3-013c-25c8-2e72b001f775/mayenda-reposado-double-cask_original-1716234115.jpg?w=640&amp;h=280&amp;mark-w=70&amp;mark-h=70&amp;fit=crop&amp;crop=right&amp;mark-align=top,left&amp;mark-pad=0&amp;mark=)"></div>

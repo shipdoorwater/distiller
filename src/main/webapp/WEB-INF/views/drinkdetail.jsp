@@ -77,14 +77,14 @@
                     <ul class="tabs-header">
                       <li class="tab-overview-header ui-tabs-active">
                         <div class="tab-content">
-                          <a aria-current="page" href="drinkdetail?id=@db"
-                            >Details (@링크_탭)</a
+                          <a aria-current="page" href="drinkdetail?drinkId=${drinkId }"
+                            >Details</a
                           >
                         </div>
                       </li>
                       <li class="tab-tastes-header">
                         <div class="tab-content">
-                          <a href="drinkdetail/reviews?drinkId=@db"
+                          <a href="drinkdetail/reviews?drinkId=${drinkId }"
                             ><span class="count">${totalReviews}</span> Reviews
                             </a
                           >
@@ -107,7 +107,7 @@
                                     class="rating-display__value average-rating"
                                   >
                                     <span itemprop="ratingValue"
-                                      >{$rating.average}</span
+                                      >${ratingAverage}</span
                                     >
                                     <meta content="5" itemprop="bestRating" />
                                     <meta content="0" itemprop="worstRating" />
@@ -151,7 +151,7 @@
 
                                   <div class="total-ratings">
                                     (
-                                    <a href="drinkdetail/review?id=@db"
+                                    <a href="drinkdetail/reviews?drinkId=${drinkId }"
                                       ><span class="offscreen">
                                         Total review count:
                                       </span>
@@ -239,9 +239,9 @@
                         class="toggle-link js-show-modal"
                         data-modal-selector=".js-registration-prompt-modal"
                       >
-                        <a href="tastes/new?spirit=drinkfromdb">
+                        <a href="review_write?drinkId=${drinkId }">
                           <i aria-hidden="true" class="icon fa fa-check"></i>
-                          <span class="label"> Review this (@링크) </span>
+                          <span class="label"> Review this </span>
                         </a>
                       </button>
                     </div>
