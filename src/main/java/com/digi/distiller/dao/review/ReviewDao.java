@@ -29,7 +29,7 @@ public class ReviewDao {
 
 	// 리뷰 리스트 불러오기
 	public List<ReviewDto> reviewListDao(String drinkId) {
-		String query = "SELECT drinkId, email, rating, reviewDate, reviewContent FROM REVIEW WHERE drinkId = ? ORDER BY reviewId DESC";
+		String query = "SELECT drinkId, email, rating, reviewDate, reviewContent FROM REVIEW WHERE reviewStatus = '1' AND drinkId = ? ORDER BY reviewId DESC";
 //        String query = "SELECT d.drinkId, d.drinkName, r.email, r.rating, r.reviewDate, r.reviewContent FROM review r, drink d WHERE d.drinkId = r.drinkId and r.drinkId = ? ORDER BY r.reviewId DESC";
 
 		try {

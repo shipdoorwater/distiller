@@ -717,7 +717,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 									itemprop='image'>
 								<div class='main-image desktop official'
 									style="background-image: url('${pageContext.request.contextPath}/assets/images/${dto.photo}')"></div>
-								
+
 								<div class='vitals'>
 									<h1 class='secondary-headline name' data-behavior='truncatable'
 										itemprop='name'>${dto.drinkName }</h1>
@@ -743,15 +743,15 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 											<div class='tab-content'>
 												<a aria-current="page"
 													href="http://localhost:8080/distiller/drinkdetail/reviews?drinkId=${drinkId }">
-													${totalReviews} Reviews <span class='count' th:text="${totalReviews}">
-														</span>
+													${totalReviews} Reviews <span class='count'
+													th:text="${totalReviews}"> </span>
 												</a>
 											</div>
 										</li>
 									</ul>
 									<div class='tabs-body'>
 										<ol class='spirit-tastes spirit-list' role='none'>
-										
+
 											<div class='results'>
 												<ul>
 													<c:forEach items="${reviews}" var="review"
@@ -807,8 +807,8 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 																	<div class='body'>${review.reviewContent}</div>
 																</div>
 
-																<div class='taste-actions'>
-																	<div class='like-container js-like-button-container'
+																<%--<div class='taste-actions'>
+																	 <div class='like-container js-like-button-container'
 																		data-taste-id='${review.reviewId}'>
 																		<div
 																			class='modal js-hideable-modal hidden js-taste-likes-${review.reviewId}'>
@@ -834,19 +834,19 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 																				</c:otherwise>
 																			</c:choose>
 																		</div>
-																	</div>
+																	</div> 
 
 																	<a class='show-hide-comments'
 																		href='<c:url value="/tastes/${review.reviewId}"/>'>
 																		<div class='ultra-mini-headline'>
 																			<div class='show-comment-link'>
 																				Show Comments (0
-																				<%-- <span>${review.commentCount}</span> --%>
+																				<%-- <span>${review.commentCount}</span> 
 																				)
 																			</div>
 																		</div>
 																	</a>
-																</div>
+																</div> --%>
 															</div>
 														</li>
 														</li>
@@ -862,7 +862,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 
 									</div>
 								</div>
-								<div class='alternate-recommendations'>
+								<!-- <div class='alternate-recommendations'>
 
 									<h2 class='section-title middleweight'>You may also like</h2>
 									<ul>
@@ -909,7 +909,7 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 												</div>
 										</a></li>
 									</ul>
-								</div>
+								</div> -->
 
 							</div>
 
@@ -1140,8 +1140,6 @@ window.gon={};gon.DISTILLER_WEB_API_KEY="8e01b58d-6bc8-407e-b7fb-5b989b5b23e9";g
 									Questions</a></li>
 						</ul>
 					</div>
-
-			
 			</div>
 			</main>
 
