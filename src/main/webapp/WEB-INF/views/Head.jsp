@@ -115,7 +115,7 @@ End Function
 					<i aria-hidden="true" class="fa fa-search"></i>
 				</a>
 				<div class="false-status-bar"></div>
-				<a class="logo" href="/" id="main-logo" >
+				<a class="logo" href="/distiller/main" id="main-logo" >
 					<img src="${pageContext.request.contextPath}/assets/logo_black_trans_agave.png" alt="Distiller Home">
 					<span class="offscreen">Distiller Home</span>
 				</a>
