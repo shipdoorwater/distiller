@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.digi.distiller.Command;
+import com.digi.distiller.command.user.ChangeSettingCommand;
 import com.digi.distiller.command.user.LogoutCommand;
 import com.digi.distiller.command.user.MainViewCommand;
 import com.digi.distiller.command.user.MyProfileCommand;
 import com.digi.distiller.command.user.MyReviewCommand;
+import com.digi.distiller.command.user.MySettingCommand;
 import com.digi.distiller.command.user.RegisterCommand;
 import com.digi.distiller.command.user.SearchCommand;
 import com.digi.distiller.command.user.SignInCommand;
@@ -146,15 +148,33 @@ public class UserController {
 		
 		return "user/myReview";
 	}
-
+	@RequestMapping("/mySetting")
+	public String mySetting(Model model, HttpServletRequest request, HttpSession session) {
+		System.out.println("mySetting()");
+		
+		model.addAttribute("request",request);
+		model.addAttribute("session",session);
+		command = new MySettingCommand();
+		command.execute(model);
+		
+		return "user/mySetting";
+	}
+	@RequestMapping("/changeSetting")
+	public String changeSetting(Model model,HttpServletRequest request, HttpSession session) {
+		System.out.println("changeSetting()");
+		
+		model.addAttribute("request",request);
+		model.addAttribute("session",session);
+		command = new ChangeSettingCommand();
+		command.execute(model);
+		
+		return "redirect:myProfile";
+	}
+	
 	
 
 	
-//	@RequestMapping("/searchUserView")
-//	public String searchUserView(Model model) {
-//		System.out.println("searchUserView()");
-//		return "searchUserView";
-//	}
+	// search ¹Ù
 	@RequestMapping("/searchLiquorView")
 	public String searchLiquorView(Model model, HttpServletRequest request,
             @RequestParam(value = "page", defaultValue = "1") int page,

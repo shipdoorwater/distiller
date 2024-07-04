@@ -1,18 +1,17 @@
 package com.digi.distiller.command.user;
 
-import java.util.ArrayList;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
 import com.digi.distiller.Command;
 import com.digi.distiller.dao.user.UserDao;
-import com.digi.distiller.dto.user.PersonalReviewDto;
 import com.digi.distiller.dto.user.UserDto;
 
-public class MyReviewCommand implements Command {
+public class MySettingCommand implements Command {
 
 	@Override
 	public void execute(Model model) {
@@ -24,10 +23,10 @@ public class MyReviewCommand implements Command {
 		
 		String email = (String) session.getAttribute("loginedEmail");
 
-		ArrayList<PersonalReviewDto> reviewList = userDao.getUserReview(email);
 		UserDto userDto = userDao.getUserInfo(email);
 		
-		model.addAttribute("userDto",userDto);
-		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("userDto", userDto);
 	}
+
+	
 }
