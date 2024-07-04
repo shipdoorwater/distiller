@@ -70,7 +70,7 @@
 											class="fa fa-list-ul"></i> <span class="mini-headline">My Carts</span>
 									</a></li>
 			 						<li class="profile-menu__item"><a
-										href="${pageContext.request.contextPath}/purchase/order"> <i
+										href="${pageContext.request.contextPath}/purchase/orders?orderProcessed=true"> <i
 											aria-hidden="true" class="far fa-bookmark"></i> <span
 											class="mini-headline">My Orders</span>
 									</a></li> 

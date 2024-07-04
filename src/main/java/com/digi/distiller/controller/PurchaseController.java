@@ -140,9 +140,9 @@ public class PurchaseController {
             email = paramEmail;
         }
         model.addAttribute("session", session);
-        if (orderProcessed) {
-            ordersCommand.execute(model);
-        }
+       
+        ordersCommand.execute(model);
+
 
 
 	    // 이메일을 플래시 속성으로 추가
