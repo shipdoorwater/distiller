@@ -12,7 +12,7 @@
 				<div class="desktop-profile-nav">
 					<div class="profile-nav">
 						<div class="summary">
-							<a href="/profile/munsu-bae/settings">
+							<a href="${pageContext.request.contextPath}/myProfile">
 								<div class="user-avatar">
 									<div aria-label=${userDto.name }>
 										<img class="pic" role="img"
@@ -61,22 +61,21 @@
 									</a></li> -->
 
 									<li class="profile-menu__item"><a
-										href="/profile/munsu-bae/lists"> <i aria-hidden="true"
+										href="${pageContext.request.contextPath}/myReview"> <i aria-hidden="true"
 											class="fa fa-list-ul"></i> <span class="mini-headline">Reviews</span>
 									</a></li>
 
 									<li class="profile-menu__item"><a
-										href="/profile/munsu-bae/lists"> <i aria-hidden="true"
-											class="fa fa-list-ul"></i> <span class="mini-headline">My
-												Carts</span>
+										href="${pageContext.request.contextPath}/purchase/cart"> <i aria-hidden="true"
+											class="fa fa-list-ul"></i> <span class="mini-headline">My Carts</span>
 									</a></li>
-									<!-- 						<li class="profile-menu__item"><a
-										href="/profile/munsu-bae/saved_articles"> <i
+			 						<li class="profile-menu__item"><a
+										href="${pageContext.request.contextPath}/purchase/order"> <i
 											aria-hidden="true" class="far fa-bookmark"></i> <span
-											class="mini-headline">My Saved Articles</span>
-									</a></li> -->
+											class="mini-headline">My Orders</span>
+									</a></li> 
 									<li class="profile-menu__item"><a
-										href="/profile/munsu-bae/settings"> <i aria-hidden="true"
+										href="${pageContext.request.contextPath}/settings"> <i aria-hidden="true"
 											class="icomoon-cog"></i> <span class="mini-headline">Settings</span>
 									</a></li>
 									<!-- <li><a
@@ -96,96 +95,7 @@
 
 				</div>
 				<div class="personal-content profile-list">
-					<div class="profile-header">
-						<label class="tertiary-headline" for="navigation"> My Feed
-							<i class="fa fa-chevron-down spirit-family-select__chevron"
-							aria-hidden="true"></i>
-						</label>
-					</div>
-					<div class="mobile-profile-nav">
-						<input id="navigation" type="checkbox">
-						<div class="navigation">
-							<div class="profile-nav">
-								<div class="summary">
-									<a href="/profile/munsu-bae/settings">
-										<div class="user-avatar">
-											<div aria-label="Munsu-Bae" class="pic" role="img"
-												style="background-image: url(${pageContext.request.contextPath}/assets/placeholders/placeholder_2.png)"></div>
-
-											%>
-
-										</div>
-									</a>
-									<p class="tertiary-headline name">Munsu-Bae</p>
-								</div>
-								<div class="user-statistics">
-									<div class="statistic reviews-link">
-										<a href="/profile/munsu-bae/tastes"> <span
-											class="link-wrap"> 0
-												<div>Reviews</div>
-										</span>
-										</a>
-									</div>
-
-									<div class="statistic followers-link">
-										<a href="/profile/munsu-bae/followers"> <span
-											class="link-wrap"> 0
-												<div>Followers</div>
-										</span>
-										</a>
-									</div>
-
-									<div class="statistic following-link">
-										<a href="/profile/munsu-bae/following"> <span
-											class="link-wrap"> 0
-												<div>Following</div>
-										</span>
-										</a>
-									</div>
-
-								</div>
-
-								<div class="menu">
-									<div class="menu-content">
-										<ul>
-											<!-- <li class="profile-menu__item" id="active"><a
-												href="/profile/munsu-bae/feed"> <i aria-hidden="true"
-													class="icomoon-activity-feed"></i> <span
-													class="mini-headline">My Feed</span> <span
-													class="offscreen">Current Page</span>
-											</a></li> -->
-											<li class="profile-menu__item"><a
-												href="/profile/munsu-bae/lists"> <i aria-hidden="true"
-													class="fa fa-list-ul"></i> <span class="mini-headline">My
-														Carts</span>
-											</a></li>
-											<!-- 							<li class="profile-menu__item"><a
-												href="/profile/munsu-bae/saved_articles"> <i
-													aria-hidden="true" class="far fa-bookmark"></i> <span
-													class="mini-headline">My Saved Articles</span>
-											</a></li> -->
-											<li class="profile-menu__item"><a
-												href="/profile/munsu-bae/settings"> <i
-													aria-hidden="true" class="icomoon-cog"></i> <span
-													class="mini-headline">Settings</span>
-											</a></li>
-											<li><a
-												href="mailto:hello@distiller.com?subject=Distiller.com%20Feedback&amp;body=%0A%0ASent%20from:%20{{userAgent}}">
-													<i aria-hidden="true" class="fa fa-envelope"></i> <span
-													class="mini-headline"> Contact Us </span>
-											</a></li>
-											<li><a data-method="delete" href="/users/sign_out"
-												rel="nofollow"> <i aria-hidden="true" class="icomoon-x"></i>
-													<span class="mini-headline"> LogOut </span>
-											</a></li>
-										</ul>
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-					</div>
+					
 					<!-- <a class="button mini notifications-only"
 						href="/profile/munsu-bae/feed?notifications_only=true"> Show
 						Only My Activity </a> -->
@@ -212,7 +122,7 @@
 					                        <div class="high-level-info">
 					                            <a class="image-wrap" href="/">
 					                                <div aria-label="${review.drinkName} bottle">
-					                                	<img class="image" role="img" src="${pageContext.request.contextPath}/assets/images/${review.photo}"/>    
+					                                	<img class="image" role="img" style="object-fit: cover;" src="${pageContext.request.contextPath}/assets/images/${review.photo}"/>    
 					                                </div>
 					                            </a>
 					                            <div class="name-details">
@@ -422,3 +332,20 @@
 </main>
 
 <%@ include file="../footer.jsp"%>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const menuItems = document.querySelectorAll(".profile-menu__item");
+
+    menuItems.forEach(item => {
+        item.addEventListener("click", function() {
+            // 모든 li 요소에서 id="active" 제거
+            menuItems.forEach(menuItem => {
+                menuItem.removeAttribute("id");
+            });
+
+            // 클릭된 li 요소에 id="active" 추가
+            this.setAttribute("id", "active");
+        });
+    });
+});
+</script>

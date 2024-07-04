@@ -14,7 +14,8 @@
 							<a href="${pageContext.request.contextPath}/myProfile">
 								<div class="user-avatar">
 									<div aria-label=${userDto.name }>
-										<img class="pic" role="img" src="${pageContext.request.contextPath}/assets/images/plaaceholders/placeholder_2.png"/>
+										<img class="pic" role="img"
+											src="${pageContext.request.contextPath}/assets/images/plaaceholders/placeholder_2.png" />
 									</div>
 
 								</div>
@@ -51,39 +52,42 @@
 						<div class="menu">
 							<div class="menu-content">
 								<ul>
-							<!-- 		<li class="profile-menu__item" id="active"><a
+									<!-- 		<li class="profile-menu__item" id="active"><a
 										href="/profile/munsu-bae/feed"> <i aria-hidden="true"
 											class="icomoon-activity-feed"></i> <span
 											class="mini-headline">My Feed</span> <span class="offscreen">Current
 												Page</span>
 									</a></li> -->
-									
+
 									<li class="profile-menu__item"><a
-										href="${pageContext.request.contextPath}/myReview"> <i aria-hidden="true"
-											class="fa fa-list-ul"></i> <span class="mini-headline">Reviews</span>
+										href="${pageContext.request.contextPath}/myReview"> <i
+											aria-hidden="true" class="fa fa-list-ul"></i> <span
+											class="mini-headline">Reviews</span>
 									</a></li>
-				
+
 									<li class="profile-menu__item"><a
-										href="${pageContext.request.contextPath}/purchase/cart"> <i aria-hidden="true"
-											class="fa fa-list-ul"></i> <span class="mini-headline">My Carts</span>
+										href="${pageContext.request.contextPath}/purchase/cart"> <i
+											aria-hidden="true" class="fa fa-list-ul"></i> <span
+											class="mini-headline">My Carts</span>
 									</a></li>
-			 						<li class="profile-menu__item"><a
-										href="${pageContext.request.contextPath}/purchase/order"> <i
-											aria-hidden="true" class="far fa-bookmark"></i> <span
+									<li class="profile-menu__item"><a
+										href="${pageContext.request.contextPath}/purchase/order">
+											<i aria-hidden="true" class="far fa-bookmark"></i> <span
 											class="mini-headline">My Orders</span>
-									</a></li> 
+									</a></li>
 									<li class="profile-menu__item"><a
-										href="${pageContext.request.contextPath}/mySetting"> <i aria-hidden="true"
-											class="icomoon-cog"></i> <span class="mini-headline">Settings</span>
+										href="${pageContext.request.contextPath}/settings"> <i
+											aria-hidden="true" class="icomoon-cog"></i> <span
+											class="mini-headline">Settings</span>
 									</a></li>
 									<!-- <li><a
 										href="mailto:hello@distiller.com?subject=Distiller.com%20Feedback&amp;body=%0A%0ASent%20from:%20{{userAgent}}">
 											<i aria-hidden="true" class="fa fa-envelope"></i> <span
 											class="mini-headline"> Contact Us </span>
 									</a></li> -->
-									<li><a data-method="delete" href="/logout"
-										rel="nofollow"> <i aria-hidden="true" class="icomoon-x"></i>
-											<span class="mini-headline"> LogOut </span>
+									<li><a data-method="delete" href="/logout" rel="nofollow">
+											<i aria-hidden="true" class="icomoon-x"></i> <span
+											class="mini-headline"> LogOut </span>
 									</a></li>
 								</ul>
 							</div>
@@ -92,34 +96,49 @@
 					</div>
 
 				</div>
-				<div class="personal-content profile-list">
+
+				<div class="personal-content">
 					
-					<!-- <a class="button mini notifications-only"
-						href="/profile/munsu-bae/feed?notifications_only=true"> Show
-						Only My Activity </a> -->
-					<div class="clear"></div>
-					<div class="results">
-						<div class="empty-feed">
-							<!-- <h3 class="tertiary-headline">No Activity Yet</h3> -->
-							<ul>
-								<li><a class="button accented" href="/search"> Search
-										Spirits </a></li>
-								<li><a class="button inverted" href="/user_search">
-										Search For People </a></li>
-							</ul>
+					<div class="edit-panel-container">
+						<div class="error"></div>
+						<form class="edit-profile" id="edit_user_400356"
+							action="${pageContext.request.contextPath}/changeSetting"
+							accept-charset="UTF-8" method="post">
+						<!-- 	<input name="utf8" type="hidden" value="✓"><input
+								type="hidden" name="_method" value="patch"><input
+								type="hidden" name="authenticity_token"
+								value="27sUS1QHdlRM2P3uxg9e0oq2F6noEoV3K5GXRecgNShOx90TfzNkthL5T8q7p5gHk04DOg8pys5MwVf46NCUig=="> -->
+							<div class="form-fields">
+								
+								<div class="text-fields">
+									<div class="field">
+										<label for="user[username]">User name</label>
+										<input id="userName" maxlength="30" name="userName" type="text" value="${userDto.name}">
+									</div>
+									<div class="field">
+										<label for="user[tagline]">Phone Number</label>
+										<input id="userPhone" maxlength="30" name="userPhone" value="${userDto.phone }"	 type="text">
+									</div>
+									<div class="field">
+										<label for="user[tagline]">Address</label>
+										<input id="userAddress" maxlength="100" name="userAddress" value="${userDto.address }" type="text">
+									</div>
+									
+								
+									<input class="button submit small accented" type="submit"
+										value="Save Changes">
+								</div>
+							</div>
+						</form>
+						<div class="additional-links">
+							<a class="button small export-tastes" href="${pageContext.request.contextPath}/changePasswordView"> Change Password</a>
+							<a class="button small export-tastes" href="/">Delete Account</a>
 						</div>
-
 					</div>
-					<!-- <div class="pagination-control-container">
-						<div class="pagination-control">
-							<span class="pagination-control__description"> No
-								Activities Found </span>
-
-						</div>
-
-					</div> -->
 
 				</div>
+
+
 			</div>
 		</div>
 

@@ -1,6 +1,10 @@
 package com.digi.distiller.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,10 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.digi.distiller.Command;
+import com.digi.distiller.command.user.ChangePasswordCommand;
+import com.digi.distiller.command.user.ChangeSettingCommand;
 import com.digi.distiller.command.user.LogoutCommand;
 import com.digi.distiller.command.user.MainViewCommand;
 import com.digi.distiller.command.user.MyProfileCommand;
 import com.digi.distiller.command.user.MyReviewCommand;
+import com.digi.distiller.command.user.MySettingCommand;
 import com.digi.distiller.command.user.RegisterCommand;
 import com.digi.distiller.command.user.SearchCommand;
 import com.digi.distiller.command.user.SignInCommand;
@@ -146,15 +153,68 @@ public class UserController {
 		
 		return "user/myReview";
 	}
-
+	@RequestMapping("/mySetting")
+	public String mySetting(Model model, HttpServletRequest request, HttpSession session) {
+		System.out.println("mySetting()");
+		
+		model.addAttribute("request",request);
+		model.addAttribute("session",session);
+		command = new MySettingCommand();
+		command.execute(model);
+		
+		return "user/mySetting";
+	}
+	@RequestMapping("/changeSetting")
+	public String changeSetting(Model model,HttpServletRequest request, HttpSession session, HttpServletResponse response) throws IOException {
+		System.out.println("changeSetting()");
+		
+		model.addAttribute("request",request);
+		model.addAttribute("session",session);
+		command = new ChangeSettingCommand();
+		command.execute(model);
+		
+		boolean result = (boolean) model.getAttribute("result");
+		if (result)
+			return "redirect:myProfile";
+		else
+			response.setContentType("text/html; charset=UTF-8");
+        	PrintWriter out = response.getWriter();
+        	out.println("<script>alert('설정 변경에 실패했습니다. 다시 시도해 주세요.'); </script>");
+        	out.flush();
+			return "redirect:changeSetting";
+	}
+	
+	@RequestMapping("/changePasswordView")
+	public String changePasswordView(Model model) {
+		System.out.println("changePasswordView()");
+		
+		return "user/changePassword";
+	}
+	@RequestMapping("/changePasswordAction")
+	public String changePasswordAction(Model model, HttpServletRequest request, HttpSession session, HttpServletResponse response) throws IOException {
+		System.out.println("changePasswordView()");
+		
+		model.addAttribute("request",request);
+		model.addAttribute("session",session);
+		command = new ChangePasswordCommand();
+		command.execute(model);
+		
+		boolean result = (boolean) model.getAttribute("result");
+		if (result)
+			return "redirect:myProfile";
+		else
+			response.setContentType("text/html; charset=UTF-8");
+	    	PrintWriter out = response.getWriter();
+	    	out.println("<script>alert('변경에 실패했습니다. 다시 시도해 주세요.'); </script>");
+	    	out.flush();
+			return "redirect:changePasswordView";
+			
+	}
+	
 	
 
 	
-//	@RequestMapping("/searchUserView")
-//	public String searchUserView(Model model) {
-//		System.out.println("searchUserView()");
-//		return "searchUserView";
-//	}
+	// search 바
 	@RequestMapping("/searchLiquorView")
 	public String searchLiquorView(Model model, HttpServletRequest request,
             @RequestParam(value = "page", defaultValue = "1") int page,

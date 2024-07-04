@@ -116,4 +116,70 @@ public class UserDao {
 		
 		return list;
 	}
+	
+	public boolean changeSetting(String email, String userName, String userPhone, String userAddress) {
+		boolean result=false;
+		String sql = "update USER SET NAME = ?, PHONE = ?, ADDRESS = ? WHERE EMAIL = ?";
+		
+		try {
+			int success = template.update(sql, new PreparedStatementSetter() {
+
+				@Override
+				public void setValues(PreparedStatement ps) throws SQLException {
+					// TODO Auto-generated method stub
+					ps.setString(1, userName);
+					ps.setString(2, userPhone);
+					ps.setString(3, userAddress);
+					ps.setString(4, email);	
+				}
+			});
+			
+			if (success == 1)
+				result = true;
+			
+		} catch (DataAccessException e) {
+			System.out.println("error :" + e.getMessage());
+			return result;
+		}
+		
+		return result;
+	}
+	
+	
+	public boolean changePassword(String email, String currentPassword, String newPassword) {
+		boolean result=false;
+		String password;
+		String sql="select password from USER where email = ?";
+
+		try {
+			password = template.queryForObject(sql, new Object[]{email}, String.class);
+		} catch (DataAccessException e) {
+			System.out.println("error :" + e.getMessage());
+			password = null;
+		}
+		
+		if (password.equals(currentPassword)) {
+			String sql2 = "update USER SET password = ? WHERE EMAIL = ?";
+			try {
+				int success = template.update(sql2, new PreparedStatementSetter() {
+
+					@Override
+					public void setValues(PreparedStatement ps) throws SQLException {
+						// TODO Auto-generated method stub
+						ps.setString(1, newPassword);
+						ps.setString(2, email);
+					}
+				});
+				
+				if (success == 1)
+					result = true;
+				
+			} catch (DataAccessException e) {
+				System.out.println("error :" + e.getMessage());
+				return result;
+			}
+		}	
+		
+		return result;
+	}
 }

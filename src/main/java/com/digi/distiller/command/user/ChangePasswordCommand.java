@@ -1,18 +1,17 @@
 package com.digi.distiller.command.user;
 
-import java.util.ArrayList;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.ui.Model;
 
 import com.digi.distiller.Command;
 import com.digi.distiller.dao.user.UserDao;
-import com.digi.distiller.dto.user.PersonalReviewDto;
 import com.digi.distiller.dto.user.UserDto;
 
-public class MyReviewCommand implements Command {
+public class ChangePasswordCommand implements Command {
 
 	@Override
 	public void execute(Model model) {
@@ -20,14 +19,17 @@ public class MyReviewCommand implements Command {
 		UserDao userDao = new UserDao();
 		
 		Map<String, Object> map = model.asMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session = (HttpSession) map.get("session");
 		
 		String email = (String) session.getAttribute("loginedEmail");
-
-		ArrayList<PersonalReviewDto> reviewList = userDao.getUserReview(email);
-		UserDto userDto = userDao.getUserInfo(email);
+		String currentPassword = request.getParameter("currentPassword");
+		String newPassword = request.getParameter("newPassword");
 		
-		model.addAttribute("userDto",userDto);
-		model.addAttribute("reviewList", reviewList);
-	}
+		UserDto userDto = userDao.getUserInfo(email);
+		boolean result = userDao.changePassword(email, currentPassword, newPassword);
+		
+		model.addAttribute("userDto", userDto);
+		model.addAttribute("result", result);
+	}	
 }
